@@ -41,17 +41,18 @@
     <div class="progress-bar" id="progressBar"></div>
 
     <!-- Navigation Toggle -->
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu">
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Open navigation menu">
       <i class="fas fa-bars"></i>
     </button>
 
     <!-- Theme Switcher -->
-    <button class="theme-switcher" id="themeSwitcher" title="Toggle Theme" aria-label="Toggle theme">
+    <button type="button" class="theme-switcher" id="themeSwitcher" title="Toggle Theme" aria-label="Toggle theme">
       <i class="fas fa-moon"></i>
     </button>
 
     <!-- Dyslexia Font Toggle -->
     <button
+      type="button"
       class="font-toggle"
       id="fontToggle"
       title="Toggle Dyslexia-friendly Font"
@@ -61,16 +62,28 @@
     </button>
 
     <!-- Sound Toggle -->
-    <button class="sound-toggle" id="soundToggle" title="Toggle Sound" aria-label="Toggle sound">
+    <button type="button" class="sound-toggle" id="soundToggle" title="Toggle Sound" aria-label="Toggle sound">
       <i class="fas fa-volume-up"></i>
     </button>
 
-    <button class="share-build" id="shareBuild" title="Share Build Summary" aria-label="Share build summary">
+    <button
+      type="button"
+      class="share-build"
+      id="shareBuild"
+      title="Share Build Summary"
+      aria-label="Share build summary"
+    >
       <i class="fas fa-share-alt"></i>
     </button>
 
     <!-- Search Toggle -->
-    <button class="search-toggle" id="searchToggle" title="Search Guide (Ctrl+K)" aria-label="Search guide">
+    <button
+      type="button"
+      class="search-toggle"
+      id="searchToggle"
+      title="Search Guide (Ctrl+K)"
+      aria-label="Search guide"
+    >
       <i class="fas fa-search"></i>
     </button>
 
@@ -97,7 +110,7 @@
           <a href="#variants"><i class="fas fa-layer-group"></i> Build Variants</a>
         </li>
         <li>
-          <a href="#skills"><i class="fas fa-magic"></i> Skills & Keybinds</a>
+          <a href="#skills"><i class="fas fa-magic"></i> Skills &amp; Keybinds</a>
         </li>
         <li>
           <a href="#skilltree"><i class="fas fa-sitemap"></i> Skill Tree</a>
@@ -109,7 +122,7 @@
           <a href="#paragon"><i class="fas fa-chart-line"></i> Paragon Boards</a>
         </li>
         <li>
-          <a href="#gear"><i class="fas fa-shield-alt"></i> Gear & Aspects</a>
+          <a href="#gear"><i class="fas fa-shield-alt"></i> Gear &amp; Aspects</a>
         </li>
         <li>
           <a href="#stats"><i class="fas fa-chart-bar"></i> Stats Priority</a>
@@ -118,7 +131,7 @@
           <a href="#rotation"><i class="fas fa-sync-alt"></i> Gameplay Rotation</a>
         </li>
         <li>
-          <a href="#gems"><i class="fas fa-gem"></i> Gems & Runewords</a>
+          <a href="#gems"><i class="fas fa-gem"></i> Gems &amp; Runewords</a>
         </li>
         <li>
           <a href="#mercenary"><i class="fas fa-user-ninja"></i> Mercenary Setup</a>
@@ -205,7 +218,7 @@
           </a>
         </div>
 
-        <!-- Strengths & Weaknesses (Icy Veins Style) -->
+        <!-- Strengths &amp; Weaknesses (Icy Veins Style) -->
         <div class="pros-cons">
           <div class="pros">
             <h4 style="color: var(--green)"><i class="fas fa-plus-circle"></i> Strengths</h4>
@@ -551,7 +564,7 @@
               <span class="points-display" id="pointsUsed">0</span>
               <span>/</span>
               <span class="points-display" id="totalPoints">71</span>
-              <button class="reset-button" id="resetSkills">Reset</button>
+              <button type="button" class="reset-button" id="resetSkills">Reset</button>
             </div>
           </div>
           <div style="text-align: center; color: var(--text-secondary)">
@@ -634,9 +647,9 @@
             </div>
           </div>
 
-          <!-- Corpse & Macabre -->
+          <!-- Corpse &amp; Macabre -->
           <div class="tree-category">
-            <h4><i class="fas fa-skull"></i> Corpse & Macabre Skills</h4>
+            <h4><i class="fas fa-skull"></i> Corpse &amp; Macabre Skills</h4>
             <div class="skill-entry">
               <img loading="lazy" src="blood_wave_images/2DUI_Skills_Necromancer_15.webp" alt="Blood Mist" />
               <span>Blood Mist</span>
@@ -712,7 +725,7 @@
             </div>
           </div>
 
-          <!-- Ultimate & Key Passives -->
+          <!-- Ultimate &amp; Key Passives -->
           <div class="tree-category">
             <h4><i class="fas fa-star"></i> Ultimate Skills</h4>
             <div class="skill-entry">
@@ -848,10 +861,10 @@
               style="margin-top: 15px; text-align: left; font-size: 0.9em; color: var(--text-secondary)"
             ></div>
             <div class="build-actions" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center">
-              <button id="exportBuild" class="action-btn" title="Export Build">
+              <button type="button" id="exportBuild" class="action-btn" title="Export Build">
                 <i class="fas fa-download"></i> Export
               </button>
-              <button id="importBuild" class="action-btn" title="Import Build">
+              <button type="button" id="importBuild" class="action-btn" title="Import Build">
                 <i class="fas fa-upload"></i> Import
               </button>
             </div>
@@ -960,9 +973,9 @@
         </div>
       </section>
 
-      <!-- GEAR & ASPECTS -->
+      <!-- GEAR &amp; ASPECTS -->
       <section class="section" id="gear">
-        <h2><i class="fas fa-shield-alt"></i> Gear & Aspects</h2>
+        <h2><i class="fas fa-shield-alt"></i> Gear &amp; Aspects</h2>
         <div
           style="
             margin-bottom: 20px;
@@ -1030,7 +1043,7 @@
               <span class="slot-icon"><i class="fas fa-gem"></i></span> Amulet
             </h4>
             <p><span class="aspect-name">Diamond Aspect</span></p>
-            <p class="gear-effect">+38% Crit Chance & +75% Crit Damage after Corpse Tendrils</p>
+            <p class="gear-effect">+38% Crit Chance &amp; +75% Crit Damage after Corpse Tendrils</p>
           </div>
           <div class="gear-slot pulse-glow" data-gear="ring1">
             <h4>
@@ -1053,70 +1066,78 @@
       <section class="section" id="stats">
         <h2><i class="fas fa-chart-bar"></i> Stats Priority</h2>
         <table class="stats-table">
-          <tr>
-            <th>Slot Type</th>
-            <th>Priority 1</th>
-            <th>Priority 2</th>
-            <th>Priority 3</th>
-            <th>Priority 4</th>
-          </tr>
-          <tr>
-            <td><strong>Weapons</strong></td>
-            <td class="priority-1">Maximum Life</td>
-            <td class="priority-2">Intelligence</td>
-            <td class="priority-3">Overpower Damage</td>
-            <td>Lucky Hit: Vulnerable</td>
-          </tr>
-          <tr>
-            <td><strong>Armor</strong></td>
-            <td class="priority-1">Maximum Life</td>
-            <td class="priority-2">Intelligence</td>
-            <td class="priority-3">Cooldown Reduction</td>
-            <td>Armor/Resistances</td>
-          </tr>
-          <tr>
-            <td><strong>Jewelry</strong></td>
-            <td class="priority-1">Cooldown Reduction</td>
-            <td class="priority-2">Critical Strike Chance</td>
-            <td class="priority-3">Intelligence</td>
-            <td>Maximum Life</td>
-          </tr>
-          <tr>
-            <td><strong>Amulet</strong></td>
-            <td class="priority-1">+Ranks Tides of Blood</td>
-            <td class="priority-2">+Ranks Gloom</td>
-            <td class="priority-3">Crit Chance/CDR</td>
-            <td>+Ranks Terror</td>
-          </tr>
+          <thead>
+            <tr>
+              <th scope="col">Slot Type</th>
+              <th scope="col">Priority 1</th>
+              <th scope="col">Priority 2</th>
+              <th scope="col">Priority 3</th>
+              <th scope="col">Priority 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Weapons</strong></td>
+              <td class="priority-1">Maximum Life</td>
+              <td class="priority-2">Intelligence</td>
+              <td class="priority-3">Overpower Damage</td>
+              <td>Lucky Hit: Vulnerable</td>
+            </tr>
+            <tr>
+              <td><strong>Armor</strong></td>
+              <td class="priority-1">Maximum Life</td>
+              <td class="priority-2">Intelligence</td>
+              <td class="priority-3">Cooldown Reduction</td>
+              <td>Armor/Resistances</td>
+            </tr>
+            <tr>
+              <td><strong>Jewelry</strong></td>
+              <td class="priority-1">Cooldown Reduction</td>
+              <td class="priority-2">Critical Strike Chance</td>
+              <td class="priority-3">Intelligence</td>
+              <td>Maximum Life</td>
+            </tr>
+            <tr>
+              <td><strong>Amulet</strong></td>
+              <td class="priority-1">+Ranks Tides of Blood</td>
+              <td class="priority-2">+Ranks Gloom</td>
+              <td class="priority-3">Crit Chance/CDR</td>
+              <td>+Ranks Terror</td>
+            </tr>
+          </tbody>
         </table>
 
         <h3 style="margin-top: 30px"><i class="fas fa-hammer"></i> Tempering Priority</h3>
         <table class="stats-table">
-          <tr>
-            <th>Slot</th>
-            <th>Temper 1</th>
-            <th>Temper 2</th>
-          </tr>
-          <tr>
-            <td><strong>Weapon</strong></td>
-            <td class="priority-1">Blood Wave Double Damage Chance</td>
-            <td class="priority-2">+Ranks to Titan's Fall</td>
-          </tr>
-          <tr>
-            <td><strong>Chest</strong></td>
-            <td class="priority-1">Corpse Tendrils Size %</td>
-            <td>â€”</td>
-          </tr>
-          <tr>
-            <td><strong>Gloves</strong></td>
-            <td class="priority-1">Blood Overpower Damage %</td>
-            <td>â€”</td>
-          </tr>
-          <tr>
-            <td><strong>Amulet/Rings</strong></td>
-            <td class="priority-1">Ultimate Cooldown Reduction %</td>
-            <td>â€”</td>
-          </tr>
+          <thead>
+            <tr>
+              <th scope="col">Slot</th>
+              <th scope="col">Temper 1</th>
+              <th scope="col">Temper 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Weapon</strong></td>
+              <td class="priority-1">Blood Wave Double Damage Chance</td>
+              <td class="priority-2">+Ranks to Titan's Fall</td>
+            </tr>
+            <tr>
+              <td><strong>Chest</strong></td>
+              <td class="priority-1">Corpse Tendrils Size %</td>
+              <td>â€”</td>
+            </tr>
+            <tr>
+              <td><strong>Gloves</strong></td>
+              <td class="priority-1">Blood Overpower Damage %</td>
+              <td>â€”</td>
+            </tr>
+            <tr>
+              <td><strong>Amulet/Rings</strong></td>
+              <td class="priority-1">Ultimate Cooldown Reduction %</td>
+              <td>â€”</td>
+            </tr>
+          </tbody>
         </table>
       </section>
 
@@ -1198,33 +1219,37 @@
 
       <!-- RUNEWORDS -->
       <section class="section" id="gems">
-        <h2><i class="fas fa-gem"></i> Gems & Runewords</h2>
+        <h2><i class="fas fa-gem"></i> Gems &amp; Runewords</h2>
         <table class="stats-table">
-          <tr>
-            <th>Location</th>
-            <th>Gem/Rune</th>
-            <th>Effect</th>
-          </tr>
-          <tr>
-            <td><strong>Weapon</strong></td>
-            <td class="priority-1">Royal Emerald</td>
-            <td>Increased damage</td>
-          </tr>
-          <tr>
-            <td><strong>Armor (Socket 1)</strong></td>
-            <td class="priority-2">Igni + Thul</td>
-            <td>Frost Nova - Freeze + Vulnerable application</td>
-          </tr>
-          <tr>
-            <td><strong>Armor (Socket 2)</strong></td>
-            <td class="priority-2">Ahu + Qax</td>
-            <td>100% damage increase vs non-Healthy</td>
-          </tr>
-          <tr>
-            <td><strong>Jewelry</strong></td>
-            <td class="priority-3">Royal Diamond / Topaz / Ruby</td>
-            <td>Resistances (prioritize Lightning & Fire)</td>
-          </tr>
+          <thead>
+            <tr>
+              <th scope="col">Location</th>
+              <th scope="col">Gem/Rune</th>
+              <th scope="col">Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Weapon</strong></td>
+              <td class="priority-1">Royal Emerald</td>
+              <td>Increased damage</td>
+            </tr>
+            <tr>
+              <td><strong>Armor (Socket 1)</strong></td>
+              <td class="priority-2">Igni + Thul</td>
+              <td>Frost Nova - Freeze + Vulnerable application</td>
+            </tr>
+            <tr>
+              <td><strong>Armor (Socket 2)</strong></td>
+              <td class="priority-2">Ahu + Qax</td>
+              <td>100% damage increase vs non-Healthy</td>
+            </tr>
+            <tr>
+              <td><strong>Jewelry</strong></td>
+              <td class="priority-3">Royal Diamond / Topaz / Ruby</td>
+              <td>Resistances (prioritize Lightning & Fire)</td>
+            </tr>
+          </tbody>
         </table>
         <div
           style="
@@ -1408,7 +1433,7 @@
     <!-- Gear Comparison Modal -->
     <div class="modal" id="gearModal">
       <div class="modal-content">
-        <button class="close-modal" id="closeModal">&times;</button>
+        <button type="button" class="close-modal" id="closeModal">&times;</button>
         <h3 id="modalTitle">Gear Comparison</h3>
         <div id="modalContent">
           <!-- Dynamic content will be inserted here -->
@@ -1425,7 +1450,7 @@
     </audio>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" title="Back to Top">
+    <button type="button" class="back-to-top" id="backToTop" title="Back to Top">
       <i class="fas fa-chevron-up"></i>
     </button>
 
