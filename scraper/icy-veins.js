@@ -3,7 +3,7 @@
  * Extracts Blood Wave Necromancer build data using accessibility snapshots
  */
 
-import { PlaywrightCrawler } from 'crawlee';
+import { PlaywrightCrawler, RequestQueue } from 'crawlee';
 import { existsSync, mkdirSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
@@ -58,7 +58,12 @@ export async function icyVeinsScraper() {
   }
 
   // Fallback to live scraping with direct extraction
+  // Use named request queue to isolate from other scrapers
+  const requestQueue = await RequestQueue.open('icy-veins');
+  await requestQueue.addRequest({ url: NECRO_BUILD_URL });
+
   const crawler = new PlaywrightCrawler({
+    requestQueue,
     maxRequestsPerCrawl: 1,
     headless: true,
     requestHandlerTimeoutSecs: 120,
@@ -90,8 +95,9 @@ export async function icyVeinsScraper() {
         // Extract skill images from skill bar
         document.querySelectorAll('img[alt]').forEach(img => {
           const alt = img.alt?.trim();
-          if (!alt || alt.includes('Avatar') || alt.includes('logo') || alt.includes('Logo'))
+          if (!alt || alt.includes('Avatar') || alt.includes('logo') || alt.includes('Logo')) {
             return;
+          }
 
           const skillPatterns = [
             'Blood Wave',
@@ -163,7 +169,9 @@ export async function icyVeinsScraper() {
   });
 
   try {
-    await crawler.run([NECRO_BUILD_URL]);
+    await crawler.run();
+    // Drop the queue after use to clean up for next run
+    await requestQueue.drop();
   } catch (error) {
     console.error('  Crawler error:', error.message);
   }

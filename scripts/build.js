@@ -192,9 +192,15 @@ function getSize(path) {
 
 // Update HTML to use bundled files
 function updateHtmlReferences(htmlContent) {
-  // Replace original CSS with bundle
-  htmlContent = htmlContent.replace(/href="styles\.css"/g, 'href="styles.bundle.css"');
-  htmlContent = htmlContent.replace(/href="src\/css\/main\.css"/g, 'href="styles.bundle.css"');
+  // Generate cache-busting version based on timestamp
+  const version = Date.now().toString(36);
+
+  // Replace original CSS with bundle (with cache-busting)
+  htmlContent = htmlContent.replace(/href="styles\.css"/g, `href="styles.bundle.css?v=${version}"`);
+  htmlContent = htmlContent.replace(
+    /href="src\/css\/main\.css"/g,
+    `href="styles.bundle.css?v=${version}"`
+  );
 
   // Replace original JS with bundle (handle defer and other attributes)
   htmlContent = htmlContent.replace(

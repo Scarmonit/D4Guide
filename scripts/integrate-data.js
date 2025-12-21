@@ -590,30 +590,30 @@ function updateDataSourcesFooter(html, icyVeins, maxroll, timestamp) {
 
   const footerHtml = `
     <!-- Data Sources (Auto-Generated) -->
-    <div id="data-sources-footer" class="section" style="background: rgba(0,0,0,0.4); border: 1px solid var(--border-color); margin-top: 30px;">
+    <div id="data-sources-footer" class="section data-source-footer">
       <h3 style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 15px;">
         <i class="fas fa-database"></i> Data Sources
       </h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; font-size: 0.85em;">
-        <div>
+      <div class="data-source-grid">
+        <div class="data-source-item">
           <strong style="color: var(--gold);">Icy Veins</strong>
           <p style="color: var(--text-muted); margin: 5px 0;">
             ${icyVeins.skills?.length || 0} skills • ${icyVeins.aspects?.length || 0} aspects
           </p>
-          <a href="${icyVeins.url || '#'}" target="_blank" rel="noopener" style="color: var(--primary-red); font-size: 0.8em;">
+          <a href="${icyVeins.url || '#'}" target="_blank" rel="noopener">
             View Source →
           </a>
         </div>
-        <div>
+        <div class="data-source-item">
           <strong style="color: var(--gold);">Maxroll</strong>
           <p style="color: var(--text-muted); margin: 5px 0;">
             ${Object.keys(maxroll.ratings || {}).length} ratings • ${maxroll.variants?.length || 0} variants
           </p>
-          <a href="${maxroll.url || '#'}" target="_blank" rel="noopener" style="color: var(--primary-red); font-size: 0.8em;">
+          <a href="${maxroll.url || '#'}" target="_blank" rel="noopener">
             View Source →
           </a>
         </div>
-        <div>
+        <div class="data-source-item">
           <strong style="color: var(--text-secondary);">Last Synced</strong>
           <p style="color: var(--text-muted); margin: 5px 0;">
             ${syncTime}

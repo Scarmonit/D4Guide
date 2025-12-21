@@ -3,7 +3,7 @@
  * Extracts Blood Wave Necromancer build data using accessibility snapshots
  */
 
-import { PlaywrightCrawler } from 'crawlee';
+import { PlaywrightCrawler, RequestQueue } from 'crawlee';
 import { existsSync, mkdirSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
@@ -58,7 +58,12 @@ export async function maxrollScraper() {
   }
 
   // Fallback to live scraping with direct extraction
+  // Use named request queue to isolate from other scrapers
+  const requestQueue = await RequestQueue.open('maxroll');
+  await requestQueue.addRequest({ url: MAXROLL_BUILD_URL });
+
   const crawler = new PlaywrightCrawler({
+    requestQueue,
     maxRequestsPerCrawl: 1,
     headless: true,
     requestHandlerTimeoutSecs: 120,
@@ -186,7 +191,9 @@ export async function maxrollScraper() {
   });
 
   try {
-    await crawler.run([MAXROLL_BUILD_URL]);
+    await crawler.run();
+    // Drop the queue after use to clean up for next run
+    await requestQueue.drop();
   } catch (error) {
     console.error('  Crawler error:', error.message);
   }

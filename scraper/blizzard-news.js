@@ -3,7 +3,7 @@
  * Extracts Diablo 4 patch notes relevant to Blood Wave Necromancer
  */
 
-import { PlaywrightCrawler } from 'crawlee';
+import { PlaywrightCrawler, RequestQueue } from 'crawlee';
 import { mkdirSync, existsSync, readFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
@@ -68,7 +68,14 @@ export async function blizzardNewsScraper() {
     }
   }
 
+  // Use named request queue to isolate from other scrapers
+  const requestQueue = await RequestQueue.open('blizzard-news');
+  for (const url of BLIZZARD_URLS) {
+    await requestQueue.addRequest({ url });
+  }
+
   const crawler = new PlaywrightCrawler({
+    requestQueue,
     maxRequestsPerCrawl: 2,
     headless: true,
     requestHandlerTimeoutSecs: 90,
@@ -243,7 +250,9 @@ export async function blizzardNewsScraper() {
   });
 
   try {
-    await crawler.run(BLIZZARD_URLS);
+    await crawler.run();
+    // Drop the queue after use to clean up for next run
+    await requestQueue.drop();
 
     // Set latest patch
     if (results.patches.length > 0) {
