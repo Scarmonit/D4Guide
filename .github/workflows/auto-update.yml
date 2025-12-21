@@ -2,7 +2,7 @@ name: Auto-Update Guides
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
+    - cron: '0 6 * * *'  # Daily at 6 AM UTC
   workflow_dispatch:
     inputs:
       force_update:
@@ -15,10 +15,8 @@ permissions:
   contents: write
 
 jobs:
-  check-and-update:
+  sync-and-update:
     runs-on: ubuntu-latest
-    outputs:
-      changed: ${{ steps.detect.outputs.changed }}
 
     steps:
       - name: Checkout repository
@@ -35,45 +33,37 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright
+      - name: Install Playwright browsers
         run: npx playwright install chromium
 
-      - name: Snapshot sources
-        run: node scripts/snapshot.js
-
-      - name: Detect changes
-        id: detect
+      - name: Scrape and integrate data
+        id: sync
         run: |
-          node scripts/diff.js
-          if [ -f "data/.changes-detected" ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "Changes detected in source guides"
-          else
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "No changes detected"
-          fi
-
-      - name: Force update check
-        if: github.event.inputs.force_update == 'true'
-        run: echo "changed=true" >> $GITHUB_OUTPUT
-
-      - name: Extract updates
-        if: steps.detect.outputs.changed == 'true' || github.event.inputs.force_update == 'true'
-        run: node scripts/extract-updates.js
-        # Uses basic extraction in CI (Ollama not available)
-        # Run locally with Ollama for AI-powered extraction
+          echo "Starting data sync..."
+          npm run sync
+          echo "Sync complete"
 
       - name: Build site
-        if: steps.detect.outputs.changed == 'true' || github.event.inputs.force_update == 'true'
         run: npm run build
 
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected"
+          fi
+
       - name: Commit and push changes
-        if: steps.detect.outputs.changed == 'true' || github.event.inputs.force_update == 'true'
+        if: steps.changes.outputs.has_changes == 'true' || github.event.inputs.force_update == 'true'
         run: |
           git config user.name "D4Guide Bot"
           git config user.email "bot@d4guide.scarmonit.com"
 
-          # Check if there are changes to commit
+          # Check again for changes
           if git diff --quiet && git diff --staged --quiet; then
             echo "No changes to commit"
             exit 0
@@ -81,25 +71,15 @@ jobs:
 
           git add -A
 
-          # Get changelog summary if available
-          if [ -f "data/changelog-summary.txt" ]; then
-            SUMMARY=$(cat data/changelog-summary.txt)
-          else
-            SUMMARY="Auto-update from source guides"
-          fi
+          # Generate commit message with timestamp
+          TIMESTAMP=$(date -u +"%Y-%m-%d")
 
-          git commit -m "chore: auto-update guides
+          git commit -m "chore: auto-sync guide data ($TIMESTAMP)
 
-          $SUMMARY
+          Scraped latest data from Icy Veins, Maxroll, and Blizzard News.
 
           🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
           Co-Authored-By: D4Guide Bot <bot@d4guide.scarmonit.com>"
 
           git push
-
-      - name: Cleanup
-        if: always()
-        run: |
-          rm -f data/.changes-detected
-          rm -f data/changelog-summary.txt
