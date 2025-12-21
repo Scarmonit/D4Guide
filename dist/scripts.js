@@ -138,7 +138,9 @@ class BloodWaveGuide {
       'overpowerDamage',
       'shadowDamage',
       'vulnerableDamage',
-      'bloodWaveRanks'
+      'bloodWaveRanks',
+      'additiveDamage',
+      'doubleDamageChance'
     ].forEach(e => {
       document.getElementById(e).addEventListener('input', () => {
         this.calculateDamage();
@@ -202,18 +204,85 @@ class BloodWaveGuide {
       });
     });
   }
+  setupBuildPersistence() {
+    const e = document.getElementById('exportBuild'),
+      t = document.getElementById('importBuild');
+    (e &&
+      e.addEventListener('click', () => {
+        const t = {
+          stats: {
+            intelligence: document.getElementById('intelligence').value,
+            critChance: document.getElementById('critChance').value,
+            critDamage: document.getElementById('critDamage').value,
+            overpowerDamage: document.getElementById('overpowerDamage').value,
+            shadowDamage: document.getElementById('shadowDamage').value,
+            vulnerableDamage: document.getElementById('vulnerableDamage').value,
+            additiveDamage: document.getElementById('additiveDamage').value,
+            doubleDamageChance: document.getElementById('doubleDamageChance').value,
+            bloodWaveRanks: document.getElementById('bloodWaveRanks').value
+          },
+          skills: []
+        };
+        document.querySelectorAll('.points').forEach(e => {
+          t.skills.push({ current: e.dataset.current });
+        });
+        const a = btoa(JSON.stringify(t));
+        navigator.clipboard.writeText(a).then(() => {
+          (this.highlightElement(e), alert('Build data (encoded) copied to clipboard!'));
+        });
+      }),
+      t &&
+        t.addEventListener('click', () => {
+          const e = prompt('Paste your build data string here:');
+          if (e)
+            try {
+              const a = JSON.parse(atob(e));
+              if (a.stats) {
+                for (const [e, t] of Object.entries(a.stats)) {
+                  const a = document.getElementById(e);
+                  a && (a.value = t);
+                }
+                this.calculateDamage();
+              }
+              if (a.skills) {
+                const e = document.querySelectorAll('.points');
+                (a.skills.forEach((t, a) => {
+                  if (e[a]) {
+                    const n = e[a].dataset.max;
+                    ((e[a].dataset.current = t.current), (e[a].textContent = `${t.current}/${n}`));
+                  }
+                }),
+                  this.calculateInitialPoints(),
+                  this.updatePointsDisplay());
+              }
+              (this.highlightElement(t), alert('Build imported successfully!'));
+            } catch (e) {
+              (alert('Failed to import build. Invalid data.'), console.error(e));
+            }
+        }));
+  }
   calculateDamage() {
-    const e = 10 * (parseInt(document.getElementById('intelligence').value) || 0),
-      t =
-        1 +
-        ((parseInt(document.getElementById('critChance').value) || 0) / 100) *
-          ((parseInt(document.getElementById('critDamage').value) || 0) / 100),
-      a = 1 + (parseInt(document.getElementById('overpowerDamage').value) || 0) / 100,
-      n = 1 + (parseInt(document.getElementById('shadowDamage').value) || 0) / 100,
-      s = 1 + (parseInt(document.getElementById('vulnerableDamage').value) || 0) / 100,
-      i = 1 + 0.2 * ((parseInt(document.getElementById('bloodWaveRanks').value) || 1) - 1),
-      o = Math.round(e * t * a * n * s * i);
-    document.getElementById('damageResult').textContent = o.toLocaleString();
+    const e = parseInt(document.getElementById('intelligence').value) || 0,
+      t = parseInt(document.getElementById('critChance').value) || 0,
+      a = parseInt(document.getElementById('critDamage').value) || 0,
+      n = parseInt(document.getElementById('overpowerDamage').value) || 0,
+      i = parseInt(document.getElementById('shadowDamage').value) || 0,
+      s = parseInt(document.getElementById('vulnerableDamage').value) || 0,
+      o = parseInt(document.getElementById('additiveDamage').value) || 0,
+      l = parseInt(document.getElementById('doubleDamageChance').value) || 0,
+      r = 10 * e,
+      c = 1 + o / 100,
+      d = 1 + (t / 100) * (a / 100),
+      m = 1 + n / 100,
+      u = 1 + i / 100,
+      g = 1 + s / 100,
+      h = 1 + 0.2 * ((parseInt(document.getElementById('bloodWaveRanks').value) || 1) - 1),
+      p = 1 + l / 100,
+      v = Math.round(r * c * d * m * u * g * h * p);
+    document.getElementById('damageResult').textContent = v.toLocaleString();
+    const y = `\n      Base: ${r.toLocaleString()}<br>\n      Additive: x${c.toFixed(2)}<br>\n      Crit: x${d.toFixed(2)} (Avg)<br>\n      Overpower: x${m.toFixed(2)}<br>\n      Shadow: x${u.toFixed(2)}<br>\n      Vulnerable: x${g.toFixed(2)}<br>\n      Skill Ranks: x${h.toFixed(2)}<br>\n      Double Cast: x${p.toFixed(2)}\n    `,
+      E = document.getElementById('damageBreakdown');
+    E && (E.innerHTML = y);
   }
   activateSkill(e) {
     (document.querySelectorAll('.skill-slot').forEach(e => e.classList.remove('active')),
@@ -237,8 +306,8 @@ class BloodWaveGuide {
     const t = e.dataset.gear,
       a = document.getElementById('gearModal'),
       n = document.getElementById('modalTitle'),
-      s = document.getElementById('modalContent'),
-      i = {
+      i = document.getElementById('modalContent'),
+      s = {
         helmet: {
           primary: 'Heir of Perdition (Mythic)',
           primaryStats: [
@@ -330,20 +399,20 @@ class BloodWaveGuide {
     ((o += '<div class="comparison-card primary">'),
       (o +=
         '<h4 style="color: var(--gold); margin-bottom: 10px;"><i class="fas fa-star"></i> Primary Choice</h4>'),
-      (o += `<div class="item-name">${i.primary}</div>`),
-      (o += `<ul>${i.primaryStats.map(e => `<li>${e}</li>`).join('')}</ul>`),
+      (o += `<div class="item-name">${s.primary}</div>`),
+      (o += `<ul>${s.primaryStats.map(e => `<li>${e}</li>`).join('')}</ul>`),
       (o += '</div>'),
       (o += '<div class="comparison-card alternative">'),
       (o +=
         '<h4 style="color: var(--orange); margin-bottom: 10px;"><i class="fas fa-exchange-alt"></i> Alternative</h4>'),
-      (o += `<div class="item-name">${i.alternative}</div>`),
-      (o += `<ul>${i.alternativeStats.map(e => `<li>${e}</li>`).join('')}</ul>`),
+      (o += `<div class="item-name">${s.alternative}</div>`),
+      (o += `<ul>${s.alternativeStats.map(e => `<li>${e}</li>`).join('')}</ul>`),
       (o += '</div>'),
       (o += '</div>'),
       (o += '<div class="tempering-box">'),
-      (o += `<strong><i class="fas fa-hammer"></i> Recommended Tempering:</strong> ${i.tempering}`),
+      (o += `<strong><i class="fas fa-hammer"></i> Recommended Tempering:</strong> ${s.tempering}`),
       (o += '</div>'),
-      (s.innerHTML = o),
+      (i.innerHTML = o),
       (a.style.display = 'block'),
       this.playSound('click'),
       this.highlightElement(e));
@@ -410,7 +479,7 @@ class BloodWaveGuide {
       t = document.getElementById('searchOverlay'),
       a = document.getElementById('searchInput'),
       n = document.getElementById('searchResults'),
-      s = new Fuse(
+      i = new Fuse(
         [
           {
             title: 'Sanctification',
@@ -480,7 +549,7 @@ class BloodWaveGuide {
         ],
         { keys: ['title', 'content'], threshold: 0.4, includeMatches: !0 }
       );
-    function i() {
+    function s() {
       (t.classList.add('active'), a.focus(), (a.value = ''), l());
     }
     function o() {
@@ -491,7 +560,7 @@ class BloodWaveGuide {
     }
     function r(e) {
       if ((l(), !e.trim())) return;
-      const t = s.search(e);
+      const t = i.search(e);
       if (0 === t.length) {
         const e = document.createElement('div');
         return (
@@ -511,12 +580,12 @@ class BloodWaveGuide {
             ((n.className = 'fas fa-arrow-right'),
               a.appendChild(n),
               a.appendChild(document.createTextNode(' ' + e.title)));
-            const s = document.createElement('div');
+            const i = document.createElement('div');
             return (
-              (s.className = 'context'),
-              (s.textContent = e.content),
+              (i.className = 'context'),
+              (i.textContent = e.content),
               t.appendChild(a),
-              t.appendChild(s),
+              t.appendChild(i),
               t.addEventListener('click', () => {
                 (o(), document.getElementById(e.section)?.scrollIntoView({ behavior: 'smooth' }));
               }),
@@ -526,13 +595,13 @@ class BloodWaveGuide {
         );
       });
     }
-    (e.addEventListener('click', i),
+    (e.addEventListener('click', s),
       t.addEventListener('click', e => {
         e.target === t && o();
       }),
       a.addEventListener('input', e => r(e.target.value)),
       document.addEventListener('keydown', e => {
-        ((e.ctrlKey || e.metaKey) && 'k' === e.key && (e.preventDefault(), i()),
+        ((e.ctrlKey || e.metaKey) && 'k' === e.key && (e.preventDefault(), s()),
           'Escape' === e.key && o());
       }));
   })(),

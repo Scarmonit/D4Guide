@@ -60,3 +60,4 @@ venv/
 *.pfx
 credentials.json
 secrets.json
+.output.txt
