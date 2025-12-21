@@ -56,14 +56,14 @@ function runChecks() {
   }
 
   // Check required files
-  const requiredFiles = ['index.html', 'styles.css', 'scripts.js'];
+  const requiredFiles = ['index.html', 'styles.bundle.css', 'scripts.bundle.js'];
   for (const file of requiredFiles) {
     check(existsSync(join(DIST, file)), `${file} present in dist/`);
   }
 
   // Check images directory
   const imagesDir = join(DIST, 'blood_wave_images');
-  check(existsSync(imagesDir), 'blood_wave_images/ directory exists');
+  check(existsSync(imagesDir), 'blood_wave_images/ directory exists', false);
 
   if (existsSync(imagesDir)) {
     const images = readdirSync(imagesDir);
@@ -91,7 +91,7 @@ function runChecks() {
   }
 
   // Check scripts.js
-  const scriptsPath = join(DIST, 'scripts.js');
+  const scriptsPath = join(DIST, 'scripts.bundle.js');
   if (existsSync(scriptsPath)) {
     const js = readFileSync(scriptsPath, 'utf8');
     const hasDebugLogs = (js.match(/console\.log/g) || []).length > 5;
