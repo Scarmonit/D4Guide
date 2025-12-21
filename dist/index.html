@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#8B0000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="D4 Necro Guide" />
     <style>
       body::before {
         content: '';
@@ -93,6 +98,111 @@
       .nav-toggle:hover {
         background: var(--shadow-red);
         transform: scale(1.05);
+      }
+      .search-toggle {
+        position: fixed;
+        top: 20px;
+        right: 200px;
+        z-index: 1000;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 10px;
+        padding: 12px;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+      .search-toggle:hover {
+        background: var(--shadow-red);
+        transform: scale(1.05);
+      }
+      .search-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 2000;
+        display: none;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 100px;
+      }
+      .search-overlay.active {
+        display: flex;
+      }
+      .search-container {
+        width: 90%;
+        max-width: 600px;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .search-input-wrapper {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--glass-border);
+        gap: 12px;
+      }
+      .search-input-wrapper i {
+        color: var(--text-secondary);
+        font-size: 1.2em;
+      }
+      .search-input-wrapper input {
+        flex: 1;
+        background: 0 0;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.1em;
+        outline: 0;
+      }
+      .search-input-wrapper input::placeholder {
+        color: var(--text-secondary);
+      }
+      .search-input-wrapper kbd {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8em;
+        color: var(--text-secondary);
+      }
+      .search-results {
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .search-result-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        transition: background 0.2s;
+      }
+      .search-result-item:hover {
+        background: var(--shadow-red);
+      }
+      .search-result-item .title {
+        color: var(--blood-red);
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .search-result-item .context {
+        color: var(--text-secondary);
+        font-size: 0.9em;
+      }
+      .search-no-results {
+        padding: 40px 20px;
+        text-align: center;
+        color: var(--text-secondary);
+      }
+      @media (max-width: 768px) {
+        .search-toggle {
+          right: 150px;
+          top: 15px;
+          padding: 10px;
+        }
       }
       .nav-menu {
         position: fixed;
@@ -1297,6 +1407,17 @@
     <div class="theme-switcher" id="themeSwitcher" title="Toggle Theme"><i class="fas fa-moon"></i></div>
     <div class="sound-toggle" id="soundToggle" title="Toggle Sound"><i class="fas fa-volume-up"></i></div>
     <div class="share-build" id="shareBuild" title="Share Build Summary"><i class="fas fa-share-alt"></i></div>
+    <div class="search-toggle" id="searchToggle" title="Search Guide (Ctrl+K)"><i class="fas fa-search"></i></div>
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Search skills, gear, sections..." autocomplete="off" />
+          <kbd>ESC</kbd>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
     <nav class="nav-menu" id="navMenu">
       <h3>Navigation</h3>
       <ul>
@@ -2789,6 +2910,108 @@
         console.log(
           "\n        [Blood Wave] Advanced Shadow Blood Wave Necromancer Guide Loaded!\n\n        Built for Season 11 - Divine Intervention\n        Features: Interactive calculators, skill tracking, damage simulation\n\n        Controls:\n        - Click skills to activate\n        - Use number keys 1-4 for quick skill selection\n        - ESC to close menus\n        - Click gear for comparisons\n\n        May Rathma's power flow through you!\n        "
         ));
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+    <script>
+      !(function () {
+        const e = document.getElementById('searchToggle'),
+          t = document.getElementById('searchOverlay'),
+          n = document.getElementById('searchInput'),
+          i = document.getElementById('searchResults'),
+          s = new Fuse(
+            [
+              {
+                title: 'Sanctification',
+                section: 'sanctification',
+                content: 'Season 11 Sanctification system divine blessings'
+              },
+              { title: 'Build Variants', section: 'variants', content: 'Pit pushing farming speed variants' },
+              {
+                title: 'Skills & Keybinds',
+                section: 'skills',
+                content: 'Blood Wave Corpse Explosion Decrepify Blood Mist skills rotation'
+              },
+              { title: 'Skill Tree', section: 'skilltree', content: 'Passive skills talent points allocation' },
+              { title: 'Book of the Dead', section: 'bookofthedead', content: 'Skeletal warriors mages golem minions' },
+              { title: 'Paragon Boards', section: 'paragon', content: 'Glyphs rare nodes legendary boards' },
+              {
+                title: 'Gear & Aspects',
+                section: 'gear',
+                content: 'Helm chest gloves pants boots weapons aspects uniques'
+              },
+              {
+                title: 'Stats Priority',
+                section: 'stats',
+                content: 'Critical strike damage cooldown reduction stats affixes'
+              },
+              { title: 'Gameplay Rotation', section: 'rotation', content: 'Combat rotation opener single target AoE' },
+              { title: 'Gems & Runewords', section: 'gems', content: 'Ruby sapphire emerald diamond skull runewords' },
+              { title: 'Mercenary Setup', section: 'mercenary', content: 'Mercenary hireling companion support' },
+              { title: 'Divine Gifts', section: 'divinegifts', content: 'Divine gifts blessings season mechanic' },
+              { title: 'Damage Calculator', section: 'calculator', content: 'Calculate damage DPS simulator' }
+            ],
+            { keys: ['title', 'content'], threshold: 0.4, includeMatches: !0 }
+          );
+        function o() {
+          (t.classList.add('active'), n.focus(), (n.value = ''), c());
+        }
+        function a() {
+          t.classList.remove('active');
+        }
+        function c() {
+          for (; i.firstChild; ) i.removeChild(i.firstChild);
+        }
+        function l(e) {
+          if ((c(), !e.trim())) return;
+          const t = s.search(e);
+          if (0 === t.length) {
+            const e = document.createElement('div');
+            return ((e.className = 'search-no-results'), (e.textContent = 'No results found'), void i.appendChild(e));
+          }
+          t.slice(0, 8).forEach(e => {
+            i.appendChild(
+              (function (e) {
+                const t = document.createElement('div');
+                ((t.className = 'search-result-item'), (t.dataset.section = e.section));
+                const n = document.createElement('div');
+                n.className = 'title';
+                const i = document.createElement('i');
+                ((i.className = 'fas fa-arrow-right'),
+                  n.appendChild(i),
+                  n.appendChild(document.createTextNode(' ' + e.title)));
+                const s = document.createElement('div');
+                return (
+                  (s.className = 'context'),
+                  (s.textContent = e.content),
+                  t.appendChild(n),
+                  t.appendChild(s),
+                  t.addEventListener('click', () => {
+                    (a(), document.getElementById(e.section)?.scrollIntoView({ behavior: 'smooth' }));
+                  }),
+                  t
+                );
+              })(e.item)
+            );
+          });
+        }
+        (e.addEventListener('click', o),
+          t.addEventListener('click', e => {
+            e.target === t && a();
+          }),
+          n.addEventListener('input', e => l(e.target.value)),
+          document.addEventListener('keydown', e => {
+            ((e.ctrlKey || e.metaKey) && 'k' === e.key && (e.preventDefault(), o()), 'Escape' === e.key && a());
+          }));
+      })();
+    </script>
+    <script>
+      'serviceWorker' in navigator &&
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/service-worker.js')
+            .then(e => console.log('SW registered:', e.scope))
+            .catch(e => console.log('SW registration failed:', e));
+        });
     </script>
   </body>
 </html>

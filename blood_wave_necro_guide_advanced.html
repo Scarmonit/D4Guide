@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#8B0000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="D4 Necro Guide" />
     <style>
       /* Animated Background with Particles */
       body::before {
@@ -103,6 +108,129 @@
       .nav-toggle:hover {
         background: var(--shadow-red);
         transform: scale(1.05);
+      }
+
+      /* Search Styles */
+      .search-toggle {
+        position: fixed;
+        top: 20px;
+        right: 200px;
+        z-index: 1000;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 10px;
+        padding: 12px;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .search-toggle:hover {
+        background: var(--shadow-red);
+        transform: scale(1.05);
+      }
+
+      .search-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 2000;
+        display: none;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 100px;
+      }
+
+      .search-overlay.active {
+        display: flex;
+      }
+
+      .search-container {
+        width: 90%;
+        max-width: 600px;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .search-input-wrapper {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--glass-border);
+        gap: 12px;
+      }
+
+      .search-input-wrapper i {
+        color: var(--text-secondary);
+        font-size: 1.2em;
+      }
+
+      .search-input-wrapper input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.1em;
+        outline: none;
+      }
+
+      .search-input-wrapper input::placeholder {
+        color: var(--text-secondary);
+      }
+
+      .search-input-wrapper kbd {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8em;
+        color: var(--text-secondary);
+      }
+
+      .search-results {
+        max-height: 400px;
+        overflow-y: auto;
+      }
+
+      .search-result-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        transition: background 0.2s;
+      }
+
+      .search-result-item:hover {
+        background: var(--shadow-red);
+      }
+
+      .search-result-item .title {
+        color: var(--blood-red);
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .search-result-item .context {
+        color: var(--text-secondary);
+        font-size: 0.9em;
+      }
+
+      .search-no-results {
+        padding: 40px 20px;
+        text-align: center;
+        color: var(--text-secondary);
+      }
+
+      @media (max-width: 768px) {
+        .search-toggle {
+          right: 150px;
+          top: 15px;
+          padding: 10px;
+        }
       }
 
       .nav-menu {
@@ -1540,6 +1668,23 @@
 
     <div class="share-build" id="shareBuild" title="Share Build Summary">
       <i class="fas fa-share-alt"></i>
+    </div>
+
+    <!-- Search Toggle -->
+    <div class="search-toggle" id="searchToggle" title="Search Guide (Ctrl+K)">
+      <i class="fas fa-search"></i>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Search skills, gear, sections..." autocomplete="off" />
+          <kbd>ESC</kbd>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+      </div>
     </div>
 
     <!-- Navigation Menu -->
@@ -3278,6 +3423,149 @@
 
         May Rathma's power flow through you!
         `);
+    </script>
+    <!-- Fuse.js for search -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+    <script>
+      // Search functionality using safe DOM methods
+      (function () {
+        const searchToggle = document.getElementById('searchToggle');
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        // Build search index from page content
+        const searchIndex = [
+          {
+            title: 'Sanctification',
+            section: 'sanctification',
+            content: 'Season 11 Sanctification system divine blessings'
+          },
+          { title: 'Build Variants', section: 'variants', content: 'Pit pushing farming speed variants' },
+          {
+            title: 'Skills & Keybinds',
+            section: 'skills',
+            content: 'Blood Wave Corpse Explosion Decrepify Blood Mist skills rotation'
+          },
+          { title: 'Skill Tree', section: 'skilltree', content: 'Passive skills talent points allocation' },
+          { title: 'Book of the Dead', section: 'bookofthedead', content: 'Skeletal warriors mages golem minions' },
+          { title: 'Paragon Boards', section: 'paragon', content: 'Glyphs rare nodes legendary boards' },
+          {
+            title: 'Gear & Aspects',
+            section: 'gear',
+            content: 'Helm chest gloves pants boots weapons aspects uniques'
+          },
+          {
+            title: 'Stats Priority',
+            section: 'stats',
+            content: 'Critical strike damage cooldown reduction stats affixes'
+          },
+          { title: 'Gameplay Rotation', section: 'rotation', content: 'Combat rotation opener single target AoE' },
+          { title: 'Gems & Runewords', section: 'gems', content: 'Ruby sapphire emerald diamond skull runewords' },
+          { title: 'Mercenary Setup', section: 'mercenary', content: 'Mercenary hireling companion support' },
+          { title: 'Divine Gifts', section: 'divinegifts', content: 'Divine gifts blessings season mechanic' },
+          { title: 'Damage Calculator', section: 'calculator', content: 'Calculate damage DPS simulator' }
+        ];
+
+        const fuse = new Fuse(searchIndex, {
+          keys: ['title', 'content'],
+          threshold: 0.4,
+          includeMatches: true
+        });
+
+        function openSearch() {
+          searchOverlay.classList.add('active');
+          searchInput.focus();
+          searchInput.value = '';
+          clearResults();
+        }
+
+        function closeSearch() {
+          searchOverlay.classList.remove('active');
+        }
+
+        function clearResults() {
+          while (searchResults.firstChild) {
+            searchResults.removeChild(searchResults.firstChild);
+          }
+        }
+
+        function createResultItem(item) {
+          const div = document.createElement('div');
+          div.className = 'search-result-item';
+          div.dataset.section = item.section;
+
+          const titleDiv = document.createElement('div');
+          titleDiv.className = 'title';
+          const icon = document.createElement('i');
+          icon.className = 'fas fa-arrow-right';
+          titleDiv.appendChild(icon);
+          titleDiv.appendChild(document.createTextNode(' ' + item.title));
+
+          const contextDiv = document.createElement('div');
+          contextDiv.className = 'context';
+          contextDiv.textContent = item.content;
+
+          div.appendChild(titleDiv);
+          div.appendChild(contextDiv);
+
+          div.addEventListener('click', () => {
+            closeSearch();
+            document.getElementById(item.section)?.scrollIntoView({ behavior: 'smooth' });
+          });
+
+          return div;
+        }
+
+        function performSearch(query) {
+          clearResults();
+
+          if (!query.trim()) return;
+
+          const results = fuse.search(query);
+
+          if (results.length === 0) {
+            const noResults = document.createElement('div');
+            noResults.className = 'search-no-results';
+            noResults.textContent = 'No results found';
+            searchResults.appendChild(noResults);
+            return;
+          }
+
+          results.slice(0, 8).forEach(result => {
+            searchResults.appendChild(createResultItem(result.item));
+          });
+        }
+
+        // Event listeners
+        searchToggle.addEventListener('click', openSearch);
+        searchOverlay.addEventListener('click', e => {
+          if (e.target === searchOverlay) closeSearch();
+        });
+        searchInput.addEventListener('input', e => performSearch(e.target.value));
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', e => {
+          if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            openSearch();
+          }
+          if (e.key === 'Escape') {
+            closeSearch();
+          }
+        });
+      })();
+    </script>
+    <script>
+      // Register Service Worker for PWA
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/service-worker.js')
+            .then(reg => console.log('SW registered:', reg.scope))
+            .catch(err => console.log('SW registration failed:', err));
+        });
+      }
     </script>
   </body>
 </html>

@@ -1,0 +1,21 @@
+{
+  "name": "D4 Blood Wave Necromancer Guide",
+  "short_name": "D4 Necro Guide",
+  "description": "Complete build guide for the Blood Wave Necromancer in Diablo 4",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#8B0000",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "lang": "en",
+  "dir": "ltr"
+}

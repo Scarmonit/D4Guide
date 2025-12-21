@@ -13,11 +13,13 @@
     "serve": "npx http-server -p 8890 -o blood_wave_necro_guide_advanced.html",
     "serve:dist": "npx http-server dist -p 8891 -o",
     "deploy:check": "node scripts/deploy-check.js",
+    "optimize": "node scripts/optimize-images.js",
     "test": "npm run build && npm run deploy:check",
     "prepare": "husky"
   },
   "devDependencies": {
     "browser-sync": "^3.0.4",
+    "clean-css": "^5.3.3",
     "clean-css-cli": "^5.6.3",
     "eslint": "^9.39.2",
     "html-minifier-terser": "^7.2.0",

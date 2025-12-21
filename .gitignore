@@ -29,6 +29,9 @@ npm-debug.log*
 # Build artifacts (keep dist/ since it's your deploy target)
 # dist/
 
+# Image optimization backups
+blood_wave_images_backup/
+
 # Python
 __pycache__/
 *.py[cod]

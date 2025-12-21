@@ -19,6 +19,8 @@ const ASSETS = [
   'styles.css',
   'scripts.js',
   'favicon.svg',
+  'manifest.json',
+  'service-worker.js',
   'blood_wave_images'
 ];
 
@@ -27,7 +29,7 @@ function runNpx(args) {
   const result = spawnSync('npx', args, {
     cwd: ROOT,
     stdio: 'pipe',
-    shell: true // Required for Windows batch files
+    shell: true
   });
   return result.status === 0;
 }
@@ -63,7 +65,7 @@ function minifyHtml(src, dest) {
 
 // Minify CSS
 function minifyCss(src, dest) {
-  const success = runNpx(['cleancss', '-o', dest, src]);
+  const success = runNpx(['clean-css-cli', '-o', dest, src]);
   if (!success) {
     copyFileSync(src, dest);
   }
@@ -117,7 +119,7 @@ function copyDir(src, dest) {
     if (statSync(srcPath).isDirectory()) {
       copyDir(srcPath, destPath);
     } else {
-      copyFile(srcPath, destPath, false); // Don't minify images
+      copyFileSync(srcPath, destPath);
     }
   }
 }
@@ -149,7 +151,9 @@ function build() {
     );
 
     if (!existsSync(src)) {
-      console.log(`  Skipped: ${asset} (not found)`);
+      if (!['manifest.json', 'service-worker.js'].includes(asset)) {
+        console.log(`  Skipped: ${asset} (not found)`);
+      }
       continue;
     }
 
