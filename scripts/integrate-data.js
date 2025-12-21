@@ -11,6 +11,67 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = join(__dirname, '..');
 const DATA_FILE = join(ROOT_DIR, 'data', 'scraped-data.json');
 const HTML_FILE = join(ROOT_DIR, 'blood_wave_necro_guide_advanced.html');
+const PROTECTED_FIELDS_FILE = join(ROOT_DIR, 'protected-fields.json');
+
+// Protected fields configuration (loaded at runtime)
+let protectedFields = null;
+
+/**
+ * Load protected fields configuration
+ */
+function loadProtectedFields() {
+  if (protectedFields !== null) return protectedFields;
+
+  if (existsSync(PROTECTED_FIELDS_FILE)) {
+    try {
+      protectedFields = JSON.parse(readFileSync(PROTECTED_FIELDS_FILE, 'utf-8'));
+      console.log('🛡️  Loaded protected fields configuration');
+    } catch (e) {
+      console.warn('⚠️  Failed to load protected fields:', e.message);
+      protectedFields = { gearSlots: {}, protectedPatterns: [] };
+    }
+  } else {
+    protectedFields = { gearSlots: {}, protectedPatterns: [] };
+  }
+
+  return protectedFields;
+}
+
+/**
+ * Check if a scraped value should be rejected (matches bad patterns)
+ */
+function isInvalidScrapedValue(field, value) {
+  const config = loadProtectedFields();
+  if (!config.protectedPatterns) return false;
+
+  for (const pattern of config.protectedPatterns) {
+    if (pattern.field === field) {
+      const regex = new RegExp(pattern.pattern);
+      if (regex.test(value)) {
+        console.log(`   ⚠️  Rejected invalid ${field}: "${value}" (${pattern.reason})`);
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Check if a gear slot is protected
+ */
+function isGearSlotProtected(slot) {
+  const config = loadProtectedFields();
+  return config.gearSlots && config.gearSlots[slot] !== undefined;
+}
+
+/**
+ * Get protected value for a gear slot
+ */
+function getProtectedGearValue(slot) {
+  const config = loadProtectedFields();
+  return config.gearSlots?.[slot] || null;
+}
 
 // Rating colors and priority order
 const RATING_COLORS = {
@@ -28,6 +89,9 @@ const RATING_ORDER = ['Excellent', 'Great', 'Good', 'Moderate', 'Poor'];
  */
 export async function integrateData() {
   console.log('📊 Integrating scraped data into guide...\n');
+
+  // Load protected fields early
+  loadProtectedFields();
 
   // Check if data file exists
   if (!existsSync(DATA_FILE)) {
@@ -324,10 +388,25 @@ function updateGearSlots(html, gearData) {
 
   // Update gear slots in HTML
   let updatedCount = 0;
+  let skippedCount = 0;
 
   // Update aspect names in gear slots
   for (const [slot, data] of Object.entries(gearMap)) {
     if (!data.aspect) continue;
+
+    // Check if this slot is protected
+    if (isGearSlotProtected(slot)) {
+      const protectedValue = getProtectedGearValue(slot);
+      console.log(`   🛡️  Skipping protected slot: ${slot} (keeping "${protectedValue.aspect}")`);
+      skippedCount++;
+      continue;
+    }
+
+    // Check if the scraped value is invalid
+    if (isInvalidScrapedValue('aspect', data.aspect)) {
+      skippedCount++;
+      continue;
+    }
 
     // Match gear slot div and update aspect name
     const slotPattern = new RegExp(
@@ -343,6 +422,9 @@ function updateGearSlots(html, gearData) {
 
   if (updatedCount > 0) {
     console.log(`   ✓ Updated ${updatedCount} gear slots with aspects`);
+  }
+  if (skippedCount > 0) {
+    console.log(`   🛡️  Protected ${skippedCount} gear slots from overwrites`);
   }
 
   return html;

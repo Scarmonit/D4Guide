@@ -1,0 +1,16 @@
+{
+  "description": "Fields protected from auto-sync overwrites. Manually curated values are preserved.",
+  "gearSlots": {
+    "boots": {
+      "aspect": "Metamorphosis Aspect",
+      "reason": "Scraped data incorrectly parses this slot"
+    }
+  },
+  "protectedPatterns": [
+    {
+      "field": "aspect",
+      "pattern": "^[a-z]\\s+Aspect$",
+      "reason": "Reject aspect names starting with lowercase single letter (parsing errors)"
+    }
+  ]
+}
