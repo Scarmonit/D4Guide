@@ -1,5 +1,7 @@
 import { RunewordCalculator } from './modules/RunewordCalculator.js';
 import { MercenaryManager } from './modules/MercenaryManager.js';
+import { PitCalculator } from './modules/PitCalculator.js';
+import { GamblingAdvisor } from './modules/GamblingAdvisor.js';
 
 // Advanced JavaScript functionality
 class BloodWaveGuide {
@@ -30,8 +32,9 @@ class BloodWaveGuide {
     // Initialize new modules
     new RunewordCalculator();
     new MercenaryManager();
+    new PitCalculator();
+    new GamblingAdvisor();
   }
-
   calculateInitialPoints() {
     let points = 0;
     document.querySelectorAll('.points').forEach(el => {
