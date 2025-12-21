@@ -202,14 +202,14 @@ function updateHtmlReferences(htmlContent) {
     `href="styles.bundle.css?v=${version}"`
   );
 
-  // Replace original JS with bundle (handle defer and other attributes)
+  // Replace original JS with bundle (with cache-busting)
   htmlContent = htmlContent.replace(
     /<script\s+src="scripts\.js"[^>]*><\/script>/g,
-    '<script src="scripts.bundle.js" defer></script>'
+    `<script src="scripts.bundle.js?v=${version}" defer></script>`
   );
   htmlContent = htmlContent.replace(
     /<script\s+type="module"\s+src="src\/js\/main\.js"[^>]*><\/script>/g,
-    '<script src="scripts.bundle.js" defer></script>'
+    `<script src="scripts.bundle.js?v=${version}" defer></script>`
   );
 
   // Update image paths from blood_wave_images to public/images
