@@ -3,7 +3,7 @@
  * Enables offline access with cache-first strategy
  */
 
-const CACHE_NAME = 'd4guide-v2';
+const CACHE_NAME = 'd4guide-v3';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -11,7 +11,23 @@ const ASSETS_TO_CACHE = [
   '/scripts.bundle.js',
   '/favicon.svg',
   '/favicon.ico',
-  '/manifest.json'
+  '/manifest.json',
+  // Skill and talent images
+  '/images/2DUI_Skills_Necromancer_7.webp',
+  '/images/2DUI_Skills_Necromancer_15.webp',
+  '/images/2DUI_Skills_Necromancer_23.webp',
+  '/images/2DUI_Skills_Necromancer_51.webp',
+  '/images/2DUI_Skills_Necromancer_55.webp',
+  '/images/2DUI_Skills_Necromancer_59.webp',
+  '/images/2DUI_Skills_Necromancer_75.webp',
+  '/images/2DUI_Talents_Necromancer_24.webp',
+  '/images/2DUI_Talents_Necromancer_27.webp',
+  '/images/2DUI_Talents_Necromancer_36.webp',
+  '/images/2DUI_Talents_Necromancer_41.webp',
+  '/images/2DUI_Talents_Necromancer_47.webp',
+  '/images/2DUI_Talents_Necromancer_50.webp',
+  '/images/necro_skills.webp',
+  '/images/necro_talents.webp'
 ];
 
 // Install event - cache core assets
