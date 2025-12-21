@@ -100,8 +100,8 @@
     </div>
 
     <!-- Navigation Menu -->
-    <nav class="nav-menu" id="navMenu">
-      <h3>Navigation</h3>
+    <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+      <h2 class="nav-title">Navigation</h2>
       <ul>
         <li>
           <a href="#sanctification"><i class="fas fa-star"></i> Sanctification</a>
@@ -145,7 +145,7 @@
       </ul>
     </nav>
 
-    <div class="container" id="main-content">
+    <main class="container" id="main-content">
       <!-- Header -->
       <header class="header">
         <h1><i class="fas fa-tint" style="color: var(--blood-red)"></i> Shadow Blood Wave Necromancer</h1>
@@ -221,7 +221,7 @@
         <!-- Strengths &amp; Weaknesses (Icy Veins Style) -->
         <div class="pros-cons">
           <div class="pros">
-            <h4 style="color: var(--green)"><i class="fas fa-plus-circle"></i> Strengths</h4>
+            <h2 class="pros-title"><i class="fas fa-plus-circle"></i> Strengths</h2>
             <ul>
               <li>Massive AoE damage - clears entire screens</li>
               <li>Excellent boss damage with Tidal Aspect stacking</li>
@@ -231,7 +231,7 @@
             </ul>
           </div>
           <div class="cons">
-            <h4 style="color: var(--blood-red)"><i class="fas fa-minus-circle"></i> Weaknesses</h4>
+            <h2 class="cons-title"><i class="fas fa-minus-circle"></i> Weaknesses</h2>
             <ul>
               <li>Requires specific Mythic Uniques to excel</li>
               <li>Moderate speed - not ideal for speedfarming</li>
@@ -286,9 +286,9 @@
         </div>
 
         <div class="variant-content active" data-variant="endgame">
-          <h4 style="color: var(--gold); margin-bottom: 15px">
+          <h3 class="variant-title variant-gold">
             <i class="fas fa-trophy"></i> Endgame Pit Push (Pit 140+)
-          </h4>
+          </h3>
           <p style="color: var(--text-secondary); margin-bottom: 15px">
             Maximum damage variant focused on pushing the highest Pit tiers. Uses full Mythic gear with DoT focus after
             Season 11 Overpower nerfs.
@@ -303,7 +303,7 @@
         </div>
 
         <div class="variant-content" data-variant="speedfarm">
-          <h4 style="color: var(--orange); margin-bottom: 15px"><i class="fas fa-bolt"></i> Speedfarm Variant</h4>
+          <h3 class="variant-title variant-orange"><i class="fas fa-bolt"></i> Speedfarm Variant</h3>
           <p style="color: var(--text-secondary); margin-bottom: 15px">
             Faster movement and quicker kills for Helltide and lower Pit farming. Trades some damage for mobility.
           </p>
@@ -315,9 +315,9 @@
         </div>
 
         <div class="variant-content" data-variant="starter">
-          <h4 style="color: var(--green); margin-bottom: 15px">
+          <h3 class="variant-title variant-green">
             <i class="fas fa-seedling"></i> Starter / Budget Variant
-          </h4>
+          </h3>
           <p style="color: var(--text-secondary); margin-bottom: 15px">
             Can start with just Ancestral gear. Focus on getting Tidal Aspect and Blood-bathed Aspect first.
           </p>
@@ -329,9 +329,9 @@
         </div>
 
         <div class="variant-content" data-variant="bossing">
-          <h4 style="color: var(--blood-red); margin-bottom: 15px">
+          <h3 class="variant-title variant-red">
             <i class="fas fa-skull-crossbones"></i> Bossing Variant
-          </h4>
+          </h3>
           <p style="color: var(--text-secondary); margin-bottom: 15px">
             Optimized for Uber Bosses and Tormented bosses. Maximum single-target with Tidal wave stacking.
           </p>
@@ -596,7 +596,7 @@
         <div class="skill-tree-section">
           <!-- Basic Skills -->
           <div class="tree-category">
-            <h4><i class="fas fa-hand-rock"></i> Basic Skills</h4>
+            <h3><i class="fas fa-hand-rock"></i> Basic Skills</h3>
             <div class="skill-entry">
               <img loading="lazy" src="blood_wave_images/2DUI_Skills_Necromancer_55.webp" alt="Decompose" >
               <span>Decompose</span>
@@ -626,7 +626,7 @@
 
           <!-- Core Skills -->
           <div class="tree-category">
-            <h4><i class="fas fa-fire"></i> Core Skills</h4>
+            <h3><i class="fas fa-fire"></i> Core Skills</h3>
             <div class="skill-entry">
               <img loading="lazy" src="blood_wave_images/2DUI_Skills_Necromancer_7.webp" alt="Blight" >
               <span>Blight</span>
@@ -651,7 +651,7 @@
 
           <!-- Corpse &amp; Macabre -->
           <div class="tree-category">
-            <h4><i class="fas fa-skull"></i> Corpse &amp; Macabre Skills</h4>
+            <h3><i class="fas fa-skull"></i> Corpse &amp; Macabre Skills</h3>
             <div class="skill-entry">
               <img loading="lazy" src="blood_wave_images/2DUI_Skills_Necromancer_15.webp" alt="Blood Mist" >
               <span>Blood Mist</span>
@@ -699,7 +699,7 @@
 
           <!-- Curse Skills -->
           <div class="tree-category">
-            <h4><i class="fas fa-magic"></i> Curse Skills</h4>
+            <h3><i class="fas fa-magic"></i> Curse Skills</h3>
             <div class="skill-entry">
               <img loading="lazy" src="blood_wave_images/2DUI_Skills_Necromancer_59.webp" alt="Decrepify" >
               <span>Decrepify</span>
@@ -729,7 +729,7 @@
 
           <!-- Ultimate &amp; Key Passives -->
           <div class="tree-category">
-            <h4><i class="fas fa-star"></i> Ultimate Skills</h4>
+            <h3><i class="fas fa-star"></i> Ultimate Skills</h3>
             <div class="skill-entry">
               <img loading="lazy" src="blood_wave_images/2DUI_Skills_Necromancer_23.webp" alt="Blood Wave" >
               <span>Blood Wave</span>
@@ -754,7 +754,7 @@
 
           <!-- Key Passives -->
           <div class="tree-category">
-            <h4><i class="fas fa-key"></i> Key Passives (MAX PRIORITY)</h4>
+            <h3><i class="fas fa-key"></i> Key Passives (MAX PRIORITY)</h3>
             <div class="skill-entry passive">
               <img loading="lazy" src="blood_wave_images/2DUI_Talents_Necromancer_41.webp" alt="Stand Alone" >
               <span>Stand Alone</span>
@@ -892,7 +892,7 @@
         </div>
         <div class="sacrifice-grid">
           <div class="sacrifice-card active" data-sacrifice="reapers">
-            <h4><i class="fas fa-bone"></i> Skeletal Warriors</h4>
+            <h3><i class="fas fa-bone"></i> Skeletal Warriors</h3>
             <div class="sacrifice-type">REAPERS [Sacrifice]</div>
             <div class="sacrifice-bonus">+15% Shadow Damage</div>
             <p style="font-size: 0.85em; color: var(--text-muted); margin-top: 8px">
@@ -900,12 +900,12 @@
             </p>
           </div>
           <div class="sacrifice-card active" data-sacrifice="bone">
-            <h4><i class="fas fa-wand-magic-sparkles"></i> Skeletal Mages</h4>
+            <h3><i class="fas fa-wand-magic-sparkles"></i> Skeletal Mages</h3>
             <div class="sacrifice-type">BONE [Sacrifice]</div>
             <div class="sacrifice-bonus">+15% Overpower Damage</div>
           </div>
           <div class="sacrifice-card active" data-sacrifice="iron">
-            <h4><i class="fas fa-shield-alt"></i> Golem</h4>
+            <h3><i class="fas fa-shield-alt"></i> Golem</h3>
             <div class="sacrifice-type">IRON [Sacrifice]</div>
             <div class="sacrifice-bonus">+15% Critical Strike Damage</div>
           </div>
@@ -932,42 +932,42 @@
         <div class="paragon-board">
           <div class="board-entry">
             <div class="board-content">
-              <h4>Starting Board</h4>
+              <h3>Starting Board</h3>
               <p><span class="legendary-node">Legendary Node:</span> Sacrificial</p>
               <p><span class="glyph-name">Glyph:</span> Corporeal</p>
             </div>
           </div>
           <div class="board-entry">
             <div class="board-content">
-              <h4>Bloodbath</h4>
+              <h3>Bloodbath</h3>
               <p><span class="legendary-node">Legendary Node:</span> Gravekeeper</p>
               <p><span class="glyph-name">Glyph:</span> Dominate</p>
             </div>
           </div>
           <div class="board-entry">
             <div class="board-content">
-              <h4>Scent of Death</h4>
+              <h3>Scent of Death</h3>
               <p><span class="legendary-node">Legendary Node:</span> Scent of Death</p>
               <p><span class="glyph-name">Glyph:</span> Exploit</p>
             </div>
           </div>
           <div class="board-entry">
             <div class="board-content">
-              <h4>Blood Begets Blood</h4>
+              <h3>Blood Begets Blood</h3>
               <p><span class="legendary-node">Legendary Node:</span> Blood Begets Blood</p>
               <p><span class="glyph-name">Glyph:</span> Desecration</p>
             </div>
           </div>
           <div class="board-entry">
             <div class="board-content">
-              <h4>Wither</h4>
+              <h3>Wither</h3>
               <p><span class="legendary-node">Legendary Node:</span> Essence</p>
               <p><span class="glyph-name">Glyph:</span> Control</p>
             </div>
           </div>
           <div class="board-entry">
             <div class="board-content">
-              <h4>Flesh-Eater</h4>
+              <h3>Flesh-Eater</h3>
               <p><span class="legendary-node">Legendary Node:</span> Flesh-Eater</p>
               <p><span class="glyph-name">Glyph:</span> Darkness</p>
             </div>
@@ -995,69 +995,51 @@
         </div>
         <div class="gear-grid">
           <div class="gear-slot" data-gear="helmet">
-            <h4>
-              <span class="slot-icon"><i class="fas fa-hard-hat"></i></span> Helmet
-            </h4>
+            <h3><span class="slot-icon"><i class="fas fa-hard-hat"></i></span> Helmet</h3>
             <p><span class="mythic-name">Heir of Perdition</span> (BiS Mythic)</p>
             <p class="gear-effect">Huge Crit Chance + Lucky Hit + Damage multiplier</p>
             <p style="margin-top: 10px"><span class="aspect-name">Alternative: Aspect of the Cursed Aura</span></p>
           </div>
           <div class="gear-slot" data-gear="chest">
-            <h4>
-              <span class="slot-icon"><i class="fas fa-tshirt"></i></span> Chest
-            </h4>
+            <h3><span class="slot-icon"><i class="fas fa-tshirt"></i></span> Chest</h3>
             <p><span class="mythic-name">Shroud of False Death</span> (BiS Mythic)</p>
             <p class="gear-effect">+1 All Passives, huge survivability</p>
             <p style="margin-top: 10px"><span class="aspect-name">Igni Aspect</span></p>
             <p class="gear-effect">30% Damage Reduction baseline</p>
           </div>
           <div class="gear-slot" data-gear="gloves">
-            <h4>
-              <span class="slot-icon"><i class="fas fa-mitten"></i></span> Gloves
-            </h4>
+            <h3><span class="slot-icon"><i class="fas fa-mitten"></i></span> Gloves</h3>
             <p><span class="aspect-name">Sacrificial Aspect</span></p>
             <p class="gear-effect">+55% increased Sacrifice bonuses</p>
           </div>
           <div class="gear-slot pulse-glow" data-gear="pants">
-            <h4>
-              <span class="slot-icon"><i class="fas fa-socks"></i></span> Pants
-            </h4>
+            <h3><span class="slot-icon"><i class="fas fa-socks"></i></span> Pants</h3>
             <p><span class="unique-name">Kessime's Legacy</span> <span class="required-tag">REQUIRED</span></p>
             <p class="gear-effect">Blood Wave forms dual converging waves that explode. Core of the build!</p>
           </div>
           <div class="gear-slot" data-gear="boots">
-            <h4>
-              <span class="slot-icon"><i class="fas fa-shoe-prints"></i></span> Boots
-            </h4>
+            <h3><span class="slot-icon"><i class="fas fa-shoe-prints"></i></span> Boots</h3>
             <p><span class="aspect-name">Metamorphosis Aspect</span></p>
             <p class="gear-effect">Evade turns you into bats, Unstoppable 2.5s</p>
           </div>
           <div class="gear-slot pulse-glow" data-gear="weapon">
-            <h4>
-              <span class="slot-icon"><i class="fas fa-gavel"></i></span> 2H Weapon
-            </h4>
+            <h3><span class="slot-icon"><i class="fas fa-gavel"></i></span> 2H Weapon</h3>
             <p><span class="aspect-name">Tidal Aspect</span> <span class="required-tag">REQUIRED</span></p>
             <p class="gear-effect">Blood Wave fires 3 total waves at 200% damage each</p>
             <p style="margin-top: 10px"><span class="unique-name">Alternative: Bloodless Scream</span> (endgame)</p>
           </div>
           <div class="gear-slot" data-gear="amulet">
-            <h4>
-              <span class="slot-icon"><i class="fas fa-gem"></i></span> Amulet
-            </h4>
+            <h3><span class="slot-icon"><i class="fas fa-gem"></i></span> Amulet</h3>
             <p><span class="aspect-name">Diamond Aspect</span></p>
             <p class="gear-effect">+38% Crit Chance &amp; +75% Crit Damage after Corpse Tendrils</p>
           </div>
           <div class="gear-slot pulse-glow" data-gear="ring1">
-            <h4>
-              <span class="slot-icon"><i class="fas fa-ring"></i></span> Ring 1
-            </h4>
+            <h3><span class="slot-icon"><i class="fas fa-ring"></i></span> Ring 1</h3>
             <p><span class="aspect-name">Fastblood Aspect</span> <span class="required-tag">REQUIRED</span></p>
             <p class="gear-effect">Blood Orbs reduce Ultimate CD by 3 seconds</p>
           </div>
           <div class="gear-slot" data-gear="ring2">
-            <h4>
-              <span class="slot-icon"><i class="fas fa-ring"></i></span> Ring 2
-            </h4>
+            <h3><span class="slot-icon"><i class="fas fa-ring"></i></span> Ring 2</h3>
             <p><span class="aspect-name">Aspect of Ultimate Shadow</span></p>
             <p class="gear-effect">Blood Wave becomes Darkness skill + Shadow damage + Desecrated Ground DoT</p>
           </div>
@@ -1207,7 +1189,7 @@
         </div>
 
         <div class="mechanic-box">
-          <h4><i class="fas fa-exclamation-triangle"></i> Key Mechanic: Cooldown Reset Engine</h4>
+          <h3><i class="fas fa-exclamation-triangle"></i> Key Mechanic: Cooldown Reset Engine</h3>
           <ul>
             <li><strong>Fastblood Aspect:</strong> Blood Orbs reduce Ultimate CD by 3 seconds</li>
             <li><strong>Abhorrent Decrepify:</strong> Lucky Hits against cursed enemies reduce cooldowns</li>
@@ -1280,9 +1262,9 @@
               border-left: 4px solid var(--gold);
             "
           >
-            <h4 style="color: var(--gold); margin-bottom: 15px; font-size: 1.3em">
+            <h3 style="color: var(--gold); margin-bottom: 15px; font-size: 1.3em">
               <i class="fas fa-shield-alt"></i> Main: Raheir
-            </h4>
+            </h3>
             <ul style="margin-left: 20px">
               <li><i class="fas fa-hammer"></i> Ground Slam</li>
               <li><i class="fas fa-shield"></i> Raheir's Aegis</li>
@@ -1298,9 +1280,9 @@
               border-left: 4px solid var(--orange);
             "
           >
-            <h4 style="color: var(--orange); margin-bottom: 15px; font-size: 1.3em">
+            <h3 style="color: var(--orange); margin-bottom: 15px; font-size: 1.3em">
               <i class="fas fa-fire"></i> Reinforcement: Aldkin
-            </h4>
+            </h3>
             <ul style="margin-left: 20px">
               <li><i class="fas fa-fire"></i> Flame Surge</li>
               <li style="color: var(--green)">
@@ -1331,7 +1313,7 @@
           <div
             style="background: rgba(139, 69, 19, 0.2); padding: 20px; border-radius: 15px; border: 2px solid #8b4513"
           >
-            <h4 style="color: #d4a574; margin-bottom: 10px"><i class="fas fa-skull"></i> Duriel - Helltides</h4>
+            <h3 style="color: #d4a574; margin-bottom: 10px"><i class="fas fa-skull"></i> Duriel - Helltides</h3>
             <p style="color: var(--text-secondary); font-size: 0.9em">
               Maggots spawn throughout Helltide areas. Great for passive farming while running other content.
             </p>
@@ -1340,7 +1322,7 @@
             </p>
           </div>
           <div style="background: rgba(128, 0, 128, 0.2); padding: 20px; border-radius: 15px; border: 2px solid purple">
-            <h4 style="color: #da70d6; margin-bottom: 10px"><i class="fas fa-spider"></i> Andariel - Undercity</h4>
+            <h3 style="color: #da70d6; margin-bottom: 10px"><i class="fas fa-spider"></i> Andariel - Undercity</h3>
             <p style="color: var(--text-secondary); font-size: 0.9em">
               Appears as final boss of Undercity runs. Good for XP farming.
             </p>
@@ -1349,16 +1331,16 @@
             </p>
           </div>
           <div style="background: rgba(0, 100, 0, 0.2); padding: 20px; border-radius: 15px; border: 2px solid #228b22">
-            <h4 style="color: #90ee90; margin-bottom: 10px"><i class="fas fa-eye"></i> Belial - The Pit</h4>
+            <h3 style="color: #90ee90; margin-bottom: 10px"><i class="fas fa-eye"></i> Belial - The Pit</h3>
             <p style="color: var(--text-secondary); font-size: 0.9em">
               Find 5 eyes in Pit runs to summon him. Essential for pushing high Pit tiers.
             </p>
             <p style="color: var(--green); margin-top: 8px"><strong>Priority:</strong> High - Pit is endgame focus</p>
           </div>
           <div style="background: rgba(139, 0, 0, 0.2); padding: 20px; border-radius: 15px; border: 2px solid #8b0000">
-            <h4 style="color: var(--blood-red); margin-bottom: 10px">
+            <h3 style="color: var(--blood-red); margin-bottom: 10px">
               <i class="fas fa-dragon"></i> Azmodan - World Boss
-            </h4>
+            </h3>
             <p style="color: var(--text-secondary); font-size: 0.9em">
               New summonable World Boss. Toughest Lesser Evil but great rewards.
             </p>
@@ -1413,7 +1395,7 @@
           </span>
         </div>
       </div>
-    </div></div>
+    </main>
 
     <!-- Gear Comparison Modal -->
     <div class="modal" id="gearModal">

@@ -7,7 +7,7 @@
   --gold: #d4af37;
   --dark-gold: #b8860b;
   --orange: #ff8c00;
-  --green: #228b22;
+  --green: #2ecc71; /* Improved contrast ratio (was #228b22) */
   --brown: #8b4513;
   --bg-primary: #0a0a0f;
   --bg-tertiary: #1a1a2e;
@@ -15,7 +15,7 @@
   --glass-border: rgb(212 175 55 / 30%);
   --text-primary: #e0e0e0;
   --text-secondary: #b0b0b0;
-  --text-muted: #808080;
+  --text-muted: #909090; /* Improved contrast ratio (was #808080) */
   --shadow-glow: 0 0 20px rgb(196 30 58 / 30%);
 }
 
@@ -1552,6 +1552,46 @@ h1 {
   100% {
     box-shadow: 0 0 20px 5px transparent;
   }
+}
+
+/* Accessible Heading Styles */
+.nav-title {
+  color: var(--gold);
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+.pros-title {
+  color: var(--green);
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.cons-title {
+  color: var(--blood-red);
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.variant-title {
+  margin-bottom: 15px;
+  font-size: 1.15em;
+}
+
+.variant-gold {
+  color: var(--gold);
+}
+
+.variant-orange {
+  color: var(--orange);
+}
+
+.variant-green {
+  color: var(--green);
+}
+
+.variant-red {
+  color: var(--blood-red);
 }
 
 /* Responsive Design */
