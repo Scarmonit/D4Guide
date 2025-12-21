@@ -19,6 +19,7 @@ const ASSETS = [
   'styles.css',
   'scripts.js',
   'favicon.svg',
+  'favicon.ico',
   'manifest.json',
   'service-worker.js',
   'blood_wave_images'
