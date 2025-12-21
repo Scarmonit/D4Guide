@@ -6,46 +6,8 @@
     <title>Shadow Blood Wave Necromancer - Advanced Season 11 Guide</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-red: #c41e3a;
-            --dark-red: #8b0000;
-            --blood-red: #ff6b6b;
-            --shadow-red: rgba(196, 30, 58, 0.3);
-            --gold: #ffd700;
-            --dark-gold: #ff8c00;
-            --orange: #ff8c00;
-            --brown: #8b4513;
-            --green: #90ee90;
-            --bg-primary: #1a1a2e;
-            --bg-secondary: #16213e;
-            --bg-tertiary: #0f3460;
-            --text-primary: #e8e8e8;
-            --text-secondary: #aaa;
-            --text-muted: #666;
-            --glass-bg: rgba(0, 0, 0, 0.25);
-            --glass-border: rgba(255, 107, 107, 0.2);
-            --shadow-glow: rgba(196, 30, 58, 0.4);
-        }
-
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
-            color: var(--text-primary);
-            min-height: 100vh;
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
+    <link rel="stylesheet" href="styles.css">
+</head>
 
         /* Animated Background with Particles */
         body::before {
@@ -320,6 +282,139 @@
         .stat-label {
             color: var(--text-secondary);
             font-size: 0.9em;
+        }
+
+        /* Strengths & Weaknesses */
+        .pros-cons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .pros-cons .pros, .pros-cons .cons {
+            background: var(--glass-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .pros-cons .pros {
+            border-left: 4px solid var(--green);
+        }
+
+        .pros-cons .cons {
+            border-left: 4px solid var(--primary-red);
+        }
+
+        .pros-cons h4 {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .pros-cons ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pros-cons li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .pros-cons li:last-child {
+            border-bottom: none;
+        }
+
+        .pros-cons .pros li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .pros-cons .cons li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: var(--blood-red);
+            font-weight: bold;
+        }
+
+        /* Build Variants Tabs */
+        .variant-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .variant-tab {
+            padding: 10px 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .variant-tab:hover {
+            border-color: var(--primary-red);
+            color: var(--text-primary);
+        }
+
+        .variant-tab.active {
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            border-color: var(--primary-red);
+            color: white;
+        }
+
+        .variant-content {
+            display: none;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .variant-content.active {
+            display: block;
+        }
+
+        /* Build Requirements Box */
+        .requirements-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .requirement-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .requirement-item.critical {
+            border-left-color: var(--primary-red);
+        }
+
+        .requirement-item i {
+            color: var(--gold);
+            font-size: 1.2em;
         }
 
         /* Advanced Section Styling */
@@ -1387,6 +1482,8 @@
     <nav class="nav-menu" id="navMenu">
         <h3>Navigation</h3>
         <ul>
+            <li><a href="#sanctification"><i class="fas fa-star"></i> Sanctification</a></li>
+            <li><a href="#variants"><i class="fas fa-layer-group"></i> Build Variants</a></li>
             <li><a href="#skills"><i class="fas fa-magic"></i> Skills & Keybinds</a></li>
             <li><a href="#skilltree"><i class="fas fa-sitemap"></i> Skill Tree</a></li>
             <li><a href="#bookofthedead"><i class="fas fa-skull"></i> Book of the Dead</a></li>
@@ -1413,26 +1510,152 @@
                 Master the ultimate Blood Wave build with advanced tools and calculations
             </p>
 
-            <!-- Build Stats -->
+            <!-- Build Ratings (Maxroll Style) -->
             <div class="build-stats">
-                <div class="stat-card">
-                    <div class="stat-value" id="damageStat">2.5M</div>
-                    <div class="stat-label">Max Damage</div>
+                <div class="stat-card" style="border-top: 3px solid var(--green);">
+                    <div class="stat-value" style="color: var(--green);">Excellent</div>
+                    <div class="stat-label"><i class="fas fa-mountain"></i> Pit Push</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="survivabilityStat">85%</div>
-                    <div class="stat-label">Survivability</div>
+                <div class="stat-card" style="border-top: 3px solid var(--orange);">
+                    <div class="stat-value" style="color: var(--orange);">Moderate</div>
+                    <div class="stat-label"><i class="fas fa-bolt"></i> Speed</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="clearSpeedStat">9.2/10</div>
-                    <div class="stat-label">Clear Speed</div>
+                <div class="stat-card" style="border-top: 3px solid var(--green);">
+                    <div class="stat-value" style="color: var(--green);">Excellent</div>
+                    <div class="stat-label"><i class="fas fa-skull-crossbones"></i> Bossing</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="difficultyStat">6/10</div>
-                    <div class="stat-label">Difficulty</div>
+                <div class="stat-card" style="border-top: 3px solid var(--green);">
+                    <div class="stat-value" style="color: var(--green);">Excellent</div>
+                    <div class="stat-label"><i class="fas fa-shield-alt"></i> Survivability</div>
+                </div>
+            </div>
+
+            <!-- D4Planner Link -->
+            <div style="margin-top: 20px; text-align: center;">
+                <a href="https://maxroll.gg/d4/planner/1kdu0en4#3" target="_blank" rel="noopener"
+                   style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px;
+                          background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+                          color: white; text-decoration: none; border-radius: 8px; font-weight: 600;
+                          transition: transform 0.2s, box-shadow 0.2s;">
+                    <i class="fas fa-external-link-alt"></i> Open in D4Planner
+                </a>
+            </div>
+
+            <!-- Strengths & Weaknesses (Icy Veins Style) -->
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4 style="color: var(--green);"><i class="fas fa-plus-circle"></i> Strengths</h4>
+                    <ul>
+                        <li>Massive AoE damage - clears entire screens</li>
+                        <li>Excellent boss damage with Tidal Aspect stacking</li>
+                        <li>High survivability with Blood Mist + Fortify</li>
+                        <li>S-Tier push build for Pit 140-150+</li>
+                        <li>Scales extremely well with gear investment</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h4 style="color: var(--blood-red);"><i class="fas fa-minus-circle"></i> Weaknesses</h4>
+                    <ul>
+                        <li>Requires specific Mythic Uniques to excel</li>
+                        <li>Moderate speed - not ideal for speedfarming</li>
+                        <li>Corpse dependency can be frustrating</li>
+                        <li>Overpower builds nerfed in Season 11</li>
+                        <li>High learning curve for optimal rotation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Build Requirements Box -->
+            <div class="requirements-box">
+                <div class="requirement-item critical">
+                    <i class="fas fa-crown"></i>
+                    <div>
+                        <strong style="color: var(--gold);">Kessime's Legacy</strong>
+                        <div style="color: var(--text-muted); font-size: 0.85em;">Required Unique</div>
+                    </div>
+                </div>
+                <div class="requirement-item critical">
+                    <i class="fas fa-crown"></i>
+                    <div>
+                        <strong style="color: var(--gold);">Rathma's Vigor</strong>
+                        <div style="color: var(--text-muted); font-size: 0.85em;">Required Unique</div>
+                    </div>
+                </div>
+                <div class="requirement-item">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <strong style="color: var(--text-primary);">Tidal Aspect</strong>
+                        <div style="color: var(--text-muted); font-size: 0.85em;">Core Aspect</div>
+                    </div>
+                </div>
+                <div class="requirement-item">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <strong style="color: var(--text-primary);">Blood-bathed Aspect</strong>
+                        <div style="color: var(--text-muted); font-size: 0.85em;">Core Aspect</div>
+                    </div>
                 </div>
             </div>
         </header>
+
+        <!-- BUILD VARIANTS SECTION -->
+        <section class="section" id="variants" style="margin-bottom: 20px;">
+            <h2><i class="fas fa-layer-group"></i> Build Variants</h2>
+            <div class="variant-tabs">
+                <div class="variant-tab active" data-variant="endgame">Endgame (Pit Push)</div>
+                <div class="variant-tab" data-variant="speedfarm">Speedfarm</div>
+                <div class="variant-tab" data-variant="starter">Starter/Budget</div>
+                <div class="variant-tab" data-variant="bossing">Bossing</div>
+            </div>
+
+            <div class="variant-content active" data-variant="endgame">
+                <h4 style="color: var(--gold); margin-bottom: 15px;"><i class="fas fa-trophy"></i> Endgame Pit Push (Pit 140+)</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                    Maximum damage variant focused on pushing the highest Pit tiers. Uses full Mythic gear with DoT focus after Season 11 Overpower nerfs.
+                </p>
+                <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 2;">
+                    <li><strong style="color: var(--gold);">Weapon:</strong> Sanctified 2H Scythe with +Quality (up to 25%)</li>
+                    <li><strong style="color: var(--gold);">Focus:</strong> DoT damage + Ultimate Shadow Aspect</li>
+                    <li><strong style="color: var(--gold);">Key Stats:</strong> Vulnerable, Crit Damage, Int, Blood Skill Damage</li>
+                </ul>
+            </div>
+
+            <div class="variant-content" data-variant="speedfarm">
+                <h4 style="color: var(--orange); margin-bottom: 15px;"><i class="fas fa-bolt"></i> Speedfarm Variant</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                    Faster movement and quicker kills for Helltide and lower Pit farming. Trades some damage for mobility.
+                </p>
+                <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 2;">
+                    <li><strong style="color: var(--orange);">Swap:</strong> Blood Mist for faster mobility skill</li>
+                    <li><strong style="color: var(--orange);">Paragon:</strong> Prioritize movement speed nodes</li>
+                    <li><strong style="color: var(--orange);">Focus:</strong> AoE clear over single-target</li>
+                </ul>
+            </div>
+
+            <div class="variant-content" data-variant="starter">
+                <h4 style="color: var(--green); margin-bottom: 15px;"><i class="fas fa-seedling"></i> Starter / Budget Variant</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                    Can start with just Ancestral gear. Focus on getting Tidal Aspect and Blood-bathed Aspect first.
+                </p>
+                <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 2;">
+                    <li><strong style="color: var(--green);">Priority 1:</strong> Get Tidal Aspect from Codex</li>
+                    <li><strong style="color: var(--green);">Priority 2:</strong> Farm for Kessime's Legacy</li>
+                    <li><strong style="color: var(--green);">Priority 3:</strong> Stack Vulnerable damage where possible</li>
+                </ul>
+            </div>
+
+            <div class="variant-content" data-variant="bossing">
+                <h4 style="color: var(--blood-red); margin-bottom: 15px;"><i class="fas fa-skull-crossbones"></i> Bossing Variant</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                    Optimized for Uber Bosses and Tormented bosses. Maximum single-target with Tidal wave stacking.
+                </p>
+                <ul style="color: var(--text-secondary); margin-left: 20px; line-height: 2;">
+                    <li><strong style="color: var(--blood-red);">Key:</strong> Position to maximize Tidal wave bounces</li>
+                    <li><strong style="color: var(--blood-red);">Rotation:</strong> Tendrils → Blight → Blood Wave spam</li>
+                    <li><strong style="color: var(--blood-red);">Stats:</strong> Prioritize Crit Damage and Vulnerable</li>
+                </ul>
+            </div>
+        </section>
 
         <!-- SEASON 11 UPDATE NOTICE -->
         <div class="section" style="background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,140,0,0.1)); border: 2px solid var(--gold); margin-bottom: 20px;">
@@ -1457,6 +1680,7 @@
             </div>
         </div>
 
+        <!-- SANCTIFICATION GUIDE - Season 11 -->        <div class="section" id="sanctification" style="background: linear-gradient(135deg, rgba(138,43,226,0.1), rgba(75,0,130,0.1)); border: 2px solid #9932CC; margin-bottom: 20px;">            <h3 style="color: #DA70D6; margin-bottom: 15px;"><i class="fas fa-star"></i> Season 11 Sanctification Guide</h3>            <p style="color: var(--text-secondary); margin-bottom: 15px;">                Sanctifying gear at <strong style="color: #DA70D6;">Hadriels Forge</strong> can add new Stats, Greater Affixes, or Legendary Aspects - but makes items <span style="color: var(--blood-red);">Unmodifiable</span>.            </p>            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; border-left: 3px solid #DA70D6;">                    <h4 style="color: #DA70D6; margin-bottom: 8px;"><i class="fas fa-check-circle"></i> What to Sanctify</h4>                    <ul style="color: var(--text-secondary); margin-left: 15px; line-height: 1.8;">                        <li><strong>Weapon</strong> - Sanctify for +Quality (up to 25% = x40% damage!)</li>                        <li><strong>Amulet</strong> - Great slot for bonus stats</li>                        <li><strong>Rings</strong> - Lucky Hit to Vulnerable synergy</li>                    </ul>                </div>                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; border-left: 3px solid var(--blood-red);">                    <h4 style="color: var(--blood-red); margin-bottom: 8px;"><i class="fas fa-times-circle"></i> Dont Sanctify</h4>                    <ul style="color: var(--text-secondary); margin-left: 15px; line-height: 1.8;">                        <li><strong>Kessimes Legacy</strong> - Keep for future upgrades</li>                        <li>Items you havent fully Masterworked</li>                        <li>Gear missing key Greater Affixes</li>                    </ul>                </div>                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; border-left: 3px solid var(--gold);">                    <h4 style="color: var(--gold); margin-bottom: 8px;"><i class="fas fa-lightbulb"></i> Pro Tips</h4>                    <ul style="color: var(--text-secondary); margin-left: 15px; line-height: 1.8;">                        <li>Sanctify potential gear, not equipped items</li>                        <li>You can still swap Gems and Runes after</li>                        <li>Focus on Corrupted Essences from Belial (Pit)</li>                    </ul>                </div>            </div>            <div style="text-align: center; margin-top: 15px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px;">                <span style="color: var(--text-muted);"><i class="fas fa-sync-alt"></i> Data synced from Maxroll.gg - December 21, 2025</span>            </div>        </div>
         <!-- SKILL BAR -->
         <section class="section" id="skills">
             <h2><i class="fas fa-magic"></i> ⌨️ Interactive Skill Bar</h2>
@@ -2608,19 +2832,38 @@
             new BloodWaveGuide();
         });
 
+        // Build Variant Tab Switching
+        document.querySelectorAll('.variant-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const variant = tab.dataset.variant;
+
+                // Update tabs
+                document.querySelectorAll('.variant-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Update content
+                document.querySelectorAll('.variant-content').forEach(content => {
+                    content.classList.remove('active');
+                    if (content.dataset.variant === variant) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
         // Console easter egg
         console.log(`
         🩸 Advanced Shadow Blood Wave Necromancer Guide Loaded!
-        
+
         Built for Season 11 - Divine Intervention
         Features: Interactive calculators, skill tracking, damage simulation
-        
+
         Controls:
         - Click skills to activate
         - Use number keys 1-4 for quick skill selection
         - ESC to close menus
         - Click gear for comparisons
-        
+
         May Rathma's power flow through you! 🌊🩸
         `);
     </script>
