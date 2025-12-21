@@ -8,6 +8,12 @@
     "keyframes-name-pattern": null,
     "declaration-block-no-redundant-longhand-properties": null,
     "no-descending-specificity": null,
-    "font-family-no-missing-generic-family-keyword": null
+    "font-family-no-missing-generic-family-keyword": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "property-no-vendor-prefix": null,
+    "rule-empty-line-before": null,
+    "custom-property-empty-line-before": null,
+    "media-feature-range-notation": null
   }
 }
