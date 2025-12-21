@@ -25,7 +25,7 @@ const SRC_JS = join(ROOT, 'src', 'js');
 const SRC_CSS = join(ROOT, 'src', 'css');
 
 // Static assets to copy
-const STATIC_ASSETS = ['favicon.svg', 'manifest.json', 'service-worker.js'];
+const STATIC_ASSETS = ['favicon.svg', 'favicon.ico', 'manifest.json', 'service-worker.js'];
 
 // Run npx command safely (works on Windows and Unix)
 function runNpx(args) {
