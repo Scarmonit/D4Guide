@@ -1,29 +1,31 @@
 #!/usr/bin/env node
 /**
  * D4Guide Build Script
- * Builds optimized production files with minification
+ * Builds optimized production files with ES module bundling
  */
 
-import { copyFileSync, mkdirSync, readdirSync, statSync, existsSync, rmSync } from 'fs';
-import { join, dirname, extname } from 'path';
+import {
+  copyFileSync,
+  mkdirSync,
+  readdirSync,
+  statSync,
+  existsSync,
+  rmSync,
+  readFileSync,
+  writeFileSync
+} from 'fs';
+import { join, dirname, extname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { spawnSync } from 'child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const DIST = join(ROOT, 'dist');
+const SRC_JS = join(ROOT, 'src', 'js');
+const SRC_CSS = join(ROOT, 'src', 'css');
 
-// Files and directories to copy
-const ASSETS = [
-  'blood_wave_necro_guide_advanced.html',
-  'styles.css',
-  'scripts.js',
-  'favicon.svg',
-  'favicon.ico',
-  'manifest.json',
-  'service-worker.js',
-  'blood_wave_images'
-];
+// Static assets to copy
+const STATIC_ASSETS = ['favicon.svg', 'manifest.json', 'service-worker.js'];
 
 // Run npx command safely (works on Windows and Unix)
 function runNpx(args) {
@@ -44,6 +46,107 @@ function cleanDist() {
   console.log('  Cleaned dist/');
 }
 
+// Bundle JavaScript with esbuild
+function bundleJs() {
+  const entryPoint = join(SRC_JS, 'main.js');
+  const outFile = join(DIST, 'scripts.bundle.js');
+
+  if (!existsSync(entryPoint)) {
+    // Fallback to original scripts.js
+    console.log('  Using legacy scripts.js (no modular source)');
+    const legacySrc = join(ROOT, 'scripts.js');
+    if (existsSync(legacySrc)) {
+      const success = runNpx(['terser', legacySrc, '-o', outFile, '--compress', '--mangle']);
+      if (!success) {
+        copyFileSync(legacySrc, outFile);
+      }
+      return true;
+    }
+    return false;
+  }
+
+  console.log('  Bundling JavaScript modules...');
+  const success = runNpx([
+    'esbuild',
+    entryPoint,
+    '--bundle',
+    '--minify',
+    '--sourcemap',
+    '--target=es2020',
+    '--format=iife',
+    `--outfile=${outFile}`
+  ]);
+
+  if (!success) {
+    console.log('  esbuild failed, falling back to terser');
+    const legacySrc = join(ROOT, 'scripts.js');
+    if (existsSync(legacySrc)) {
+      runNpx(['terser', legacySrc, '-o', outFile, '--compress', '--mangle']);
+    }
+  }
+
+  return success;
+}
+
+// Bundle CSS by resolving @imports and minifying
+function bundleCss() {
+  const entryPoint = join(SRC_CSS, 'main.css');
+  const outFile = join(DIST, 'styles.bundle.css');
+
+  if (!existsSync(entryPoint)) {
+    // Fallback to original styles.css
+    console.log('  Using legacy styles.css (no modular source)');
+    const legacySrc = join(ROOT, 'styles.css');
+    if (existsSync(legacySrc)) {
+      const success = runNpx(['clean-css-cli', '-o', outFile, legacySrc]);
+      if (!success) {
+        copyFileSync(legacySrc, outFile);
+      }
+      return true;
+    }
+    return false;
+  }
+
+  console.log('  Bundling CSS modules...');
+
+  // Resolve @imports and concatenate
+  const cssContent = resolveCssImports(entryPoint, SRC_CSS);
+
+  // Write concatenated CSS to temp file
+  const tempFile = join(DIST, 'styles.temp.css');
+  writeFileSync(tempFile, cssContent);
+
+  // Minify with clean-css
+  const success = runNpx(['clean-css-cli', '-o', outFile, tempFile]);
+
+  // Clean up temp file
+  if (existsSync(tempFile)) {
+    rmSync(tempFile);
+  }
+
+  if (!success) {
+    // Just use the concatenated version
+    writeFileSync(outFile, cssContent);
+  }
+
+  return true;
+}
+
+// Recursively resolve CSS @import statements
+function resolveCssImports(filePath, baseDir) {
+  const content = readFileSync(filePath, 'utf-8');
+  const importRegex = /@import\s+['"]([^'"]+)['"]\s*;/g;
+
+  return content.replace(importRegex, (match, importPath) => {
+    const absolutePath = resolve(dirname(filePath), importPath);
+    if (existsSync(absolutePath)) {
+      return resolveCssImports(absolutePath, baseDir);
+    }
+    console.log(`  Warning: Could not resolve @import "${importPath}"`);
+    return `/* Could not resolve: ${importPath} */`;
+  });
+}
+
 // Minify HTML
 function minifyHtml(src, dest) {
   const success = runNpx([
@@ -62,53 +165,6 @@ function minifyHtml(src, dest) {
     copyFileSync(src, dest);
   }
   return success;
-}
-
-// Minify CSS
-function minifyCss(src, dest) {
-  const success = runNpx(['clean-css-cli', '-o', dest, src]);
-  if (!success) {
-    copyFileSync(src, dest);
-  }
-  return success;
-}
-
-// Minify JS
-function minifyJs(src, dest) {
-  const success = runNpx(['terser', src, '-o', dest, '--compress', '--mangle']);
-  if (!success) {
-    copyFileSync(src, dest);
-  }
-  return success;
-}
-
-// Copy a file (with optional minification)
-function copyFile(src, dest, minify = true) {
-  mkdirSync(dirname(dest), { recursive: true });
-
-  if (!minify) {
-    copyFileSync(src, dest);
-    return { minified: false };
-  }
-
-  const ext = extname(src).toLowerCase();
-  let minified = false;
-
-  switch (ext) {
-    case '.html':
-      minified = minifyHtml(src, dest);
-      break;
-    case '.css':
-      minified = minifyCss(src, dest);
-      break;
-    case '.js':
-      minified = minifyJs(src, dest);
-      break;
-    default:
-      copyFileSync(src, dest);
-  }
-
-  return { minified };
 }
 
 // Copy a directory recursively
@@ -134,62 +190,88 @@ function getSize(path) {
   }
 }
 
+// Update HTML to use bundled files
+function updateHtmlReferences(htmlContent) {
+  // Replace original CSS with bundle
+  htmlContent = htmlContent.replace(/href="styles\.css"/g, 'href="styles.bundle.css"');
+  htmlContent = htmlContent.replace(/href="src\/css\/main\.css"/g, 'href="styles.bundle.css"');
+
+  // Replace original JS with bundle (and remove type="module" for IIFE)
+  htmlContent = htmlContent.replace(
+    /<script\s+src="scripts\.js"><\/script>/g,
+    '<script src="scripts.bundle.js"></script>'
+  );
+  htmlContent = htmlContent.replace(
+    /<script\s+type="module"\s+src="src\/js\/main\.js"><\/script>/g,
+    '<script src="scripts.bundle.js"></script>'
+  );
+
+  // Update image paths from blood_wave_images to public/images
+  htmlContent = htmlContent.replace(/blood_wave_images\//g, 'images/');
+
+  return htmlContent;
+}
+
 // Main build function
-function build() {
-  console.log('\n  D4Guide Production Build');
-  console.log('  ─────────────────────────────');
+async function build() {
+  console.log('\n  D4Guide Production Build (Modular)');
+  console.log('  ────────────────────────────────────');
 
   cleanDist();
 
-  let totalOriginal = 0;
-  let totalMinified = 0;
+  // Bundle JavaScript
+  bundleJs();
+  if (existsSync(join(DIST, 'scripts.bundle.js'))) {
+    console.log(`  Bundled: scripts.bundle.js (${getSize(join(DIST, 'scripts.bundle.js'))}KB)`);
+  }
 
-  for (const asset of ASSETS) {
+  // Bundle CSS
+  bundleCss();
+  if (existsSync(join(DIST, 'styles.bundle.css'))) {
+    console.log(`  Bundled: styles.bundle.css (${getSize(join(DIST, 'styles.bundle.css'))}KB)`);
+  }
+
+  // Process HTML
+  const htmlSrc = join(ROOT, 'blood_wave_necro_guide_advanced.html');
+  const htmlDest = join(DIST, 'index.html');
+  if (existsSync(htmlSrc)) {
+    let htmlContent = readFileSync(htmlSrc, 'utf-8');
+    htmlContent = updateHtmlReferences(htmlContent);
+
+    // Write updated HTML temporarily
+    const tempHtml = join(DIST, 'index.temp.html');
+    writeFileSync(tempHtml, htmlContent);
+
+    // Minify
+    minifyHtml(tempHtml, htmlDest);
+    rmSync(tempHtml);
+    console.log(`  Minified: index.html (${getSize(htmlDest)}KB)`);
+  }
+
+  // Copy static assets
+  for (const asset of STATIC_ASSETS) {
     const src = join(ROOT, asset);
-    const dest = join(
-      DIST,
-      asset === 'blood_wave_necro_guide_advanced.html' ? 'index.html' : asset
-    );
-
-    if (!existsSync(src)) {
-      if (!['manifest.json', 'service-worker.js'].includes(asset)) {
-        console.log(`  Skipped: ${asset} (not found)`);
-      }
-      continue;
-    }
-
-    if (statSync(src).isDirectory()) {
-      copyDir(src, dest);
-      console.log(`  Copied: ${asset}/`);
-    } else {
-      const originalSize = statSync(src).size;
-      const { minified } = copyFile(src, dest);
-      const newSize = statSync(dest).size;
-
-      const destName = asset === 'blood_wave_necro_guide_advanced.html' ? 'index.html' : asset;
-
-      if (minified && newSize < originalSize) {
-        const saved = ((1 - newSize / originalSize) * 100).toFixed(0);
-        console.log(
-          `  Minified: ${destName} (${getSize(src)}KB -> ${getSize(dest)}KB, -${saved}%)`
-        );
-        totalOriginal += originalSize;
-        totalMinified += newSize;
-      } else {
-        console.log(`  Copied: ${destName} (${getSize(dest)}KB)`);
-      }
+    const dest = join(DIST, asset);
+    if (existsSync(src)) {
+      copyFileSync(src, dest);
+      console.log(`  Copied: ${asset}`);
     }
   }
 
-  console.log('  ─────────────────────────────');
+  // Copy images from public/images or blood_wave_images
+  const publicImages = join(ROOT, 'public', 'images');
+  const legacyImages = join(ROOT, 'blood_wave_images');
+  const destImages = join(DIST, 'images');
 
-  if (totalOriginal > 0) {
-    const totalSaved = ((1 - totalMinified / totalOriginal) * 100).toFixed(0);
-    console.log(
-      `  Total savings: ${(totalOriginal / 1024).toFixed(1)}KB -> ${(totalMinified / 1024).toFixed(1)}KB (-${totalSaved}%)`
-    );
+  if (existsSync(publicImages)) {
+    copyDir(publicImages, destImages);
+    console.log('  Copied: images/ (from public/)');
+  } else if (existsSync(legacyImages)) {
+    copyDir(legacyImages, destImages);
+    console.log('  Copied: images/ (from blood_wave_images/)');
   }
 
+  console.log('  ────────────────────────────────────');
   console.log('  Build complete!\n');
 }
 
