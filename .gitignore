@@ -43,8 +43,7 @@ npm-debug.log*
 # Lighthouse reports
 lighthouse-report.*
 
-# Source modules (bundled into dist/)
-src/
+# Source modules are tracked (bundled into dist/ for production)
 
 # Build artifacts (keep dist/ since it's your deploy target)
 # dist/

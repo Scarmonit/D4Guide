@@ -196,14 +196,14 @@ function updateHtmlReferences(htmlContent) {
   htmlContent = htmlContent.replace(/href="styles\.css"/g, 'href="styles.bundle.css"');
   htmlContent = htmlContent.replace(/href="src\/css\/main\.css"/g, 'href="styles.bundle.css"');
 
-  // Replace original JS with bundle (and remove type="module" for IIFE)
+  // Replace original JS with bundle (handle defer and other attributes)
   htmlContent = htmlContent.replace(
-    /<script\s+src="scripts\.js"><\/script>/g,
-    '<script src="scripts.bundle.js"></script>'
+    /<script\s+src="scripts\.js"[^>]*><\/script>/g,
+    '<script src="scripts.bundle.js" defer></script>'
   );
   htmlContent = htmlContent.replace(
-    /<script\s+type="module"\s+src="src\/js\/main\.js"><\/script>/g,
-    '<script src="scripts.bundle.js"></script>'
+    /<script\s+type="module"\s+src="src\/js\/main\.js"[^>]*><\/script>/g,
+    '<script src="scripts.bundle.js" defer></script>'
   );
 
   // Update image paths from blood_wave_images to public/images

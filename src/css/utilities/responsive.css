@@ -1,0 +1,131 @@
+/**
+ * Responsive breakpoints and utilities
+ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .container {
+    padding: 0 var(--space-lg);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  :root {
+    --font-size-4xl: 2rem;
+    --font-size-3xl: 1.75rem;
+    --font-size-2xl: 1.25rem;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .gear-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .calc-inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .section-content {
+    padding: var(--space-md);
+  }
+
+  .settings-bar {
+    top: auto;
+    bottom: var(--space-md);
+    right: var(--space-md);
+    flex-direction: row;
+  }
+
+  #scroll-to-top {
+    bottom: var(--space-md);
+    right: 70px;
+  }
+
+  .modal-content {
+    max-height: 90vh;
+    margin: var(--space-sm);
+  }
+
+  .search-overlay {
+    padding-top: var(--space-xl);
+  }
+
+  .search-input {
+    font-size: var(--font-size-lg);
+    padding: var(--space-md);
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .gear-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .skill-point-control {
+    margin-top: var(--space-sm);
+  }
+}
+
+/* Print styles */
+@media print {
+  .main-nav,
+  .settings-bar,
+  #scroll-to-top,
+  #particle-canvas,
+  .modal,
+  .search-overlay {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .guide-section {
+    break-inside: avoid;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --blood-red: #ff0000;
+    --gold: #ffff00;
+    --text-primary: #ffffff;
+    --bg-primary: #000000;
+  }
+}

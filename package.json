@@ -59,5 +59,8 @@
   },
   "author": "Scarmonit",
   "license": "MIT",
-  "homepage": "https://d4guide.scarmonit.com"
+  "homepage": "https://d4guide.scarmonit.com",
+  "dependencies": {
+    "fuse.js": "^7.1.0"
+  }
 }

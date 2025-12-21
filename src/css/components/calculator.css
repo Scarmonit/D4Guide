@@ -1,0 +1,80 @@
+/**
+ * Damage calculator styles
+ */
+
+#damage-calculator {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.calc-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.calc-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.calc-input-group label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.calc-input-group input {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--blood-red-dark);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+}
+
+.calc-input-group input:focus {
+  outline: none;
+  border-color: var(--blood-red);
+  box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.3);
+}
+
+#damage-results {
+  background: var(--bg-tertiary);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-lg);
+  border: 1px solid var(--blood-red);
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--bg-secondary);
+}
+
+.result-row:last-child {
+  border-bottom: none;
+}
+
+.result-label {
+  color: var(--text-secondary);
+}
+
+.result-value {
+  font-weight: 600;
+  color: var(--gold);
+  font-family: var(--font-mono);
+}
+
+.result-row.highlight {
+  background: rgba(139, 0, 0, 0.2);
+  margin: 0 calc(-1 * var(--space-lg));
+  padding: var(--space-sm) var(--space-lg);
+}
+
+.result-row.highlight .result-value {
+  color: var(--blood-red-light);
+  font-size: var(--font-size-lg);
+}

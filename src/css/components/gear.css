@@ -1,0 +1,121 @@
+/**
+ * Gear grid and item styles
+ */
+
+.gear-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.gear-slot {
+  aspect-ratio: 1;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--blood-red-dark);
+  border-radius: var(--border-radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.gear-slot:hover {
+  border-color: var(--blood-red);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.gear-slot-icon {
+  font-size: var(--font-size-2xl);
+}
+
+.gear-slot-name {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.gear-slot.equipped {
+  border-color: var(--gold);
+}
+
+.gear-slot.equipped::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 50%, rgba(201, 162, 39, 0.1) 100%);
+}
+
+/* Gear card in modal */
+.gear-card {
+  background: var(--bg-tertiary);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-md);
+  border-left: 4px solid var(--rarity-legendary);
+  margin-bottom: var(--space-md);
+}
+
+.gear-card.unique {
+  border-left-color: var(--rarity-unique);
+}
+
+.gear-card.mythic {
+  border-left-color: var(--rarity-mythic);
+}
+
+.gear-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-sm);
+}
+
+.gear-card h3 {
+  color: var(--gold);
+  font-size: var(--font-size-lg);
+}
+
+.item-type {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.item-stats {
+  margin: var(--space-sm) 0;
+}
+
+.item-stats li {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  padding: var(--space-xs) 0;
+}
+
+.item-stats li::before {
+  content: '+';
+  color: var(--success);
+  margin-right: var(--space-xs);
+}
+
+.item-aspect {
+  background: rgba(139, 0, 0, 0.2);
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-sm);
+}
+
+.item-notes {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: var(--space-sm);
+}

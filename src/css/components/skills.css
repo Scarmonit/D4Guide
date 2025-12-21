@@ -1,0 +1,96 @@
+/**
+ * Skill tree and skill bar styles
+ */
+
+.skill-tree {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+}
+
+.skill-category {
+  background: var(--bg-tertiary);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-md);
+  border: 1px solid var(--blood-red-dark);
+}
+
+.skill-category h3 {
+  text-align: center;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--blood-red-dark);
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.skill-item:hover {
+  background: rgba(139, 0, 0, 0.2);
+}
+
+.skill-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--border-radius-sm);
+  border: 2px solid var(--blood-red);
+  overflow: hidden;
+}
+
+.skill-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.skill-info {
+  flex: 1;
+}
+
+.skill-name {
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.skill-description {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.skill-point-control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.skill-point-control button {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--border-radius-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--blood-red);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.skill-point-control button:hover {
+  background: var(--blood-red);
+}
+
+.skill-point-control .point-count {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+#skill-points-used {
+  font-size: var(--font-size-lg);
+  color: var(--gold);
+  font-weight: 600;
+}

@@ -1,0 +1,57 @@
+/**
+ * Theme toggle and settings styles
+ */
+
+.settings-bar {
+  position: fixed;
+  top: 80px;
+  right: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  z-index: var(--z-dropdown);
+}
+
+.settings-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-full);
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-lg);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.settings-btn:hover {
+  background: var(--bg-tertiary);
+  transform: scale(1.1);
+}
+
+#theme-toggle {
+  background: var(--blood-red-dark);
+}
+
+#theme-toggle:hover {
+  background: var(--blood-red);
+}
+
+.font-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.font-controls button {
+  width: 40px;
+  height: 20px;
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius-sm);
+}
+
+#sound-toggle.muted {
+  opacity: 0.5;
+}
