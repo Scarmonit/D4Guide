@@ -23,6 +23,16 @@
         "genre": "Game Guide"
       }
     </script>
+    <!-- Preconnect to external origins for faster resource loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <!-- DNS prefetch as fallback -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <!-- Preload critical fonts to reduce CLS -->
     <link
       rel="preload"
@@ -38,12 +48,33 @@
       type="font/woff2"
       crossorigin
     >
+    <!-- Load Google Fonts with display=swap -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" >
-    <link rel="stylesheet" href="styles.css" >
+    <!-- Load Font Awesome asynchronously to prevent render blocking -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      media="print"
+      onload="this.media='all'"
+    >
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+    <!-- Critical CSS inlined for faster FCP/LCP -->
+    <style>
+      :root{--blood-red:#c41e3a;--primary-red:#8b0000;--gold:#d4af37;--bg-primary:#0a0a0f;--glass-bg:rgb(20 20 35/85%);--glass-border:rgb(212 175 55/30%);--text-primary:#e0e0e0;--text-secondary:#b0b0b0}
+      *,*::before,*::after{box-sizing:border-box}
+      body{background-color:var(--bg-primary);color:var(--text-primary);font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;margin:0;padding:0;min-height:100vh}
+      .container{max-width:1400px;margin:0 auto;padding:0 20px}
+      h1{font-family:Cinzel,serif;font-size:clamp(2rem,5vw,3.5rem);color:var(--gold);text-align:center;margin:40px 0 20px;text-shadow:0 0 30px rgb(212 175 55/50%)}
+      .hero{text-align:center;padding:60px 20px;background:linear-gradient(135deg,rgb(139 0 0/20%) 0%,rgb(74 0 0/40%) 100%);border-radius:20px;margin-bottom:40px;border:1px solid var(--glass-border)}
+      .fas,.fab,.far{display:inline-block;min-width:1em;text-align:center}
+    </style>
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" >
     <link rel="apple-touch-icon" href="favicon.svg" >
   </head>
@@ -1436,7 +1467,7 @@
       <i class="fas fa-chevron-up"></i>
     </button>
 
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0" defer></script>
     <script src="scripts.js" defer></script>
   </body>
 </html>
