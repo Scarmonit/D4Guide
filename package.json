@@ -15,18 +15,31 @@
     "deploy:check": "node scripts/deploy-check.js",
     "optimize": "node scripts/optimize-images.js",
     "test": "npm run build && npm run deploy:check",
-    "prepare": "husky"
+    "prepare": "husky",
+    "snapshot": "node scripts/snapshot.js",
+    "diff": "node scripts/diff.js",
+    "extract": "node scripts/extract-updates.js",
+    "auto-update": "npm run snapshot && npm run diff && npm run extract",
+    "scrape": "node scraper/index.js",
+    "scrape:icy": "node -e \"import('./scraper/icy-veins.js').then(m => m.default().then(console.log))\"",
+    "scrape:maxroll": "node -e \"import('./scraper/maxroll.js').then(m => m.default().then(console.log))\"",
+    "update-data": "npm run scrape && npm run build"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0"
   },
   "devDependencies": {
     "browser-sync": "^3.0.4",
     "clean-css": "^5.3.3",
     "clean-css-cli": "^5.6.3",
+    "crawlee": "^3.15.3",
     "eslint": "^9.39.2",
     "html-minifier-terser": "^7.2.0",
     "html-validate": "^8.29.0",
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "playwright": "^1.57.0",
     "prettier": "^3.7.4",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^36.0.1",

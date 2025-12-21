@@ -1,0 +1,107 @@
+name: Auto-Update Guides
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update even if no changes detected'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  check-and-update:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.detect.outputs.changed }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright
+        run: npx playwright install chromium
+
+      - name: Snapshot sources
+        run: node scripts/snapshot.js
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Detect changes
+        id: detect
+        run: |
+          node scripts/diff.js
+          if [ -f "data/.changes-detected" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected in source guides"
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          fi
+
+      - name: Force update check
+        if: github.event.inputs.force_update == 'true'
+        run: echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Extract updates
+        if: steps.detect.outputs.changed == 'true' || github.event.inputs.force_update == 'true'
+        run: node scripts/extract-updates.js
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Build site
+        if: steps.detect.outputs.changed == 'true' || github.event.inputs.force_update == 'true'
+        run: npm run build
+
+      - name: Commit and push changes
+        if: steps.detect.outputs.changed == 'true' || github.event.inputs.force_update == 'true'
+        run: |
+          git config user.name "D4Guide Bot"
+          git config user.email "bot@d4guide.scarmonit.com"
+
+          # Check if there are changes to commit
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git add -A
+
+          # Get changelog summary if available
+          if [ -f "data/changelog-summary.txt" ]; then
+            SUMMARY=$(cat data/changelog-summary.txt)
+          else
+            SUMMARY="Auto-update from source guides"
+          fi
+
+          git commit -m "chore: auto-update guides
+
+          $SUMMARY
+
+          🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+          Co-Authored-By: D4Guide Bot <bot@d4guide.scarmonit.com>"
+
+          git push
+
+      - name: Cleanup
+        if: always()
+        run: |
+          rm -f data/.changes-detected
+          rm -f data/changelog-summary.txt

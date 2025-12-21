@@ -18,6 +18,13 @@ package-lock.json
 # Playwright MCP snapshots
 .playwright-mcp/
 
+# Auto-update temporary files
+data/sources/
+data/.changes-detected
+data/changelog-summary.txt
+data/extraction.json
+data/changes.json
+
 # OS files
 .DS_Store
 Thumbs.db
