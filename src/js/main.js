@@ -21,6 +21,7 @@ class BloodWaveGuide {
     this.setupScrollAnimations();
     this.setupShareFeature();
     this.setupImageFallback();
+    this.setupBuildPersistence();
     this.updatePointsDisplay();
   }
 
