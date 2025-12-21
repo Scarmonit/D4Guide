@@ -132,44 +132,90 @@ body::before {
   top: 0;
 }
 
-/* Advanced Navigation */
-.nav-toggle {
+/* Top Toolbar Container */
+.top-toolbar {
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Common toolbar button style */
+.toolbar-btn {
+  background: rgb(0 0 0 / 30%);
   border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 10px 12px;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+}
+
+.toolbar-btn:hover {
+  background: var(--shadow-red);
+  border-color: var(--primary-red);
+  transform: translateY(-2px);
+}
+
+.toolbar-btn:active {
+  transform: translateY(0);
+}
+
+.toolbar-btn i {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+/* Legacy support - keep old classes for toolbar buttons */
+.nav-toggle {
+  background: rgb(0 0 0 / 30%);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
 }
 
 .nav-toggle:hover {
   background: var(--shadow-red);
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 /* Search Styles */
 .search-toggle {
-  position: fixed;
-  top: 20px;
-  right: 200px;
-  z-index: 1000;
-  background: var(--glass-bg);
+  background: rgb(0 0 0 / 30%);
   border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 10px 12px;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
 }
 
 .search-toggle:hover {
   background: var(--shadow-red);
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 .search-overlay {
@@ -568,7 +614,7 @@ h1 {
 }
 
 .pros-cons .pros li::before {
-  content: 'âœ“';
+  content: '\2714';
   position: absolute;
   left: 0;
   color: var(--green);
@@ -576,7 +622,7 @@ h1 {
 }
 
 .pros-cons .cons li::before {
-  content: 'âœ—';
+  content: '\2718';
   position: absolute;
   left: 0;
   color: var(--blood-red);
@@ -1525,7 +1571,7 @@ h1 {
 }
 
 .comparison-card li::before {
-  content: 'â€¢';
+  content: '\2022';
   color: var(--primary-red);
 }
 
