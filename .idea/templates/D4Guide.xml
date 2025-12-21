@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templateSet group="D4Guide">
+  <template name="d4section" value="&lt;section class=&quot;guide-section&quot; id=&quot;$ID$&quot;&gt;&#10;  &lt;h2&gt;$TITLE$&lt;/h2&gt;&#10;  &lt;div class=&quot;section-content&quot;&gt;&#10;    $CONTENT$&#10;  &lt;/div&gt;&#10;&lt;/section&gt;" description="D4 Guide Section" toReformat="true" toShortenFQNames="true">
+    <variable name="ID" expression="" defaultValue="&quot;section-name&quot;" alwaysStopAt="true" />
+    <variable name="TITLE" expression="" defaultValue="&quot;Section Title&quot;" alwaysStopAt="true" />
+    <variable name="CONTENT" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML" value="true" />
+    </context>
+  </template>
+  <template name="d4skill" value="&lt;div class=&quot;skill-item&quot;&gt;&#10;  &lt;img src=&quot;blood_wave_images/$IMG$&quot; alt=&quot;$NAME$&quot; class=&quot;skill-icon&quot;&gt;&#10;  &lt;div class=&quot;skill-info&quot;&gt;&#10;    &lt;h4&gt;$NAME$&lt;/h4&gt;&#10;    &lt;p&gt;$DESC$&lt;/p&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;" description="D4 Skill Item" toReformat="true" toShortenFQNames="true">
+    <variable name="IMG" expression="" defaultValue="&quot;skill.webp&quot;" alwaysStopAt="true" />
+    <variable name="NAME" expression="" defaultValue="&quot;Skill Name&quot;" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="&quot;Skill description&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML" value="true" />
+    </context>
+  </template>
+  <template name="d4gear" value="&lt;div class=&quot;gear-item&quot;&gt;&#10;  &lt;img src=&quot;blood_wave_images/$IMG$&quot; alt=&quot;$NAME$&quot; class=&quot;gear-icon&quot;&gt;&#10;  &lt;div class=&quot;gear-details&quot;&gt;&#10;    &lt;h4 class=&quot;gear-name $RARITY$&quot;&gt;$NAME$&lt;/h4&gt;&#10;    &lt;ul class=&quot;gear-stats&quot;&gt;&#10;      &lt;li&gt;$STAT1$&lt;/li&gt;&#10;      $STATS$&#10;    &lt;/ul&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;" description="D4 Gear Item" toReformat="true" toShortenFQNames="true">
+    <variable name="IMG" expression="" defaultValue="&quot;gear.webp&quot;" alwaysStopAt="true" />
+    <variable name="NAME" expression="" defaultValue="&quot;Item Name&quot;" alwaysStopAt="true" />
+    <variable name="RARITY" expression="" defaultValue="&quot;unique&quot;" alwaysStopAt="true" />
+    <variable name="STAT1" expression="" defaultValue="&quot;+X% Damage&quot;" alwaysStopAt="true" />
+    <variable name="STATS" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML" value="true" />
+    </context>
+  </template>
+  <template name="d4tip" value="&lt;div class=&quot;tip-box $TYPE$&quot;&gt;&#10;  &lt;strong&gt;$LABEL$:&lt;/strong&gt; $CONTENT$&#10;&lt;/div&gt;" description="D4 Tip Box" toReformat="true" toShortenFQNames="true">
+    <variable name="TYPE" expression="" defaultValue="&quot;tip&quot;" alwaysStopAt="true" />
+    <variable name="LABEL" expression="" defaultValue="&quot;Tip&quot;" alwaysStopAt="true" />
+    <variable name="CONTENT" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML" value="true" />
+    </context>
+  </template>
+  <template name="d4table" value="&lt;table class=&quot;data-table&quot;&gt;&#10;  &lt;thead&gt;&#10;    &lt;tr&gt;&#10;      &lt;th&gt;$COL1$&lt;/th&gt;&#10;      &lt;th&gt;$COL2$&lt;/th&gt;&#10;      &lt;th&gt;$COL3$&lt;/th&gt;&#10;    &lt;/tr&gt;&#10;  &lt;/thead&gt;&#10;  &lt;tbody&gt;&#10;    $ROWS$&#10;  &lt;/tbody&gt;&#10;&lt;/table&gt;" description="D4 Data Table" toReformat="true" toShortenFQNames="true">
+    <variable name="COL1" expression="" defaultValue="&quot;Column 1&quot;" alwaysStopAt="true" />
+    <variable name="COL2" expression="" defaultValue="&quot;Column 2&quot;" alwaysStopAt="true" />
+    <variable name="COL3" expression="" defaultValue="&quot;Column 3&quot;" alwaysStopAt="true" />
+    <variable name="ROWS" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML" value="true" />
+    </context>
+  </template>
+  <template name="d4collapsible" value="&lt;details class=&quot;collapsible&quot;&gt;&#10;  &lt;summary&gt;$TITLE$&lt;/summary&gt;&#10;  &lt;div class=&quot;collapsible-content&quot;&gt;&#10;    $CONTENT$&#10;  &lt;/div&gt;&#10;&lt;/details&gt;" description="D4 Collapsible Section" toReformat="true" toShortenFQNames="true">
+    <variable name="TITLE" expression="" defaultValue="&quot;Click to expand&quot;" alwaysStopAt="true" />
+    <variable name="CONTENT" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML" value="true" />
+    </context>
+  </template>
+</templateSet>

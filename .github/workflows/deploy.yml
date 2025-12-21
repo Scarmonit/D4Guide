@@ -47,6 +47,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build production files
+        run: npm run build
+
+      - name: Verify build
+        run: npm run deploy:check
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:

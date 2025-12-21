@@ -7,9 +7,10 @@ package-lock.json
 .env.local
 .env.*.local
 
-# IDE (share run configurations)
+# IDE (share run configurations and templates)
 .idea/*
 !.idea/runConfigurations/
+!.idea/templates/
 .vscode/
 *.swp
 *.swo
