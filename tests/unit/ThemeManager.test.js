@@ -2,144 +2,87 @@
  * Unit tests for ThemeManager module
  */
 
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
+import {
+  toggleTheme,
+  changeFontSize,
+  toggleSound,
+  getThemeIcon,
+  getSoundIcon,
+  validatePreferences,
+  FONT_SIZES,
+  DEFAULT_PREFERENCES
+} from '../../src/js/modules/ThemeManager.js';
 
 describe('ThemeManager', () => {
-  describe('Theme Toggle Logic', () => {
-    let currentTheme;
-
-    function toggleTheme() {
-      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      return currentTheme;
-    }
-
-    beforeEach(() => {
-      currentTheme = 'dark';
+  describe('Constants', () => {
+    it('should have correct font sizes', () => {
+      expect(FONT_SIZES).toEqual(['small', 'medium', 'large']);
     });
 
-    it('should start with dark theme', () => {
-      expect(currentTheme).toBe('dark');
+    it('should have correct default preferences', () => {
+      expect(DEFAULT_PREFERENCES.theme).toBe('dark');
+      expect(DEFAULT_PREFERENCES.fontSize).toBe('medium');
+      expect(DEFAULT_PREFERENCES.soundEnabled).toBe(false);
     });
+  });
 
+  describe('toggleTheme()', () => {
     it('should toggle from dark to light', () => {
-      const result = toggleTheme();
-      expect(result).toBe('light');
-      expect(currentTheme).toBe('light');
+      expect(toggleTheme('dark')).toBe('light');
     });
 
     it('should toggle from light to dark', () => {
-      currentTheme = 'light';
-      const result = toggleTheme();
-      expect(result).toBe('dark');
+      expect(toggleTheme('light')).toBe('dark');
     });
 
-    it('should toggle back and forth', () => {
-      expect(currentTheme).toBe('dark');
-      toggleTheme();
-      expect(currentTheme).toBe('light');
-      toggleTheme();
-      expect(currentTheme).toBe('dark');
-      toggleTheme();
-      expect(currentTheme).toBe('light');
+    it('should treat invalid theme as non-dark (toggle to dark)', () => {
+      // Invalid theme is not 'dark', so toggle returns 'dark'
+      expect(toggleTheme('invalid')).toBe('dark');
     });
   });
 
-  describe('Font Size Logic', () => {
-    const sizes = ['small', 'medium', 'large'];
-    let fontSize;
-
-    function changeFontSize(direction) {
-      const currentIndex = sizes.indexOf(fontSize);
-      const newIndex = Math.max(0, Math.min(sizes.length - 1, currentIndex + direction));
-      fontSize = sizes[newIndex];
-      return fontSize;
-    }
-
-    beforeEach(() => {
-      fontSize = 'medium';
-    });
-
-    it('should start with medium font size', () => {
-      expect(fontSize).toBe('medium');
-    });
-
+  describe('changeFontSize()', () => {
     it('should increase font size', () => {
-      const result = changeFontSize(1);
-      expect(result).toBe('large');
+      expect(changeFontSize('medium', 1)).toBe('large');
     });
 
     it('should decrease font size', () => {
-      const result = changeFontSize(-1);
-      expect(result).toBe('small');
+      expect(changeFontSize('medium', -1)).toBe('small');
     });
 
     it('should not exceed maximum size', () => {
-      fontSize = 'large';
-      const result = changeFontSize(1);
-      expect(result).toBe('large');
+      expect(changeFontSize('large', 1)).toBe('large');
     });
 
     it('should not go below minimum size', () => {
-      fontSize = 'small';
-      const result = changeFontSize(-1);
-      expect(result).toBe('small');
-    });
-
-    it('should cycle through all sizes correctly', () => {
-      fontSize = 'small';
-      expect(changeFontSize(1)).toBe('medium');
-      expect(changeFontSize(1)).toBe('large');
-      expect(changeFontSize(1)).toBe('large'); // Stay at max
-      expect(changeFontSize(-1)).toBe('medium');
-      expect(changeFontSize(-1)).toBe('small');
-      expect(changeFontSize(-1)).toBe('small'); // Stay at min
+      expect(changeFontSize('small', -1)).toBe('small');
     });
 
     it('should handle large direction values', () => {
-      fontSize = 'small';
-      changeFontSize(10);
-      expect(fontSize).toBe('large');
+      expect(changeFontSize('small', 10)).toBe('large');
+      expect(changeFontSize('large', -10)).toBe('small');
+    });
 
-      changeFontSize(-10);
-      expect(fontSize).toBe('small');
+    it('should cycle through all sizes correctly', () => {
+      expect(changeFontSize('small', 1)).toBe('medium');
+      expect(changeFontSize('medium', 1)).toBe('large');
+      expect(changeFontSize('large', -1)).toBe('medium');
+      expect(changeFontSize('medium', -1)).toBe('small');
     });
   });
 
-  describe('Sound Toggle Logic', () => {
-    let soundEnabled;
-
-    function toggleSound() {
-      soundEnabled = !soundEnabled;
-      return soundEnabled;
-    }
-
-    beforeEach(() => {
-      soundEnabled = false;
+  describe('toggleSound()', () => {
+    it('should toggle from false to true', () => {
+      expect(toggleSound(false)).toBe(true);
     });
 
-    it('should start with sound disabled', () => {
-      expect(soundEnabled).toBe(false);
-    });
-
-    it('should enable sound when toggled', () => {
-      const result = toggleSound();
-      expect(result).toBe(true);
-      expect(soundEnabled).toBe(true);
-    });
-
-    it('should disable sound when toggled again', () => {
-      toggleSound();
-      const result = toggleSound();
-      expect(result).toBe(false);
-      expect(soundEnabled).toBe(false);
+    it('should toggle from true to false', () => {
+      expect(toggleSound(true)).toBe(false);
     });
   });
 
-  describe('Theme Icon Logic', () => {
-    function getThemeIcon(theme) {
-      return theme === 'dark' ? '☀️' : '🌙';
-    }
-
+  describe('getThemeIcon()', () => {
     it('should show sun icon for dark theme', () => {
       expect(getThemeIcon('dark')).toBe('☀️');
     });
@@ -149,11 +92,7 @@ describe('ThemeManager', () => {
     });
   });
 
-  describe('Sound Icon Logic', () => {
-    function getSoundIcon(enabled) {
-      return enabled ? '🔊' : '🔇';
-    }
-
+  describe('getSoundIcon()', () => {
     it('should show speaker icon when sound enabled', () => {
       expect(getSoundIcon(true)).toBe('🔊');
     });
@@ -163,17 +102,49 @@ describe('ThemeManager', () => {
     });
   });
 
-  describe('Preference Defaults', () => {
-    it('should have correct default values', () => {
-      const defaults = {
-        theme: 'dark',
-        fontSize: 'medium',
-        soundEnabled: false
-      };
+  describe('validatePreferences()', () => {
+    it('should validate correct preferences', () => {
+      const prefs = { theme: 'light', fontSize: 'large', soundEnabled: true };
+      const result = validatePreferences(prefs);
+      expect(result.theme).toBe('light');
+      expect(result.fontSize).toBe('large');
+      expect(result.soundEnabled).toBe(true);
+    });
 
-      expect(defaults.theme).toBe('dark');
-      expect(defaults.fontSize).toBe('medium');
-      expect(defaults.soundEnabled).toBe(false);
+    it('should default invalid theme to dark', () => {
+      const prefs = { theme: 'invalid', fontSize: 'medium', soundEnabled: false };
+      const result = validatePreferences(prefs);
+      expect(result.theme).toBe('dark');
+    });
+
+    it('should default invalid fontSize to medium', () => {
+      const prefs = { theme: 'dark', fontSize: 'invalid', soundEnabled: false };
+      const result = validatePreferences(prefs);
+      expect(result.fontSize).toBe('medium');
+    });
+
+    it('should coerce soundEnabled to boolean', () => {
+      const prefs = { theme: 'dark', fontSize: 'medium', soundEnabled: 1 };
+      const result = validatePreferences(prefs);
+      expect(result.soundEnabled).toBe(true);
+    });
+  });
+
+  describe('Integration scenarios', () => {
+    it('should handle theme toggle cycle', () => {
+      let theme = 'dark';
+      theme = toggleTheme(theme);
+      expect(theme).toBe('light');
+      theme = toggleTheme(theme);
+      expect(theme).toBe('dark');
+    });
+
+    it('should handle font size adjustments', () => {
+      let size = 'medium';
+      size = changeFontSize(size, 1);
+      expect(size).toBe('large');
+      size = changeFontSize(size, -2);
+      expect(size).toBe('small');
     });
   });
 });

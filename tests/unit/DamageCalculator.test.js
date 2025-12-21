@@ -2,52 +2,33 @@
  * Unit tests for DamageCalculator module
  */
 
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-
-// We need to test the calculation logic without DOM dependencies
-// Extract the pure calculation functions for testing
+import { describe, it, expect } from 'vitest';
+import {
+  calculateDamage,
+  formatNumber,
+  parseStatValue,
+  DEFAULT_STATS
+} from '../../src/js/modules/DamageCalculator.js';
 
 describe('DamageCalculator', () => {
-  // Test the damage calculation formulas directly
-  describe('Damage Calculation Formulas', () => {
-    // Replicate the calculation logic for testing
-    function calculateDamage(stats) {
-      const {
-        baseWeaponDamage,
-        skillDamage,
-        critChance,
-        critDamage,
-        vulnerableDamage,
-        overpower,
-        bloodWaveMultiplier
-      } = stats;
+  describe('DEFAULT_STATS', () => {
+    it('should have all required stat properties', () => {
+      expect(DEFAULT_STATS).toHaveProperty('baseWeaponDamage');
+      expect(DEFAULT_STATS).toHaveProperty('skillDamage');
+      expect(DEFAULT_STATS).toHaveProperty('critChance');
+      expect(DEFAULT_STATS).toHaveProperty('critDamage');
+      expect(DEFAULT_STATS).toHaveProperty('vulnerableDamage');
+      expect(DEFAULT_STATS).toHaveProperty('overpower');
+      expect(DEFAULT_STATS).toHaveProperty('bloodWaveMultiplier');
+    });
 
-      // Base damage calculation
-      const baseDamage = baseWeaponDamage * (1 + skillDamage / 100);
+    it('should have reasonable default values', () => {
+      expect(DEFAULT_STATS.baseWeaponDamage).toBe(1000);
+      expect(DEFAULT_STATS.critChance).toBe(50);
+    });
+  });
 
-      // Average damage with crit
-      const critMultiplier = 1 + (critChance / 100) * (critDamage / 100);
-      const avgDamage = baseDamage * critMultiplier;
-
-      // With vulnerable
-      const vulnerableMultiplier = 1 + vulnerableDamage / 100;
-      const vulnerableDmg = avgDamage * vulnerableMultiplier;
-
-      // Blood Wave multiplier
-      const bloodWaveDmg = vulnerableDmg * (1 + bloodWaveMultiplier / 100);
-
-      // Overpower damage
-      const overpowerDmg = bloodWaveDmg * (1 + overpower / 100);
-
-      return {
-        base: baseDamage,
-        average: avgDamage,
-        vulnerable: vulnerableDmg,
-        bloodWave: bloodWaveDmg,
-        overpower: overpowerDmg
-      };
-    }
-
+  describe('calculateDamage()', () => {
     it('should calculate base damage correctly', () => {
       const stats = {
         baseWeaponDamage: 1000,
@@ -200,17 +181,7 @@ describe('DamageCalculator', () => {
     });
   });
 
-  describe('Number Formatting', () => {
-    function formatNumber(num) {
-      if (num >= 1000000) {
-        return (num / 1000000).toFixed(2) + 'M';
-      }
-      if (num >= 1000) {
-        return (num / 1000).toFixed(1) + 'K';
-      }
-      return Math.round(num).toLocaleString();
-    }
-
+  describe('formatNumber()', () => {
     it('should format millions correctly', () => {
       expect(formatNumber(1000000)).toBe('1.00M');
       expect(formatNumber(2500000)).toBe('2.50M');
@@ -236,6 +207,25 @@ describe('DamageCalculator', () => {
     it('should round decimal numbers', () => {
       expect(formatNumber(123.456)).toBe('123');
       expect(formatNumber(123.789)).toBe('124');
+    });
+  });
+
+  describe('parseStatValue()', () => {
+    it('should parse valid numbers', () => {
+      expect(parseStatValue('100')).toBe(100);
+      expect(parseStatValue('50.5')).toBe(50.5);
+      expect(parseStatValue(75)).toBe(75);
+    });
+
+    it('should return 0 for invalid values', () => {
+      expect(parseStatValue('')).toBe(0);
+      expect(parseStatValue('abc')).toBe(0);
+      expect(parseStatValue(null)).toBe(0);
+      expect(parseStatValue(undefined)).toBe(0);
+    });
+
+    it('should handle negative numbers', () => {
+      expect(parseStatValue('-10')).toBe(-10);
     });
   });
 });

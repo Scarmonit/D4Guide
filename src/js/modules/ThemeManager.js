@@ -4,11 +4,94 @@
 
 import { storage } from '../utils/storage.js';
 
+// ============================================
+// Pure functions (testable without DOM)
+// ============================================
+
+/**
+ * Available font sizes in order
+ */
+export const FONT_SIZES = ['small', 'medium', 'large'];
+
+/**
+ * Default preferences
+ */
+export const DEFAULT_PREFERENCES = {
+  theme: 'dark',
+  fontSize: 'medium',
+  soundEnabled: false
+};
+
+/**
+ * Toggle theme between dark and light
+ * @param {string} currentTheme - Current theme
+ * @returns {string} New theme
+ */
+export function toggleTheme(currentTheme) {
+  return currentTheme === 'dark' ? 'light' : 'dark';
+}
+
+/**
+ * Change font size by direction
+ * @param {string} currentSize - Current font size
+ * @param {number} direction - Direction to change (1 = increase, -1 = decrease)
+ * @returns {string} New font size
+ */
+export function changeFontSize(currentSize, direction) {
+  const currentIndex = FONT_SIZES.indexOf(currentSize);
+  const newIndex = Math.max(0, Math.min(FONT_SIZES.length - 1, currentIndex + direction));
+  return FONT_SIZES[newIndex];
+}
+
+/**
+ * Toggle sound enabled state
+ * @param {boolean} currentState - Current sound state
+ * @returns {boolean} New sound state
+ */
+export function toggleSound(currentState) {
+  return !currentState;
+}
+
+/**
+ * Get theme icon for current theme
+ * @param {string} theme - Current theme
+ * @returns {string} Icon character
+ */
+export function getThemeIcon(theme) {
+  return theme === 'dark' ? '☀️' : '🌙';
+}
+
+/**
+ * Get sound icon for current state
+ * @param {boolean} enabled - Whether sound is enabled
+ * @returns {string} Icon character
+ */
+export function getSoundIcon(enabled) {
+  return enabled ? '🔊' : '🔇';
+}
+
+/**
+ * Validate and normalize preferences
+ * @param {Object} prefs - Preferences to validate
+ * @returns {Object} Validated preferences
+ */
+export function validatePreferences(prefs) {
+  return {
+    theme: prefs.theme === 'light' ? 'light' : 'dark',
+    fontSize: FONT_SIZES.includes(prefs.fontSize) ? prefs.fontSize : 'medium',
+    soundEnabled: Boolean(prefs.soundEnabled)
+  };
+}
+
+// ============================================
+// Class with DOM bindings
+// ============================================
+
 export class ThemeManager {
   constructor() {
-    this.currentTheme = 'dark';
-    this.fontSize = 'medium';
-    this.soundEnabled = false;
+    this.currentTheme = DEFAULT_PREFERENCES.theme;
+    this.fontSize = DEFAULT_PREFERENCES.fontSize;
+    this.soundEnabled = DEFAULT_PREFERENCES.soundEnabled;
     this.init();
   }
 
@@ -20,37 +103,34 @@ export class ThemeManager {
   }
 
   loadPreferences() {
-    this.currentTheme = storage.get('theme', 'dark');
-    this.fontSize = storage.get('fontSize', 'medium');
-    this.soundEnabled = storage.get('soundEnabled', false);
+    this.currentTheme = storage.get('theme', DEFAULT_PREFERENCES.theme);
+    this.fontSize = storage.get('fontSize', DEFAULT_PREFERENCES.fontSize);
+    this.soundEnabled = storage.get('soundEnabled', DEFAULT_PREFERENCES.soundEnabled);
   }
 
   setupControls() {
-    // Theme toggle
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
-      themeToggle.addEventListener('click', () => this.toggleTheme());
+      themeToggle.addEventListener('click', () => this.handleToggleTheme());
     }
 
-    // Font size controls
     const fontIncrease = document.getElementById('font-increase');
     const fontDecrease = document.getElementById('font-decrease');
     if (fontIncrease) {
-      fontIncrease.addEventListener('click', () => this.changeFontSize(1));
+      fontIncrease.addEventListener('click', () => this.handleChangeFontSize(1));
     }
     if (fontDecrease) {
-      fontDecrease.addEventListener('click', () => this.changeFontSize(-1));
+      fontDecrease.addEventListener('click', () => this.handleChangeFontSize(-1));
     }
 
-    // Sound toggle
     const soundToggle = document.getElementById('sound-toggle');
     if (soundToggle) {
-      soundToggle.addEventListener('click', () => this.toggleSound());
+      soundToggle.addEventListener('click', () => this.handleToggleSound());
     }
   }
 
-  toggleTheme() {
-    this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+  handleToggleTheme() {
+    this.currentTheme = toggleTheme(this.currentTheme);
     storage.set('theme', this.currentTheme);
     this.applyTheme();
   }
@@ -59,15 +139,12 @@ export class ThemeManager {
     document.documentElement.setAttribute('data-theme', this.currentTheme);
     const toggle = document.getElementById('theme-toggle');
     if (toggle) {
-      toggle.textContent = this.currentTheme === 'dark' ? '☀️' : '🌙';
+      toggle.textContent = getThemeIcon(this.currentTheme);
     }
   }
 
-  changeFontSize(direction) {
-    const sizes = ['small', 'medium', 'large'];
-    const currentIndex = sizes.indexOf(this.fontSize);
-    const newIndex = Math.max(0, Math.min(sizes.length - 1, currentIndex + direction));
-    this.fontSize = sizes[newIndex];
+  handleChangeFontSize(direction) {
+    this.fontSize = changeFontSize(this.fontSize, direction);
     storage.set('fontSize', this.fontSize);
     this.applyFontSize();
   }
@@ -76,12 +153,12 @@ export class ThemeManager {
     document.documentElement.setAttribute('data-font-size', this.fontSize);
   }
 
-  toggleSound() {
-    this.soundEnabled = !this.soundEnabled;
+  handleToggleSound() {
+    this.soundEnabled = toggleSound(this.soundEnabled);
     storage.set('soundEnabled', this.soundEnabled);
     const toggle = document.getElementById('sound-toggle');
     if (toggle) {
-      toggle.textContent = this.soundEnabled ? '🔊' : '🔇';
+      toggle.textContent = getSoundIcon(this.soundEnabled);
     }
   }
 

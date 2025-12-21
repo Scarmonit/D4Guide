@@ -2,18 +2,38 @@
  * Unit tests for GearComparison module
  */
 
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { createElement } from '../../src/js/utils/dom.js';
+import {
+  formatSlotName,
+  isValidSlot,
+  getItemCardInfo,
+  filterItemsByRarity,
+  sortItemsByName,
+  clearElement,
+  VALID_SLOTS
+} from '../../src/js/modules/GearComparison.js';
 
 describe('GearComparison', () => {
-  describe('formatSlotName()', () => {
-    function formatSlotName(slot) {
-      return slot
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-    }
+  describe('VALID_SLOTS constant', () => {
+    it('should contain all expected gear slots', () => {
+      expect(VALID_SLOTS).toContain('helmet');
+      expect(VALID_SLOTS).toContain('chest');
+      expect(VALID_SLOTS).toContain('gloves');
+      expect(VALID_SLOTS).toContain('pants');
+      expect(VALID_SLOTS).toContain('boots');
+      expect(VALID_SLOTS).toContain('amulet');
+      expect(VALID_SLOTS).toContain('ring1');
+      expect(VALID_SLOTS).toContain('ring2');
+      expect(VALID_SLOTS).toContain('weapon');
+    });
 
+    it('should have exactly 9 slots', () => {
+      expect(VALID_SLOTS.length).toBe(9);
+    });
+  });
+
+  describe('formatSlotName()', () => {
     it('should capitalize single word', () => {
       expect(formatSlotName('helmet')).toBe('Helmet');
     });
@@ -46,65 +66,21 @@ describe('GearComparison', () => {
     });
   });
 
-  describe('Modal State Management', () => {
-    let isModalOpen;
-    let currentSlot;
-
-    function openModal(slotType) {
-      currentSlot = slotType;
-      isModalOpen = true;
-    }
-
-    function closeModal() {
-      isModalOpen = false;
-      currentSlot = null;
-    }
-
-    beforeEach(() => {
-      isModalOpen = false;
-      currentSlot = null;
+  describe('isValidSlot()', () => {
+    it('should validate all gear slots', () => {
+      VALID_SLOTS.forEach(slot => {
+        expect(isValidSlot(slot)).toBe(true);
+      });
     });
 
-    it('should start with modal closed', () => {
-      expect(isModalOpen).toBe(false);
-      expect(currentSlot).toBe(null);
-    });
-
-    it('should open modal with slot type', () => {
-      openModal('helmet');
-      expect(isModalOpen).toBe(true);
-      expect(currentSlot).toBe('helmet');
-    });
-
-    it('should close modal and clear slot', () => {
-      openModal('helmet');
-      closeModal();
-      expect(isModalOpen).toBe(false);
-      expect(currentSlot).toBe(null);
-    });
-
-    it('should switch between different slots', () => {
-      openModal('helmet');
-      expect(currentSlot).toBe('helmet');
-
-      openModal('chest');
-      expect(currentSlot).toBe('chest');
+    it('should reject invalid slots', () => {
+      expect(isValidSlot('invalid')).toBe(false);
+      expect(isValidSlot('bracers')).toBe(false);
+      expect(isValidSlot('')).toBe(false);
     });
   });
 
-  describe('Item Card Data Handling', () => {
-    function getItemCardInfo(item) {
-      return {
-        name: item.name,
-        type: item.type || '',
-        rarity: item.rarity || 'legendary',
-        hasStats: !!(item.stats && item.stats.length > 0),
-        hasAspect: !!item.aspect,
-        hasNotes: !!item.notes,
-        statsCount: item.stats ? item.stats.length : 0
-      };
-    }
-
+  describe('getItemCardInfo()', () => {
     it('should handle complete item data', () => {
       const item = {
         name: 'Harlequin Crest',
@@ -161,33 +137,74 @@ describe('GearComparison', () => {
     });
   });
 
-  describe('Gear Slot Validation', () => {
-    const validSlots = [
-      'helmet',
-      'chest',
-      'gloves',
-      'pants',
-      'boots',
-      'amulet',
-      'ring1',
-      'ring2',
-      'weapon'
+  describe('filterItemsByRarity()', () => {
+    const items = [
+      { name: 'Common Helm', rarity: 'common' },
+      { name: 'Rare Helm', rarity: 'rare' },
+      { name: 'Legendary Helm', rarity: 'legendary' },
+      { name: 'Unique Helm', rarity: 'unique' },
+      { name: 'Default Helm' } // No rarity, defaults to legendary
     ];
 
-    function isValidSlot(slot) {
-      return validSlots.includes(slot);
-    }
-
-    it('should validate all gear slots', () => {
-      validSlots.forEach(slot => {
-        expect(isValidSlot(slot)).toBe(true);
-      });
+    it('should filter by specific rarity', () => {
+      const legendary = filterItemsByRarity(items, 'legendary');
+      expect(legendary.length).toBe(2); // Legendary Helm + Default Helm
     });
 
-    it('should reject invalid slots', () => {
-      expect(isValidSlot('invalid')).toBe(false);
-      expect(isValidSlot('bracers')).toBe(false);
-      expect(isValidSlot('')).toBe(false);
+    it('should return empty array for no matches', () => {
+      const mythic = filterItemsByRarity(items, 'mythic');
+      expect(mythic.length).toBe(0);
+    });
+
+    it('should filter unique items', () => {
+      const unique = filterItemsByRarity(items, 'unique');
+      expect(unique.length).toBe(1);
+      expect(unique[0].name).toBe('Unique Helm');
+    });
+  });
+
+  describe('sortItemsByName()', () => {
+    const items = [{ name: 'Zephyr' }, { name: 'Alpha' }, { name: 'Beta' }];
+
+    it('should sort ascending by default', () => {
+      const sorted = sortItemsByName(items);
+      expect(sorted[0].name).toBe('Alpha');
+      expect(sorted[1].name).toBe('Beta');
+      expect(sorted[2].name).toBe('Zephyr');
+    });
+
+    it('should sort descending when specified', () => {
+      const sorted = sortItemsByName(items, false);
+      expect(sorted[0].name).toBe('Zephyr');
+      expect(sorted[1].name).toBe('Beta');
+      expect(sorted[2].name).toBe('Alpha');
+    });
+
+    it('should not mutate original array', () => {
+      sortItemsByName(items);
+      expect(items[0].name).toBe('Zephyr');
+    });
+  });
+
+  describe('clearElement()', () => {
+    beforeEach(() => {
+      document.body.textContent = '';
+    });
+
+    it('should remove all children from element', () => {
+      const container = createElement('div');
+      container.appendChild(createElement('p'));
+      container.appendChild(createElement('span'));
+      container.appendChild(createElement('div'));
+
+      expect(container.children.length).toBe(3);
+      clearElement(container);
+      expect(container.children.length).toBe(0);
+    });
+
+    it('should handle empty element', () => {
+      const container = createElement('div');
+      expect(() => clearElement(container)).not.toThrow();
     });
   });
 

@@ -6,6 +6,107 @@ import Fuse from 'fuse.js';
 import { searchIndex } from '../data/searchIndex.js';
 import { createElement } from '../utils/dom.js';
 
+// ============================================
+// Pure functions (testable without DOM)
+// ============================================
+
+/**
+ * Default Fuse.js options for search
+ */
+export const DEFAULT_FUSE_OPTIONS = {
+  keys: ['title', 'content', 'tags'],
+  threshold: 0.3,
+  includeMatches: true,
+  minMatchCharLength: 2
+};
+
+/**
+ * Minimum query length to trigger search
+ */
+export const MIN_QUERY_LENGTH = 2;
+
+/**
+ * Maximum number of results to display
+ */
+export const MAX_RESULTS = 10;
+
+/**
+ * Check if query is valid for searching
+ * @param {string} query - The search query
+ * @returns {boolean} Whether the query is valid
+ */
+export function isValidQuery(query) {
+  return query && query.length >= MIN_QUERY_LENGTH;
+}
+
+/**
+ * Create a Fuse instance with given data and options
+ * @param {Array} data - The data to search
+ * @param {Object} options - Fuse.js options
+ * @returns {Fuse} Fuse instance
+ */
+export function createFuseInstance(data, options = DEFAULT_FUSE_OPTIONS) {
+  return new Fuse(data, options);
+}
+
+/**
+ * Perform a search and return limited results
+ * @param {Fuse} fuse - Fuse instance
+ * @param {string} query - Search query
+ * @param {number} limit - Maximum results
+ * @returns {Array} Search results
+ */
+export function performSearch(fuse, query, limit = MAX_RESULTS) {
+  if (!isValidQuery(query)) {
+    return [];
+  }
+  return fuse.search(query).slice(0, limit);
+}
+
+/**
+ * Get preview text from content
+ * @param {string} content - Full content
+ * @param {number} maxLength - Maximum preview length
+ * @returns {string} Preview text with ellipsis
+ */
+export function getPreviewText(content, maxLength = 100) {
+  if (!content) return '';
+  if (content.length <= maxLength) return content;
+  return content.substring(0, maxLength) + '...';
+}
+
+/**
+ * Clear all children from an element
+ * @param {Element} element - The element to clear
+ */
+export function clearResults(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}
+
+/**
+ * Check if a key event should close the search
+ * @param {string} key - The key pressed
+ * @returns {boolean} Whether to close
+ */
+export function shouldCloseOnKey(key) {
+  return key === 'Escape';
+}
+
+/**
+ * Check if a key event should submit the search
+ * @param {string} key - The key pressed
+ * @returns {boolean} Whether to submit
+ */
+export function shouldSubmitOnKey(key) {
+  return key === 'Enter';
+}
+
+// ============================================
+// Class with DOM bindings
+// ============================================
+
 export class SearchHandler {
   constructor() {
     this.overlay = null;
@@ -46,7 +147,6 @@ export class SearchHandler {
     this.overlay.appendChild(container);
     document.body.appendChild(this.overlay);
 
-    // Close on backdrop click
     this.overlay.addEventListener('click', e => {
       if (e.target === this.overlay) {
         this.close();
@@ -55,12 +155,7 @@ export class SearchHandler {
   }
 
   setupFuse() {
-    this.fuse = new Fuse(searchIndex, {
-      keys: ['title', 'content', 'tags'],
-      threshold: 0.3,
-      includeMatches: true,
-      minMatchCharLength: 2
-    });
+    this.fuse = createFuseInstance(searchIndex);
   }
 
   setupTrigger() {
@@ -82,7 +177,7 @@ export class SearchHandler {
     this.overlay.classList.remove('hidden');
     this.input.focus();
     this.input.value = '';
-    this.clearResults();
+    clearResults(this.results);
     this.isOpen = true;
     document.body.style.overflow = 'hidden';
   }
@@ -93,26 +188,20 @@ export class SearchHandler {
     document.body.style.overflow = '';
   }
 
-  clearResults() {
-    while (this.results.firstChild) {
-      this.results.removeChild(this.results.firstChild);
-    }
-  }
-
   handleSearch(query) {
-    if (query.length < 2) {
-      this.clearResults();
+    if (!isValidQuery(query)) {
+      clearResults(this.results);
       return;
     }
 
-    const searchResults = this.fuse.search(query);
-    this.renderResults(searchResults.slice(0, 10));
+    const searchResults = performSearch(this.fuse, query);
+    this.renderResults(searchResults);
   }
 
   handleKeydown(e) {
-    if (e.key === 'Escape') {
+    if (shouldCloseOnKey(e.key)) {
       this.close();
-    } else if (e.key === 'Enter') {
+    } else if (shouldSubmitOnKey(e.key)) {
       const firstResult = this.results.querySelector('.search-result-item');
       if (firstResult) {
         firstResult.click();
@@ -121,7 +210,7 @@ export class SearchHandler {
   }
 
   renderResults(results) {
-    this.clearResults();
+    clearResults(this.results);
 
     if (results.length === 0) {
       const noResults = createElement('div', { className: 'no-results' });
@@ -138,7 +227,7 @@ export class SearchHandler {
       title.textContent = result.item.title;
 
       const preview = createElement('div', { className: 'result-preview' });
-      preview.textContent = result.item.content.substring(0, 100) + '...';
+      preview.textContent = getPreviewText(result.item.content);
 
       item.appendChild(title);
       item.appendChild(preview);

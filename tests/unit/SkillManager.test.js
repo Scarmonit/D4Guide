@@ -2,196 +2,182 @@
  * Unit tests for SkillManager module
  */
 
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
+import {
+  calculateUsedPoints,
+  canAddPoint,
+  canRemovePoint,
+  addPoint,
+  removePoint,
+  resetSkills,
+  formatPointCounter,
+  DEFAULT_MAX_POINTS,
+  DEFAULT_SKILL_MAX
+} from '../../src/js/modules/SkillManager.js';
 
 describe('SkillManager', () => {
-  // Test the skill point management logic
-  describe('Point Allocation Logic', () => {
-    // Simulated skill manager state
-    let skills;
-    let maxPoints;
-    let usedPoints;
-
-    function calculateUsedPoints() {
-      return Object.values(skills).reduce((sum, points) => sum + points, 0);
-    }
-
-    function addPoint(skillId, maxForSkill = 5) {
-      if (usedPoints >= maxPoints) return false;
-
-      const currentPoints = skills[skillId] || 0;
-      if (currentPoints < maxForSkill) {
-        skills[skillId] = currentPoints + 1;
-        usedPoints++;
-        return true;
-      }
-      return false;
-    }
-
-    function removePoint(skillId) {
-      const currentPoints = skills[skillId] || 0;
-      if (currentPoints > 0) {
-        skills[skillId] = currentPoints - 1;
-        usedPoints--;
-        return true;
-      }
-      return false;
-    }
-
-    function resetSkills() {
-      skills = {};
-      usedPoints = 0;
-    }
-
-    beforeEach(() => {
-      skills = {};
-      maxPoints = 58;
-      usedPoints = 0;
+  describe('Constants', () => {
+    it('should have correct default max points', () => {
+      expect(DEFAULT_MAX_POINTS).toBe(58);
     });
 
-    it('should start with zero used points', () => {
-      expect(usedPoints).toBe(0);
-      expect(calculateUsedPoints()).toBe(0);
-    });
-
-    it('should add a point to a skill', () => {
-      const result = addPoint('blood_wave');
-      expect(result).toBe(true);
-      expect(skills.blood_wave).toBe(1);
-      expect(usedPoints).toBe(1);
-    });
-
-    it('should add multiple points to a skill', () => {
-      addPoint('blood_wave');
-      addPoint('blood_wave');
-      addPoint('blood_wave');
-      expect(skills.blood_wave).toBe(3);
-      expect(usedPoints).toBe(3);
-    });
-
-    it('should not exceed max points for a skill', () => {
-      const maxForSkill = 5;
-      for (let i = 0; i < 10; i++) {
-        addPoint('blood_wave', maxForSkill);
-      }
-      expect(skills.blood_wave).toBe(5);
-      expect(usedPoints).toBe(5);
-    });
-
-    it('should not exceed total max points', () => {
-      maxPoints = 10; // Lower for testing
-      for (let i = 0; i < 15; i++) {
-        addPoint(`skill_${i}`, 5);
-      }
-      expect(usedPoints).toBe(10);
-    });
-
-    it('should remove a point from a skill', () => {
-      addPoint('blood_wave');
-      addPoint('blood_wave');
-      expect(skills.blood_wave).toBe(2);
-
-      const result = removePoint('blood_wave');
-      expect(result).toBe(true);
-      expect(skills.blood_wave).toBe(1);
-      expect(usedPoints).toBe(1);
-    });
-
-    it('should not remove point from skill with zero points', () => {
-      const result = removePoint('nonexistent_skill');
-      expect(result).toBe(false);
-      expect(usedPoints).toBe(0);
-    });
-
-    it('should not go negative on points', () => {
-      addPoint('blood_wave');
-      removePoint('blood_wave');
-      removePoint('blood_wave'); // Should fail
-      expect(skills.blood_wave).toBe(0);
-      expect(usedPoints).toBe(0);
-    });
-
-    it('should reset all skills', () => {
-      addPoint('blood_wave');
-      addPoint('blood_wave');
-      addPoint('decompose');
-      addPoint('bone_spear');
-
-      resetSkills();
-
-      expect(skills).toEqual({});
-      expect(usedPoints).toBe(0);
-    });
-
-    it('should calculate used points correctly', () => {
-      skills = {
-        blood_wave: 5,
-        decompose: 3,
-        bone_spear: 2,
-        corpse_explosion: 4
-      };
-      expect(calculateUsedPoints()).toBe(14);
-    });
-
-    it('should handle skills with different max points', () => {
-      // Passive with max 1
-      addPoint('passive_skill', 1);
-      addPoint('passive_skill', 1); // Should fail
-
-      // Regular skill with max 5
-      addPoint('regular_skill', 5);
-      addPoint('regular_skill', 5);
-      addPoint('regular_skill', 5);
-
-      expect(skills.passive_skill).toBe(1);
-      expect(skills.regular_skill).toBe(3);
-    });
-
-    it('should track multiple skills independently', () => {
-      addPoint('skill_a');
-      addPoint('skill_a');
-      addPoint('skill_b');
-      addPoint('skill_c');
-      addPoint('skill_c');
-      addPoint('skill_c');
-
-      expect(skills.skill_a).toBe(2);
-      expect(skills.skill_b).toBe(1);
-      expect(skills.skill_c).toBe(3);
-      expect(usedPoints).toBe(6);
-    });
-
-    it('should allow adding points after removing', () => {
-      maxPoints = 5;
-
-      // Fill up
-      for (let i = 0; i < 5; i++) {
-        addPoint('skill_a', 10);
-      }
-      expect(usedPoints).toBe(5);
-
-      // Can't add more
-      const resultFull = addPoint('skill_a', 10);
-      expect(resultFull).toBe(false);
-
-      // Remove one
-      removePoint('skill_a');
-      expect(usedPoints).toBe(4);
-
-      // Now can add
-      const resultAfterRemove = addPoint('skill_b', 10);
-      expect(resultAfterRemove).toBe(true);
-      expect(usedPoints).toBe(5);
+    it('should have correct default skill max', () => {
+      expect(DEFAULT_SKILL_MAX).toBe(5);
     });
   });
 
-  describe('Display Formatting', () => {
-    it('should format point counter correctly', () => {
-      const formatCounter = (used, max) => `${used}/${max}`;
+  describe('calculateUsedPoints()', () => {
+    it('should return 0 for empty skills', () => {
+      expect(calculateUsedPoints({})).toBe(0);
+    });
 
-      expect(formatCounter(0, 58)).toBe('0/58');
-      expect(formatCounter(25, 58)).toBe('25/58');
-      expect(formatCounter(58, 58)).toBe('58/58');
+    it('should sum all skill points', () => {
+      const skills = { skill1: 3, skill2: 5, skill3: 2 };
+      expect(calculateUsedPoints(skills)).toBe(10);
+    });
+
+    it('should handle single skill', () => {
+      const skills = { skill1: 5 };
+      expect(calculateUsedPoints(skills)).toBe(5);
+    });
+  });
+
+  describe('canAddPoint()', () => {
+    it('should allow adding point when under limits', () => {
+      const skills = { skill1: 2 };
+      expect(canAddPoint(skills, 'skill1', 58, 5)).toBe(true);
+    });
+
+    it('should prevent adding when at skill max', () => {
+      const skills = { skill1: 5 };
+      expect(canAddPoint(skills, 'skill1', 58, 5)).toBe(false);
+    });
+
+    it('should prevent adding when at total max', () => {
+      const skills = { skill1: 5, skill2: 5, skill3: 48 };
+      expect(canAddPoint(skills, 'skill4', 58, 5)).toBe(false);
+    });
+
+    it('should allow adding to new skill', () => {
+      const skills = {};
+      expect(canAddPoint(skills, 'newSkill', 58, 5)).toBe(true);
+    });
+  });
+
+  describe('canRemovePoint()', () => {
+    it('should allow removing when points exist', () => {
+      const skills = { skill1: 3 };
+      expect(canRemovePoint(skills, 'skill1')).toBe(true);
+    });
+
+    it('should prevent removing when at zero', () => {
+      const skills = { skill1: 0 };
+      expect(canRemovePoint(skills, 'skill1')).toBe(false);
+    });
+
+    it('should prevent removing from non-existent skill', () => {
+      const skills = {};
+      expect(canRemovePoint(skills, 'skill1')).toBe(false);
+    });
+  });
+
+  describe('addPoint()', () => {
+    it('should add point to skill', () => {
+      const skills = { skill1: 2 };
+      const result = addPoint(skills, 'skill1', 58, 5);
+      expect(result.skill1).toBe(3);
+    });
+
+    it('should create new skill entry', () => {
+      const skills = {};
+      const result = addPoint(skills, 'skill1', 58, 5);
+      expect(result.skill1).toBe(1);
+    });
+
+    it('should return same object when cannot add', () => {
+      const skills = { skill1: 5 };
+      const result = addPoint(skills, 'skill1', 58, 5);
+      expect(result).toBe(skills);
+    });
+
+    it('should not mutate original object', () => {
+      const skills = { skill1: 2 };
+      addPoint(skills, 'skill1', 58, 5);
+      expect(skills.skill1).toBe(2);
+    });
+  });
+
+  describe('removePoint()', () => {
+    it('should remove point from skill', () => {
+      const skills = { skill1: 3 };
+      const result = removePoint(skills, 'skill1');
+      expect(result.skill1).toBe(2);
+    });
+
+    it('should return same object when cannot remove', () => {
+      const skills = { skill1: 0 };
+      const result = removePoint(skills, 'skill1');
+      expect(result).toBe(skills);
+    });
+
+    it('should not mutate original object', () => {
+      const skills = { skill1: 3 };
+      removePoint(skills, 'skill1');
+      expect(skills.skill1).toBe(3);
+    });
+  });
+
+  describe('resetSkills()', () => {
+    it('should return empty object', () => {
+      expect(resetSkills()).toEqual({});
+    });
+  });
+
+  describe('formatPointCounter()', () => {
+    it('should format correctly', () => {
+      expect(formatPointCounter(10, 58)).toBe('10/58');
+    });
+
+    it('should handle zero', () => {
+      expect(formatPointCounter(0, 58)).toBe('0/58');
+    });
+
+    it('should handle max', () => {
+      expect(formatPointCounter(58, 58)).toBe('58/58');
+    });
+  });
+
+  describe('Integration scenarios', () => {
+    it('should handle full allocation workflow', () => {
+      let skills = {};
+
+      // Add points
+      skills = addPoint(skills, 'skill1', 58, 5);
+      skills = addPoint(skills, 'skill1', 58, 5);
+      skills = addPoint(skills, 'skill2', 58, 5);
+
+      expect(calculateUsedPoints(skills)).toBe(3);
+      expect(skills.skill1).toBe(2);
+      expect(skills.skill2).toBe(1);
+
+      // Remove a point
+      skills = removePoint(skills, 'skill1');
+      expect(skills.skill1).toBe(1);
+      expect(calculateUsedPoints(skills)).toBe(2);
+    });
+
+    it('should track multiple skills independently', () => {
+      let skills = {};
+
+      skills = addPoint(skills, 'bloodWave', 58, 5);
+      skills = addPoint(skills, 'bloodWave', 58, 5);
+      skills = addPoint(skills, 'corpseExplosion', 58, 5);
+      skills = addPoint(skills, 'boneSpear', 58, 5);
+
+      expect(skills.bloodWave).toBe(2);
+      expect(skills.corpseExplosion).toBe(1);
+      expect(skills.boneSpear).toBe(1);
+      expect(calculateUsedPoints(skills)).toBe(4);
     });
   });
 });
