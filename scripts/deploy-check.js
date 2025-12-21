@@ -62,8 +62,8 @@ function runChecks() {
   }
 
   // Check images directory
-  const imagesDir = join(DIST, 'blood_wave_images');
-  check(existsSync(imagesDir), 'blood_wave_images/ directory exists', false);
+  const imagesDir = join(DIST, 'images');
+  check(existsSync(imagesDir), 'images/ directory exists', false);
 
   if (existsSync(imagesDir)) {
     const images = readdirSync(imagesDir);

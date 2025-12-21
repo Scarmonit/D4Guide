@@ -57,12 +57,52 @@ async function runScrapers() {
     results.sources.blizzard = { error: error.message };
   }
 
+  // Validate results
+  validateScrapedData(results);
+
   // Save combined results
   const outputPath = join(dataDir, 'scraped-data.json');
   writeFileSync(outputPath, JSON.stringify(results, null, 2));
   console.log(`\n💾 Data saved to ${outputPath}`);
 
   return results;
+}
+
+/**
+ * Validate scraped data and warn about missing key fields
+ */
+function validateScrapedData(results) {
+  console.log('\n🔍 Validating scraped data...');
+  let issues = 0;
+
+  // Check Icy Veins
+  if (results.sources.icyVeins) {
+    if (!results.sources.icyVeins.skills || results.sources.icyVeins.skills.length === 0) {
+      console.warn('   ⚠️  Icy Veins: No skills found');
+      issues++;
+    }
+    if (!results.sources.icyVeins.uniques || results.sources.icyVeins.uniques.length === 0) {
+      console.warn('   ⚠️  Icy Veins: No uniques found');
+      issues++;
+    }
+  }
+
+  // Check Maxroll
+  if (results.sources.maxroll) {
+    if (
+      !results.sources.maxroll.ratings ||
+      Object.keys(results.sources.maxroll.ratings).length === 0
+    ) {
+      console.warn('   ⚠️  Maxroll: No ratings found');
+      issues++;
+    }
+  }
+
+  if (issues === 0) {
+    console.log('   ✅ Data looks healthy');
+  } else {
+    console.log(`   ⚠️  Found ${issues} potential data issues`);
+  }
 }
 
 // Run if called directly

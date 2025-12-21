@@ -158,7 +158,8 @@ body::before {
 /* Override fixed positioning for buttons when inside toolbar */
 .toolbar-right .share-build,
 .toolbar-right .sound-toggle,
-.toolbar-right .font-toggle {
+.toolbar-right .font-toggle,
+.toolbar-right .theme-switcher {
   position: static;
   bottom: auto;
   left: auto;
@@ -166,7 +167,7 @@ body::before {
   right: auto;
 }
 
-/* Common toolbar button style */
+/* Common toolbar button style - 48x48 minimum for touch accessibility */
 .toolbar-btn {
   background: rgb(0 0 0 / 30%);
   border: 1px solid var(--glass-border);
@@ -178,8 +179,8 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 40px;
-  height: 40px;
+  min-width: 48px;
+  min-height: 48px;
 }
 
 .toolbar-btn:hover {

@@ -193,10 +193,10 @@ function updateLastUpdated(html, icyVeins, maxroll) {
 
   const formattedDate = formatDate(latestDate);
 
-  // Update the date span
+  // Update the date span using the data-integration attribute
   html = html.replace(
-    /<span id="last-updated-date">[^<]*<\/span>/,
-    `<span id="last-updated-date">${formattedDate}</span>`
+    /(<span id="last-updated-date" data-integration="last-updated">)[^<]*(<\/span>)/,
+    `$1${formattedDate}$2`
   );
 
   console.log(`   ✓ Last updated: ${formattedDate} (${latestSource})`);
@@ -226,16 +226,20 @@ function updateBuildRatings(html, ratings) {
 
     const color = RATING_COLORS[value] || 'var(--text-secondary)';
 
-    // Find and replace the stat card for this rating
+    // Normalize key to match data-rating-type (surviability -> survivability)
+    const normalizedKey = key === 'surviability' ? 'survivability' : key;
+
+    // Regex to match the specific card by data attribute
     const cardPattern = new RegExp(
-      `(<div class="stat-card"[^>]*border-top:[^"]*">\\s*<div class="stat-value"[^>]*>)[^<]*(</div>\\s*<div class="stat-label">\\s*<i class="fas ${info.icon}"></i>\\s*${info.label}\\s*</div>)`,
+      `(<div class="stat-card" data-rating-type="${normalizedKey}"[^>]*>)[\\s\\S]*?(<div class="stat-label">)`,
       'i'
     );
 
-    html = html.replace(cardPattern, (match, before, after) => {
-      return `<div class="stat-card" style="border-top: 3px solid ${color}">
+    html = html.replace(cardPattern, (match, startTag, labelTag) => {
+      // Reconstruct the inner HTML
+      return `${startTag.replace(/style="[^"]*"/, `style="border-top: 3px solid ${color}"`)}
             <div class="stat-value" style="color: ${color}">${value}</div>
-            <div class="stat-label"><i class="fas ${info.icon}"></i> ${info.label}</div>`;
+            ${labelTag}`;
     });
   }
 
@@ -249,9 +253,10 @@ function updateBuildRatings(html, ratings) {
 function updateTierBadge(html, tier) {
   if (!tier) return html;
 
+  // Update using data-integration attribute
   html = html.replace(
-    /<span class="tier-badge">[^<]*<\/span>/,
-    `<span class="tier-badge">${tier}-TIER</span>`
+    /(<span class="tier-badge" data-integration="tier-badge">)[^<]*(<\/span>)/,
+    `$1${tier}-TIER$2`
   );
 
   console.log(`   ✓ Tier badge: ${tier}-TIER`);
@@ -284,7 +289,7 @@ function updateRequiredUniques(html, uniques) {
     if (index < 2) {
       // Only update first 2 uniques
       const pattern = new RegExp(
-        '(<div class="requirement-item critical">\\s*<i class="fas fa-crown"><\\/i>\\s*<div>\\s*<strong[^>]*>)[^<]*(</strong>)',
+        '(<div class="requirement-item critical">\s*<i class="fas fa-crown"><\/i>\s*<div>\s*<strong[^>]*>)[^<]*(<\/strong>)',
         'g'
       );
 
@@ -350,8 +355,13 @@ function updateSeasonInfo(html, season) {
   const seasonNum = season.number || 11;
   const seasonName = (season.name || 'Divine Intervention').split('\n')[0].trim();
 
-  // Update season references in the HTML
-  html = html.replace(/Season \d+ - [A-Za-z\s]+/g, `Season ${seasonNum} - ${seasonName}`);
+  // Update using data-integration attribute
+  // Pattern matches the subtitle paragraph content but preserves the span tag
+  const pattern = new RegExp(
+    '(<p class="subtitle" data-integration="season-info">\\s*<span[^>]*>[^<]*<\\/span>\\s*)[^<]*(<\\/p>)'
+  );
+
+  html = html.replace(pattern, `$1Season ${seasonNum} - ${seasonName}| Pit 140-150+ Viable$2`);
 
   console.log(`   ✓ Season: ${seasonNum} - ${seasonName}`);
   return html;
@@ -410,7 +420,7 @@ function updateGearSlots(html, gearData) {
 
     // Match gear slot div and update aspect name
     const slotPattern = new RegExp(
-      `(<div class="gear-slot"[^>]*data-gear="${slot}"[^>]*>[\\s\\S]*?<span class="aspect-name">)([^<]*)(</span>)`,
+      `(<div class="gear-slot"[^>]*data-gear="${slot}"[^>]*>[\s\S]*?<span class="aspect-name">)([^<]*)(</span>)`,
       'i'
     );
 
@@ -468,7 +478,7 @@ function updateGems(html, gemsData) {
   let updatedCount = 0;
   for (const gemInfo of gemsData.bySlot || []) {
     const slotPattern = new RegExp(
-      `(data-gear="${gemInfo.slot.toLowerCase()}"[^>]*>[\\s\\S]*?<span class="gem-type">)([^<]*)(</span>)`,
+      `(data-gear="${gemInfo.slot.toLowerCase()}"[^>]*>[\s\S]*?<span class="gem-type">)([^<]*)(</span>)`,
       'i'
     );
     if (slotPattern.test(html)) {
@@ -631,7 +641,7 @@ function updateDataSourcesFooter(html, icyVeins, maxroll, timestamp) {
     ''
   );
 
-  // Find the closing </main> or last </section> before </body>
+  // Find the closing <\/main> or last <\/section> before <\/body>
   const insertPoint = html.lastIndexOf('</section>');
   if (insertPoint !== -1) {
     // Find the next closing tag after the last section
