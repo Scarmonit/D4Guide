@@ -1,4 +1,4 @@
-﻿/* Animated Background with Particles */
+/* Animated Background with Particles */
 body::before {
   content: '';
   position: fixed;
@@ -7,9 +7,9 @@ body::before {
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(196, 30, 58, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(255, 140, 0, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgb(196 30 58 / 10%) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgb(255 107 107 / 10%) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgb(255 140 0 / 5%) 0%, transparent 50%);
   z-index: -1;
   animation: float 20s ease-in-out infinite;
 }
@@ -37,15 +37,18 @@ body::before {
 
 @keyframes particleFloat {
   0% {
-    transform: translateY(100vh) translateX(0px);
+    transform: translateY(100vh) translateX(0);
     opacity: 0;
   }
+
   10% {
     opacity: 0.6;
   }
+
   90% {
     opacity: 0.6;
   }
+
   100% {
     transform: translateY(-100px) translateX(100px);
     opacity: 0;
@@ -55,11 +58,13 @@ body::before {
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
   }
+
   33% {
     transform: translateY(-20px) rotate(1deg);
   }
+
   66% {
     transform: translateY(10px) rotate(-1deg);
   }
@@ -138,7 +143,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgb(0 0 0 / 80%);
   backdrop-filter: blur(10px);
   z-index: 2000;
   display: none;
@@ -187,7 +192,7 @@ body::before {
 }
 
 .search-input-wrapper kbd {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgb(255 255 255 / 10%);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.8em;
@@ -202,7 +207,7 @@ body::before {
 .search-result-item {
   padding: 12px 20px;
   cursor: pointer;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgb(255 255 255 / 5%);
   transition: background 0.2s;
 }
 
@@ -227,7 +232,7 @@ body::before {
   color: var(--text-secondary);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .search-toggle {
     right: 150px;
     top: 15px;
@@ -241,7 +246,7 @@ body::before {
   left: -300px;
   width: 280px;
   height: 100vh;
-  background: rgba(26, 26, 46, 0.95);
+  background: rgb(26 26 46 / 95%);
   backdrop-filter: blur(20px);
   z-index: 999;
   transition: left 0.3s ease;
@@ -257,7 +262,7 @@ body::before {
 .nav-menu h3 {
   color: var(--blood-red);
   margin-bottom: 20px;
-  font-family: 'Cinzel', serif;
+  font-family: Cinzel, serif;
   font-size: 1.3em;
   text-align: center;
   border-bottom: 2px solid var(--primary-red);
@@ -329,12 +334,12 @@ body::before {
 }
 
 .dyslexic-font {
-  font-family: 'OpenDyslexic', sans-serif !important;
+  font-family: OpenDyslexic, sans-serif !important;
 }
 
 /* Import OpenDyslexic if available or use generic */
 @font-face {
-  font-family: 'OpenDyslexic';
+  font-family: OpenDyslexic;
   src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/OpenDyslexic-Regular.otf');
 }
 
@@ -342,7 +347,7 @@ body::before {
 .header {
   text-align: center;
   padding: 60px 20px 40px;
-  background: linear-gradient(135deg, rgba(196, 30, 58, 0.1) 0%, rgba(139, 0, 0, 0.1) 100%);
+  background: linear-gradient(135deg, rgb(196 30 58 / 10%) 0%, rgb(139 0 0 / 10%) 100%);
   border-radius: 0 0 30px 30px;
   margin-bottom: 40px;
   position: relative;
@@ -356,7 +361,7 @@ body::before {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgb(255 215 0 / 10%) 0%, transparent 70%);
   animation: pulse 4s ease-in-out infinite;
 }
 
@@ -366,6 +371,7 @@ body::before {
     transform: scale(1);
     opacity: 0.5;
   }
+
   50% {
     transform: scale(1.1);
     opacity: 0.8;
@@ -373,7 +379,7 @@ body::before {
 }
 
 h1 {
-  font-family: 'Cinzel', serif;
+  font-family: Cinzel, serif;
   font-size: clamp(2.5em, 5vw, 4em);
   color: var(--blood-red);
   text-shadow:
@@ -393,6 +399,7 @@ h1 {
       0 0 40px var(--shadow-glow),
       0 0 60px var(--shadow-glow);
   }
+
   to {
     text-shadow:
       0 0 30px var(--shadow-glow),
@@ -417,7 +424,7 @@ h1 {
   border-radius: 25px;
   font-weight: bold;
   font-size: 1.1em;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 20px rgb(255 215 0 / 50%);
   animation: shine 3s ease-in-out infinite;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -425,18 +432,19 @@ h1 {
 
 .tier-badge:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 30px rgb(255 215 0 / 80%);
 }
 
 @keyframes shine {
   0%,
   100% {
     transform: scale(1);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 20px rgb(255 215 0 / 50%);
   }
+
   50% {
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+    box-shadow: 0 0 30px rgb(255 215 0 / 80%);
   }
 }
 
@@ -470,7 +478,7 @@ h1 {
   font-weight: bold;
   color: var(--gold);
   margin-bottom: 5px;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 0 10px rgb(255 215 0 / 30%);
 }
 
 .stat-label {
@@ -517,7 +525,7 @@ h1 {
   padding-left: 25px;
   position: relative;
   color: var(--text-secondary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgb(255 255 255 / 5%);
 }
 
 .pros-cons li:last-child {
@@ -587,7 +595,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgb(0 0 0 / 20%);
   border-radius: 12px;
   padding: 20px;
   margin: 20px 0;
@@ -598,7 +606,7 @@ h1 {
   align-items: center;
   gap: 10px;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgb(0 0 0 / 30%);
   border-radius: 8px;
   border-left: 3px solid var(--gold);
 }
@@ -639,7 +647,7 @@ h1 {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 5%), transparent);
   transition: left 0.5s ease;
 }
 
@@ -654,7 +662,7 @@ h1 {
 }
 
 .section h2 {
-  font-family: 'Cinzel', serif;
+  font-family: Cinzel, serif;
   color: var(--blood-red);
   font-size: clamp(1.5em, 3vw, 2em);
   margin-bottom: 20px;
@@ -678,7 +686,7 @@ h1 {
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 20px;
   padding: 25px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgb(0 0 0 / 30%);
   border-radius: 15px;
   margin-bottom: 25px;
   border: 2px solid var(--glass-border);
@@ -718,7 +726,7 @@ h1 {
 
 .skill-icon.ultimate {
   border-color: var(--gold);
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 25px rgb(255 215 0 / 60%);
 }
 
 .skill-icon::after {
@@ -762,6 +770,7 @@ h1 {
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.1);
   }
@@ -775,7 +784,7 @@ h1 {
 
 /* Skill Calculator */
 .skill-calculator {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgb(0 0 0 / 30%);
   border-radius: 15px;
   padding: 25px;
   margin: 25px 0;
@@ -826,7 +835,7 @@ h1 {
 }
 
 .tree-category {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgb(0 0 0 / 20%);
   border-radius: 15px;
   padding: 20px;
   border-left: 4px solid var(--primary-red);
@@ -855,13 +864,13 @@ h1 {
   align-items: center;
   gap: 12px;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .skill-entry:hover {
-  background: rgba(196, 30, 58, 0.1);
+  background: rgb(196 30 58 / 10%);
   border-radius: 8px;
   padding: 10px;
   margin: 0 -10px;
@@ -903,12 +912,15 @@ h1 {
 .skill-entry.passive img {
   border-color: #4a90d9;
 }
+
 .skill-entry.passive .points {
   background: #4a90d9;
 }
+
 .skill-entry.key-passive img {
   border-color: var(--gold);
 }
+
 .skill-entry.key-passive .points {
   background: var(--gold);
   color: #000;
@@ -916,7 +928,7 @@ h1 {
 
 /* Interactive Damage Calculator */
 .damage-calculator {
-  background: linear-gradient(135deg, rgba(196, 30, 58, 0.1), rgba(139, 0, 0, 0.1));
+  background: linear-gradient(135deg, rgb(196 30 58 / 10%), rgb(139 0 0 / 10%));
   border-radius: 15px;
   padding: 25px;
   margin: 25px 0;
@@ -942,7 +954,7 @@ h1 {
 }
 
 .input-group input {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgb(0 0 0 / 30%);
   border: 1px solid var(--glass-border);
   border-radius: 8px;
   padding: 10px;
@@ -958,7 +970,7 @@ h1 {
 
 .damage-result {
   text-align: center;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgb(0 0 0 / 30%);
   border-radius: 10px;
   padding: 20px;
 }
@@ -967,7 +979,7 @@ h1 {
   font-size: 2.5em;
   color: var(--gold);
   font-weight: bold;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 0 10px rgb(255 215 0 / 30%);
 }
 
 /* Book of the Dead */
@@ -978,7 +990,7 @@ h1 {
 }
 
 .sacrifice-card {
-  background: rgba(139, 0, 0, 0.15);
+  background: rgb(139 0 0 / 15%);
   border: 2px solid var(--dark-red);
   border-radius: 15px;
   padding: 20px;
@@ -990,13 +1002,13 @@ h1 {
 
 .sacrifice-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(139, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgb(139 0 0 / 40%);
   border-color: var(--blood-red);
 }
 
 .sacrifice-card.active {
   border-color: var(--gold);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 20px rgb(255 215 0 / 30%);
 }
 
 .sacrifice-card h4 {
@@ -1028,7 +1040,7 @@ h1 {
   align-items: flex-start;
   gap: 20px;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgb(0 0 0 / 20%);
   border-radius: 15px;
   margin-bottom: 15px;
   border-left: 4px solid var(--primary-red);
@@ -1081,7 +1093,7 @@ h1 {
 }
 
 .gear-slot {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgb(0 0 0 / 20%);
   border-radius: 15px;
   padding: 20px;
   border: 1px solid var(--glass-border);
@@ -1098,7 +1110,7 @@ h1 {
 
 .gear-slot.selected {
   border-color: var(--gold);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 20px rgb(255 215 0 / 30%);
 }
 
 .gear-slot h4 {
@@ -1123,13 +1135,13 @@ h1 {
 .unique-name {
   color: var(--brown);
   font-weight: bold;
-  text-shadow: 0 0 5px rgba(139, 69, 19, 0.5);
+  text-shadow: 0 0 5px rgb(139 69 19 / 50%);
 }
 
 .mythic-name {
   color: var(--gold);
   font-weight: bold;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  text-shadow: 0 0 10px rgb(255 215 0 / 50%);
 }
 
 .required-tag {
@@ -1147,6 +1159,7 @@ h1 {
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.7;
   }
@@ -1167,7 +1180,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgb(0 0 0 / 80%);
   z-index: 2000;
   backdrop-filter: blur(5px);
 }
@@ -1209,31 +1222,31 @@ h1 {
   margin-top: 15px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgb(0 0 0 / 30%);
 }
 
 .stats-table th,
 .stats-table td {
   padding: 15px;
   text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
 }
 
 .stats-table th {
-  background: rgba(196, 30, 58, 0.4);
+  background: rgb(196 30 58 / 40%);
   color: var(--blood-red);
   font-weight: 600;
   font-size: 1.05em;
 }
 
 .stats-table tr:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(255 255 255 / 5%);
 }
 
 .priority-1 {
   color: var(--gold);
   font-weight: bold;
-  text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 0 5px rgb(255 215 0 / 30%);
 }
 
 .priority-2 {
@@ -1255,7 +1268,7 @@ h1 {
   align-items: flex-start;
   gap: 20px;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgb(0 0 0 / 20%);
   border-radius: 15px;
   margin-bottom: 15px;
   transition: all 0.3s ease;
@@ -1264,11 +1277,11 @@ h1 {
 
 .rotation-step:hover {
   transform: translateX(10px);
-  background: rgba(196, 30, 58, 0.1);
+  background: rgb(196 30 58 / 10%);
 }
 
 .rotation-step.active {
-  background: rgba(196, 30, 58, 0.2);
+  background: rgb(196 30 58 / 20%);
   border-left: 4px solid var(--gold);
 }
 
@@ -1306,7 +1319,7 @@ h1 {
 
 /* Mechanic Box */
 .mechanic-box {
-  background: linear-gradient(135deg, rgba(196, 30, 58, 0.2), rgba(139, 0, 0, 0.2));
+  background: linear-gradient(135deg, rgb(196 30 58 / 20%), rgb(139 0 0 / 20%));
   border-radius: 15px;
   padding: 25px;
   margin-top: 25px;
@@ -1339,7 +1352,7 @@ h1 {
   padding: 40px 20px;
   color: var(--text-muted);
   font-size: 0.95em;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgb(255 255 255 / 10%);
   margin-top: 50px;
 }
 
@@ -1441,7 +1454,7 @@ h1 {
 }
 
 .comparison-card {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgb(0 0 0 / 40%);
   padding: 20px;
   border-radius: 12px;
   border: 1px solid var(--glass-border);
@@ -1458,7 +1471,7 @@ h1 {
   margin-bottom: 12px;
   color: var(--text-primary);
   font-size: 1.1em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
   padding-bottom: 8px;
 }
 
@@ -1483,7 +1496,7 @@ h1 {
 
 .tempering-box {
   margin-top: 20px;
-  background: rgba(255, 215, 0, 0.1);
+  background: rgb(255 215 0 / 10%);
   padding: 15px;
   border-radius: 10px;
   border: 1px dashed var(--gold);
@@ -1500,13 +1513,14 @@ h1 {
   0% {
     box-shadow: 0 0 0 0 var(--primary-red);
   }
+
   100% {
     box-shadow: 0 0 20px 5px transparent;
   }
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .container {
     padding: 0 15px;
   }
@@ -1561,7 +1575,7 @@ h1 {
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .skill-bar {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1612,7 +1626,7 @@ h1 {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 3px solid rgba(196, 30, 58, 0.3);
+  border: 3px solid rgb(196 30 58 / 30%);
   border-radius: 50%;
   border-top-color: var(--primary-red);
   animation: spin 1s ease-in-out infinite;
@@ -1636,7 +1650,7 @@ h1 {
   bottom: 125%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.9);
+  background: rgb(0 0 0 / 90%);
   color: #fff;
   padding: 8px 12px;
   border-radius: 6px;
@@ -1660,6 +1674,7 @@ h1 {
     box-shadow: 0 0 20px var(--shadow-glow);
     transform: scale(1);
   }
+
   50% {
     box-shadow: 0 0 40px var(--shadow-glow);
     transform: scale(1.02);
