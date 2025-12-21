@@ -81,6 +81,16 @@ export async function blizzardNewsScraper() {
       try {
         // Wait for page to load
         await page.waitForLoadState('domcontentloaded');
+
+        // For news page, wait for custom web components to load
+        if (isNewsPage) {
+          try {
+            await page.waitForSelector('blz-news-card', { timeout: 10000 });
+            await page.waitForTimeout(2000); // Allow images to populate
+          } catch {
+            log.info('blz-news-card not found, trying fallback selectors');
+          }
+        }
         await page.waitForTimeout(3000);
 
         // Extract data directly from the page
@@ -169,11 +179,20 @@ export async function blizzardNewsScraper() {
           return data;
         }, isNewsPage);
 
-        results.news = pageData.news;
-        results.season = pageData.season;
+        // Merge news from this page (avoid duplicates by title)
+        for (const item of pageData.news) {
+          if (!results.news.find(n => n.title === item.title)) {
+            results.news.push(item);
+          }
+        }
 
-        // Separate patches from general news
-        results.patches = pageData.news.filter(
+        // Keep season info if found
+        if (pageData.season && !results.season) {
+          results.season = pageData.season;
+        }
+
+        // Update patches list
+        results.patches = results.news.filter(
           n =>
             n.type === 'patch' ||
             n.type === 'hotfix' ||
@@ -182,7 +201,13 @@ export async function blizzardNewsScraper() {
         );
 
         log.info(
-          'Found ' + results.news.length + ' news articles, ' + results.patches.length + ' patches'
+          'Found ' +
+            pageData.news.length +
+            ' news on this page, total: ' +
+            results.news.length +
+            ' news, ' +
+            results.patches.length +
+            ' patches'
         );
       } catch (error) {
         log.warning('Extraction error: ' + error.message);
@@ -204,11 +229,12 @@ export async function blizzardNewsScraper() {
               .filter(t => t.length > 10 && t.length < 100);
           });
 
-          results.news = titles.slice(0, 10).map(title => ({
-            title,
-            url: null,
-            type: 'news'
-          }));
+          // Merge fallback titles (avoid duplicates)
+          for (const title of titles.slice(0, 10)) {
+            if (!results.news.find(n => n.title === title)) {
+              results.news.push({ title, url: null, type: 'news' });
+            }
+          }
         } catch {
           log.warning('Fallback extraction also failed');
         }
@@ -217,7 +243,7 @@ export async function blizzardNewsScraper() {
   });
 
   try {
-    await crawler.run([DIABLO_MAIN_URL]);
+    await crawler.run(BLIZZARD_URLS);
 
     // Set latest patch
     if (results.patches.length > 0) {
