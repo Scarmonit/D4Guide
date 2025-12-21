@@ -211,6 +211,11 @@ function updateHtmlReferences(htmlContent) {
     /<script\s+type="module"\s+src="src\/js\/main\.js"[^>]*><\/script>/g,
     `<script src="scripts.bundle.js?v=${version}" defer></script>`
   );
+  // Update existing bundle references with fresh cache-busting
+  htmlContent = htmlContent.replace(
+    /<script\s+src="scripts\.bundle\.js(?:\?v=[^"]*)?"\s+defer(?:="defer")?><\/script>/g,
+    `<script src="scripts.bundle.js?v=${version}" defer></script>`
+  );
 
   // Update image paths from blood_wave_images to public/images
   htmlContent = htmlContent.replace(/blood_wave_images\//g, 'images/');

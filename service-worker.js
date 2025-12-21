@@ -3,7 +3,7 @@
  * Enables offline access with cache-first strategy
  */
 
-const CACHE_NAME = 'd4guide-v4';
+const CACHE_NAME = 'd4guide-v5';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
