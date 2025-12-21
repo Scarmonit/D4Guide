@@ -1396,6 +1396,7 @@
             <li><a href="#rotation"><i class="fas fa-sync-alt"></i> Gameplay Rotation</a></li>
             <li><a href="#gems"><i class="fas fa-gem"></i> Gems & Runewords</a></li>
             <li><a href="#mercenary"><i class="fas fa-user-ninja"></i> Mercenary Setup</a></li>
+            <li><a href="#divinegifts"><i class="fas fa-gift"></i> Divine Gifts</a></li>
             <li><a href="#calculator"><i class="fas fa-calculator"></i> Damage Calculator</a></li>
         </ul>
     </nav>
@@ -1432,6 +1433,29 @@
                 </div>
             </div>
         </header>
+
+        <!-- SEASON 11 UPDATE NOTICE -->
+        <div class="section" style="background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,140,0,0.1)); border: 2px solid var(--gold); margin-bottom: 20px;">
+            <h3 style="color: var(--gold); margin-bottom: 15px;"><i class="fas fa-exclamation-triangle"></i> Season 11 Meta Update (Dec 20, 2025)</h3>
+            <div style="display: grid; gap: 10px;">
+                <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid var(--primary-red);">
+                    <strong style="color: var(--blood-red);">Overpower Nerfed:</strong>
+                    <span style="color: var(--text-secondary);">Overpower builds significantly weakened. DoT variant with Ultimate Shadow Aspect now performs better.</span>
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid var(--orange);">
+                    <strong style="color: var(--orange);">Kessime's Legacy Changed:</strong>
+                    <span style="color: var(--text-secondary);">Now spawns fewer Blood Orbs. Still required but less reliable for cooldown reset.</span>
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid var(--green);">
+                    <strong style="color: var(--green);">Rathma's Vigor Buffed:</strong>
+                    <span style="color: var(--text-secondary);">Overpower timer reduced from 15s to 10s - easier to maintain guaranteed Overpowers.</span>
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid var(--gold);">
+                    <strong style="color: var(--gold);">NEW - Divine Gifts:</strong>
+                    <span style="color: var(--text-secondary);">Season 11 introduces Divine Gifts. Focus on Belial (Pit) and Duriel (Helltide) for best rewards.</span>
+                </div>
+            </div>
+        </div>
 
         <!-- SKILL BAR -->
         <section class="section" id="skills">
@@ -2034,7 +2058,7 @@
                 <ul>
                     <li><strong>Fastblood Aspect:</strong> Blood Orbs reduce Ultimate CD by 3 seconds</li>
                     <li><strong>Abhorrent Decrepify:</strong> Lucky Hits against cursed enemies reduce cooldowns</li>
-                    <li><strong>Rathma's Vigor:</strong> Collecting 15 Blood Orbs = guaranteed Overpower on next Blood Wave</li>
+                    <li><strong>Rathma's Vigor:</strong> Collecting Blood Orbs within 10s (was 15s) = guaranteed Overpower on next Blood Wave</li>
                 </ul>
             </div>
         </section>
@@ -2101,10 +2125,40 @@
             </div>
         </section>
 
+        <!-- DIVINE GIFTS (Season 11) -->
+        <section class="section" id="divinegifts">
+            <h2><i class="fas fa-gift"></i> Divine Gifts (Season 11 Exclusive)</h2>
+            <div style="margin-bottom: 20px; color: var(--text-secondary); background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; border-left: 4px solid var(--gold);">
+                <strong style="color: var(--gold);">How It Works:</strong> Slot 8 Divine Gifts total - 4 inner (Purified = bonuses) and 4 outer (Corrupted = rewards + debuffs). Focus on activities you enjoy most.
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div style="background: rgba(139,69,19,0.2); padding: 20px; border-radius: 15px; border: 2px solid #8b4513;">
+                    <h4 style="color: #d4a574; margin-bottom: 10px;"><i class="fas fa-skull"></i> Duriel - Helltides</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9em;">Maggots spawn throughout Helltide areas. Great for passive farming while running other content.</p>
+                    <p style="color: var(--green); margin-top: 8px;"><strong>Priority:</strong> High - Helltides are core content</p>
+                </div>
+                <div style="background: rgba(128,0,128,0.2); padding: 20px; border-radius: 15px; border: 2px solid purple;">
+                    <h4 style="color: #da70d6; margin-bottom: 10px;"><i class="fas fa-spider"></i> Andariel - Undercity</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9em;">Appears as final boss of Undercity runs. Good for XP farming.</p>
+                    <p style="color: var(--orange); margin-top: 8px;"><strong>Priority:</strong> Medium - If you run Undercity</p>
+                </div>
+                <div style="background: rgba(0,100,0,0.2); padding: 20px; border-radius: 15px; border: 2px solid #228b22;">
+                    <h4 style="color: #90ee90; margin-bottom: 10px;"><i class="fas fa-eye"></i> Belial - The Pit</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9em;">Find 5 eyes in Pit runs to summon him. Essential for pushing high Pit tiers.</p>
+                    <p style="color: var(--green); margin-top: 8px;"><strong>Priority:</strong> High - Pit is endgame focus</p>
+                </div>
+                <div style="background: rgba(139,0,0,0.2); padding: 20px; border-radius: 15px; border: 2px solid #8b0000;">
+                    <h4 style="color: var(--blood-red); margin-bottom: 10px;"><i class="fas fa-dragon"></i> Azmodan - World Boss</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9em;">New summonable World Boss. Toughest Lesser Evil but great rewards.</p>
+                    <p style="color: var(--orange); margin-top: 8px;"><strong>Priority:</strong> Medium - When you need a challenge</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer -->
         <footer class="footer">
             <p><strong>Shadow Blood Wave Necromancer Build Guide</strong> | Season 11 - Divine Intervention</p>
-            <p>Sources: Icy Veins (GhazzyTV), Maxroll (LordxSaura) | Updated December 2025</p>
+            <p>Sources: Icy Veins (GhazzyTV), Maxroll (LordxSaura) | Updated December 20, 2025</p>
             <p style="margin-top: 15px; font-size: 0.85em;">
                 <i class="fas fa-heart" style="color: var(--blood-red);"></i> 
                 Built with passion for the Necromancer community

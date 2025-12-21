@@ -1,0 +1,2242 @@
+### New console messages
+- [ERROR] Access to fetch at 'https://rtb.adentifi.com/Vast?adid=bb550583-de1b-11f0-afb3-42010ab20172;...
+- [ERROR] Failed to load resource: net::ERR_FAILED @ https://rtb.adentifi.com/Vast?adid=bb550583-de1b-...
+- [ERROR] Attestation check for Shared Storage on https://securepubads.g.doubleclick.net failed. @ htt...
+- [ERROR] Failed to load resource: net::ERR_TOO_MANY_REDIRECTS @ https://id5-sync.com/a/434/121/3/7/gi...
+- [TIMEEND] a: 0.003173828125 ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+- [ERROR] Attestation check for Attribution Reporting on https://ad.doubleclick.net failed. @ https://...
+- [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://tags.bluekai.com/site/18840?&i...
+- [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://beacon.krxd.net/usermatch.gif?...
+- [INFO] INFO - (Geo location) consent check not passed @ https://ats-wrapper.privacymanager.io/ats-mo...
+- [INFO] INFO - (Geo location) persisted cached location data @ https://ats-wrapper.privacymanager.io/...
+- [INFO] INFO - (Geo location) persisted cached location data @ https://ats-wrapper.privacymanager.io/...
+- [INFO] INFO - (Geo location) persisted cached location data @ https://ats-wrapper.privacymanager.io/...
+- [INFO] INFO - (Geo location) persisted cached location data @ https://ats-wrapper.privacymanager.io/...
+- [LOG] Download the Apollo DevTools for a better development experience: %s https://chrome.google.com...
+
+### Page state
+- Page URL: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/
+- Page Title: Shadow Blood Wave - Necromancer Build for Diablo 4 (Season 11) - Icy Veins
+- Page Snapshot:
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - navigation:
+      - generic [ref=e5]:
+        - link "Icy Veins logo" [ref=e7] [cursor=pointer]:
+          - /url: https://www.icy-veins.com
+          - img "Icy Veins logo" [ref=e9]
+        - generic [ref=e10]:
+          - link " Home" [ref=e11] [cursor=pointer]:
+            - /url: /d4/
+            - generic [ref=e13]: 
+            - generic [ref=e14]: Home
+          - button " Search" [ref=e15] [cursor=pointer]:
+            - generic [ref=e17]: 
+            - generic [ref=e18]: Search
+          - link " Diablo 4" [ref=e19] [cursor=pointer]:
+            - /url: /d4/
+            - generic [ref=e21]: 
+            - generic [ref=e22]: Diablo 4
+          - link " Necromancer" [ref=e23] [cursor=pointer]:
+            - /url: /d4/necromancer/builds/
+            - generic [ref=e25]: 
+            - generic [ref=e26]: Necromancer
+          - separator [ref=e27]
+          - generic [ref=e28]: Shadow Blood Wave – Necromancer Build for Diablo 4 (Season 11)
+          - generic [ref=e29]:
+            - generic [ref=e30] [cursor=pointer]:
+              - generic [ref=e32]: Table of Contents
+              - generic [ref=e33]: 
+            - generic [ref=e34]:
+              - link "Build Introduction" [ref=e35] [cursor=pointer]:
+                - /url: "#build_introduction"
+                - generic [ref=e36]: Build Introduction
+              - link "Strengths and Weaknesses" [ref=e37] [cursor=pointer]:
+                - /url: "#strengths_and_weaknesses"
+                - generic [ref=e38]: Strengths and Weaknesses
+              - link "Build Requirements" [ref=e39] [cursor=pointer]:
+                - /url: "#build_requirements"
+                - generic [ref=e40]: Build Requirements
+              - link "Quick Navigation" [ref=e41] [cursor=pointer]:
+                - /url: "#quick_navigation"
+                - generic [ref=e42]: Quick Navigation
+              - link "Skill Bar and Skill Tree Points" [ref=e43] [cursor=pointer]:
+                - /url: "#skill_bar_and_skill_tree_points"
+                - generic [ref=e44]: Skill Bar and Skill Tree Points
+              - link "Class Mechanic – Book of the Dead" [ref=e45] [cursor=pointer]:
+                - /url: "#class_mechanic_%E2%80%93_book_of_the_dead"
+                - generic [ref=e46]: Class Mechanic – Book of the Dead
+              - link "Gear, Gems, Elixirs and Stats" [ref=e47] [cursor=pointer]:
+                - /url: "#gear,_gems,_elixirs_and_stats"
+                - generic [ref=e48]: Gear, Gems, Elixirs and Stats
+              - link "Legendary Aspects" [ref=e49] [cursor=pointer]:
+                - /url: "#legendary_aspects"
+                - generic [ref=e50]: Legendary Aspects
+              - link "Affixes and Tempering Priority" [ref=e51] [cursor=pointer]:
+                - /url: "#affixes_and_tempering_priority"
+                - generic [ref=e52]: Affixes and Tempering Priority
+              - link "Ancestral and Mythic Uniques" [ref=e53] [cursor=pointer]:
+                - /url: "#ancestral_and_mythic_uniques"
+                - generic [ref=e54]: Ancestral and Mythic Uniques
+              - link "Gems and Runewords" [ref=e55] [cursor=pointer]:
+                - /url: "#gems_and_runewords"
+                - generic [ref=e56]: Gems and Runewords
+              - link "Paragon Board" [ref=e57] [cursor=pointer]:
+                - /url: "#paragon_board"
+                - generic [ref=e58]: Paragon Board
+              - link "Season of Divine Intervention (Season 11)" [ref=e59] [cursor=pointer]:
+                - /url: "#season_of_divine_intervention_(season_11)"
+                - generic [ref=e60]: Season of Divine Intervention (Season 11)
+              - link "Sanctification" [ref=e61] [cursor=pointer]:
+                - /url: "#sanctification"
+                - generic [ref=e62]: Sanctification
+              - link "Divine Gifts" [ref=e63] [cursor=pointer]:
+                - /url: "#divine_gifts"
+                - generic [ref=e64]: Divine Gifts
+              - link "Mercenaries" [ref=e65] [cursor=pointer]:
+                - /url: "#mercenaries"
+                - generic [ref=e66]: Mercenaries
+              - link "Rotation and Build Mechanics" [ref=e67] [cursor=pointer]:
+                - /url: "#rotation_and_build_mechanics"
+                - generic [ref=e68]: Rotation and Build Mechanics
+              - link "Rotation and Playstyle" [ref=e69] [cursor=pointer]:
+                - /url: "#rotation_and_playstyle"
+                - generic [ref=e70]: Rotation and Playstyle
+              - link "Cooldown Reduction Engine" [ref=e71] [cursor=pointer]:
+                - /url: "#cooldown_reduction_engine"
+                - generic [ref=e72]: Cooldown Reduction Engine
+              - link "Which Elixirs Should You Use?" [ref=e73] [cursor=pointer]:
+                - /url: "#which_elixirs_should_you_use?"
+                - generic [ref=e74]: Which Elixirs Should You Use?
+              - link "Season 11 Updates" [ref=e75] [cursor=pointer]:
+                - /url: "#season_11_updates"
+                - generic [ref=e76]: Season 11 Updates
+              - link "Obol Gambling" [ref=e77] [cursor=pointer]:
+                - /url: "#obol_gambling"
+                - generic [ref=e78]: Obol Gambling
+              - link "Changelog" [ref=e79] [cursor=pointer]:
+                - /url: "#changelog"
+                - generic [ref=e80]: Changelog
+        - generic [ref=e83]:
+          - link "" [ref=e84] [cursor=pointer]:
+            - /url: /d4/login/?postLoginRedirect=/d4/guides/blood-wave-necromancer-build/
+            - generic [ref=e85]: 
+          - link "Login" [ref=e86] [cursor=pointer]:
+            - /url: /d4/login/?postLoginRedirect=/d4/guides/blood-wave-necromancer-build/
+    - generic [ref=e88]:
+      - generic [ref=e90]:
+        - generic [ref=e92]:
+          - link "Helltide Icon Helltide is active! 00:36:18" [ref=e2726] [cursor=pointer]:
+            - /url: /d4/guides/helltide-mystery-chest-locations/
+            - img "Helltide Icon" [ref=e95]
+            - generic [ref=e96]:
+              - generic [ref=e97]: Helltide is active!
+              - generic [ref=e98]: 00:36:18
+          - link "Barbarian" [ref=e102] [cursor=pointer]:
+            - /url: /d4/barbarian/builds/
+            - generic [ref=e103]: Barbarian
+          - link "Druid" [ref=e104] [cursor=pointer]:
+            - /url: /d4/druid/builds/
+            - generic [ref=e105]: Druid
+          - link "Necromancer" [ref=e106] [cursor=pointer]:
+            - /url: /d4/necromancer/builds/
+            - generic [ref=e107]: Necromancer
+          - link "Paladin" [ref=e108] [cursor=pointer]:
+            - /url: /d4/paladin/builds/
+            - generic [ref=e109]: Paladin
+          - link "Rogue" [ref=e110] [cursor=pointer]:
+            - /url: /d4/rogue/builds/
+            - generic [ref=e111]: Rogue
+          - link "Sorcerer" [ref=e112] [cursor=pointer]:
+            - /url: /d4/sorcerer/builds/
+            - generic [ref=e113]: Sorcerer
+          - link "Spiritborn" [ref=e114] [cursor=pointer]:
+            - /url: /d4/spiritborn/builds/
+            - generic [ref=e115]: Spiritborn
+          - link "Guides" [ref=e117] [cursor=pointer]:
+            - /url: /d4/guides/
+            - generic [ref=e118]: Guides
+          - link "Tier List" [ref=e119] [cursor=pointer]:
+            - /url: /d4/guides/tier-lists/
+            - generic [ref=e120]: Tier List
+          - link "News" [ref=e121] [cursor=pointer]:
+            - /url: /d4/news/
+            - generic [ref=e122]: News
+        - generic [ref=e124]:
+          - generic [ref=e126]:
+            - generic [ref=e127]:
+              - img "Diablo 4 Necromancer Official Artwork" [ref=e128]
+              - generic [ref=e129]:
+                - generic [ref=e131]:
+                  - generic [ref=e132]: d4
+                  - generic [ref=e133]: Endgame
+                  - generic [ref=e134]: Guide
+                  - generic [ref=e135]: necromancer
+                  - generic [ref=e136]: Blood
+                  - generic [ref=e137]: Shadow
+                  - generic [ref=e138]: Season 11
+                  - generic [ref=e139]: Top
+                - heading "Shadow Blood Wave – Necromancer Build for Diablo 4 (Season 11)" [level=1] [ref=e140]
+                - paragraph [ref=e141]: Send out Waves of Blood and dominate the meta!
+            - generic [ref=e142]:
+              - generic [ref=e143]:
+                - generic [ref=e144]:
+                  - img "GhazzyTVAvatar" [ref=e145]
+                  - generic [ref=e146]:
+                    - generic [ref=e147]:
+                      - paragraph [ref=e148]: GhazzyTV
+                      - paragraph [ref=e149]: WRITER
+                      - link "Author Twitch Link" [ref=e150] [cursor=pointer]:
+                        - /url: https://www.twitch.tv/GhazzyTV
+                        - generic [ref=e151]: 
+                      - link "Author Twitter Link" [ref=e152] [cursor=pointer]:
+                        - /url: https://www.twitter.com/GhazzyTV
+                        - generic [ref=e153]: 
+                    - paragraph [ref=e154]: Minion Overlord
+                - generic [ref=e156]:
+                  - img "Co-Author Icon" [ref=e157]
+                  - generic [ref=e158]: Co-Authored
+                - generic [ref=e161]:
+                  - paragraph [ref=e162]: Garm Z
+                  - paragraph [ref=e163]: WRITER
+              - generic [ref=e164]:
+                - generic [ref=e165]: "Updated: December 17th, 2025 at 6:39pm"
+                - generic [ref=e167]: S-Tier Build
+              - generic [ref=e169]:
+                - img "Blood Wave" [ref=e171]
+                - img "Decompose" [ref=e173]
+                - img "Reap" [ref=e175]
+                - img "Blight" [ref=e177]
+                - img "Corpse Tendrils" [ref=e179]
+                - img "Blood Mist" [ref=e181]
+              - button " Share" [ref=e184] [cursor=pointer]:
+                - generic [ref=e185]: 
+                - generic [ref=e186]: Share
+          - generic [ref=e187]:
+            - generic [ref=e188]:
+              - article [ref=e190]:
+                - heading "Build Introduction" [level=2] [ref=e191]
+                - paragraph [ref=e192]:
+                  - text: This
+                  - link "Blood WaveBlood Wave" [ref=e193]:
+                    - /url: "#"
+                    - generic [ref=e194]:
+                      - img "Blood Wave" [ref=e195]
+                      - text: Blood Wave
+                  - text: build taps into the highest damage multipliers available to Necromancer across the
+                  - strong [ref=e196]: Shadow
+                  - text: ","
+                  - strong [ref=e197]:
+                    - text: Blood,
+                    - link "Overpower" [ref=e198] [cursor=pointer]:
+                      - /url: https://www.icy-veins.com/d4/guides/overpower-status-effect/
+                  - text: and
+                  - strong [ref=e199]: Ultimate
+                  - text: tags, securing its place in class meta. While quite expensive to gear and a bit annoying to play, its performance makes it worth the effort. The current iteration focuses on setting up
+                  - link "Overpowering" [ref=e200] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/overpower-status-effect/
+                  - text: triple-strikes with the combination of
+                  - link "Rathma's VigorRathma’s Vigor" [ref=e201]:
+                    - /url: "#"
+                    - generic [ref=e202]:
+                      - img "Rathma's Vigor" [ref=e203]
+                      - text: Rathma’s Vigor
+                  - text: ","
+                  - link "Tidal AspectTidal Aspect" [ref=e204]:
+                    - /url: "#"
+                    - generic [ref=e205]:
+                      - img "Tidal Aspect" [ref=e206]
+                      - text: Tidal Aspect
+                  - text: ", and Blood Orb collecting."
+                - paragraph [ref=e207]:
+                  - text: Have questions or feedback on the guide? Join the
+                  - link "livestream" [ref=e208] [cursor=pointer]:
+                    - /url: https://www.twitch.tv/ghazzytv
+                  - text: and ask me!
+                  - text: Curious how this build fares in various content types? Take a look at our
+                  - link "build tier lists" [ref=e209] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/tier-lists/
+                  - text: .
+                - separator [ref=e210]
+                - heading "Strengths and Weaknesses" [level=3] [ref=e211]
+                - generic [ref=e212]:
+                  - generic [ref=e213]:
+                    - generic [ref=e214]: Strengths
+                    - list [ref=e215]:
+                      - listitem [ref=e216]:
+                        - text: +
+                        - generic [ref=e217]: Excels at most of the content
+                      - listitem [ref=e218]:
+                        - text: +
+                        - generic [ref=e219]: High survivability
+                      - listitem [ref=e220]:
+                        - text: +
+                        - generic [ref=e221]: High burst damage
+                  - generic [ref=e222]:
+                    - generic [ref=e223]: Weaknesses
+                    - list [ref=e224]:
+                      - listitem [ref=e225]:
+                        - text: "-"
+                        - generic [ref=e226]: Not the fastest build
+                      - listitem [ref=e227]:
+                        - text: "-"
+                        - generic [ref=e228]: Skill rotation includes collecting Blood Orbs
+                      - listitem [ref=e229]:
+                        - text: "-"
+                        - generic [ref=e230]: Very gear sensitive
+                - heading "Build Requirements" [level=3] [ref=e231]
+                - generic [ref=e232]:
+                  - generic [ref=e233]:
+                    - generic [ref=e235]: Required Uniques
+                    - generic [ref=e237]:
+                      - img "Kessime's Legacy" [ref=e238]
+                      - generic [ref=e239]: Kessime’s Legacy
+                  - generic [ref=e240]:
+                    - generic [ref=e242]: Required Aspects
+                    - generic [ref=e243]:
+                      - generic [ref=e244]:
+                        - img "Fastblood Aspect" [ref=e245]
+                        - generic [ref=e246]: Fastblood Aspect
+                      - generic [ref=e247]:
+                        - img "Tidal Aspect" [ref=e248]
+                        - generic [ref=e249]: Tidal Aspect
+                - list [ref=e250]:
+                  - listitem [ref=e251]:
+                    - strong [ref=e252]: Cooldown Reduction
+                    - text: effects (the more, the better), see
+                    - link "Gear Suggestions" [ref=e253] [cursor=pointer]:
+                      - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer/#Affixes_and_Tempering_Priority
+                    - text: .
+                - heading "Quick Navigation" [level=3] [ref=e254]
+                - paragraph [ref=e255]: Want to skip ahead? Use the table below to jump to the sections you are looking for.
+                - figure [ref=e256]:
+                  - table [ref=e257]:
+                    - rowgroup [ref=e258]:
+                      - row "BiS Gear, Gems, and Runes Paragon Board" [ref=e259]:
+                        - cell "BiS Gear, Gems, and Runes" [ref=e260]:
+                          - link "BiS Gear, Gems, and Runes" [ref=e261] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#gear,_gems,_elixirs_and_stats
+                        - cell "Paragon Board" [ref=e262]:
+                          - link "Paragon Board" [ref=e263] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#paragon_board
+                      - row "Rotation and Playstyle Season Updates" [ref=e264]:
+                        - cell "Rotation and Playstyle" [ref=e265]:
+                          - link "Rotation and Playstyle" [ref=e266] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#rotation_and_build_mechanics
+                        - cell "Season Updates" [ref=e267]:
+                          - link "Season Updates" [ref=e268] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#season_11_updates
+                - separator [ref=e269]
+                - heading "Skill Bar and Skill Tree Points" [level=2] [ref=e270]
+                - generic [ref=e271]:
+                  - generic [ref=e272]:
+                    - generic [ref=e273]:
+                      - generic [ref=e274]: 
+                      - text: Recommended
+                    - text: Suggested Skill Bar
+                  - generic [ref=e275]:
+                    - generic [ref=e276]:
+                      - img "Corpse Tendrils" [ref=e277]
+                      - generic [ref=e278]: Corpse Tendrils
+                    - generic [ref=e279]:
+                      - img "Blight" [ref=e280]
+                      - generic [ref=e281]: Blight
+                    - generic [ref=e282]:
+                      - img "Blood Mist" [ref=e283]
+                      - generic [ref=e284]: Blood Mist
+                    - generic [ref=e285]:
+                      - img "Blood Wave" [ref=e286]
+                      - generic [ref=e287]: Blood Wave
+                    - generic [ref=e288]:
+                      - img "Reap" [ref=e289]
+                      - generic [ref=e290]: Reap
+                    - generic [ref=e291]:
+                      - img "Decompose" [ref=e292]
+                      - generic [ref=e293]: Decompose
+                - generic [ref=e296]:
+                  - generic [ref=e297]:
+                    - generic [ref=e298]:
+                      - img "necromancer" [ref=e299]
+                      - generic [ref=e300]: necromancer Skills
+                      - button [ref=e301] [cursor=pointer]:
+                        - img [ref=e302]
+                      - button [ref=e304] [cursor=pointer]:
+                        - img [ref=e305]
+                      - generic [ref=e307]: 1 / 7
+                    - button "Fullscreen" [ref=e309] [cursor=pointer]:
+                      - img [ref=e310]
+                  - img [ref=e316]:
+                    - img [ref=e472]
+                    - img [ref=e475]
+                    - img [ref=e478]
+                    - img [ref=e481]:
+                      - generic [ref=e485]: 1 / 5
+                    - img [ref=e486]
+                    - img [ref=e489]
+                    - img [ref=e492]:
+                      - generic [ref=e496]: 1 / 5
+                    - img [ref=e497]:
+                      - generic [ref=e501]: 1 / 5
+                    - img [ref=e502]:
+                      - generic [ref=e506]: 1 / 5
+                    - img [ref=e507]
+                    - img [ref=e510]
+                    - img [ref=e513]
+                    - img [ref=e516]
+                    - img [ref=e519]
+                    - img [ref=e522]
+                    - img [ref=e525]
+                    - img [ref=e528]
+                    - img [ref=e531]
+                    - img [ref=e534]
+                    - img [ref=e537]
+                    - img [ref=e540]
+                    - img [ref=e543]
+                    - img [ref=e546]
+                    - img [ref=e549]
+                    - img [ref=e552]
+                    - img [ref=e555]:
+                      - generic [ref=e559]: 1 / 5
+                    - img [ref=e560]
+                    - img [ref=e563]
+                    - img [ref=e566]
+                    - img [ref=e569]
+                    - img [ref=e572]:
+                      - generic [ref=e576]: 5 / 5
+                    - img [ref=e577]
+                    - img [ref=e580]
+                    - img [ref=e583]
+                    - img [ref=e586]
+                    - img [ref=e589]
+                    - img [ref=e592]:
+                      - generic [ref=e596]: 3/3
+                    - img [ref=e597]:
+                      - generic [ref=e601]: 3/3
+                    - img [ref=e602]
+                    - img [ref=e605]:
+                      - generic [ref=e609]: 3/3
+                    - img [ref=e610]
+                    - img [ref=e613]:
+                      - generic [ref=e617]: 3/3
+                    - img [ref=e618]
+                    - img [ref=e621]
+                    - img [ref=e624]
+                    - img [ref=e627]
+                    - img [ref=e630]
+                    - img [ref=e633]:
+                      - generic [ref=e637]: 3/3
+                    - img [ref=e638]
+                    - img [ref=e641]
+                    - img [ref=e644]
+                    - img [ref=e647]:
+                      - generic [ref=e651]: 3/3
+                    - img [ref=e652]:
+                      - generic [ref=e656]: 2/3
+                    - img [ref=e657]:
+                      - generic [ref=e661]: 3/3
+                    - img [ref=e662]:
+                      - generic [ref=e666]: 3/3
+                    - img [ref=e667]:
+                      - generic [ref=e671]: 2/3
+                    - img [ref=e672]:
+                      - generic [ref=e676]: 3/3
+                    - img [ref=e677]
+                    - img [ref=e680]
+                    - img [ref=e683]
+                    - img [ref=e686]
+                    - img [ref=e689]
+                    - img [ref=e692]
+                    - img [ref=e695]
+                    - img [ref=e698]
+                    - img [ref=e701]:
+                      - generic [ref=e705]: 1 / 5
+                    - img [ref=e706]
+                    - img [ref=e709]
+                    - img [ref=e712]
+                    - img [ref=e715]
+                    - img [ref=e718]
+                    - img [ref=e721]
+                    - img [ref=e724]
+                    - img [ref=e727]
+                    - img [ref=e730]
+                    - img [ref=e733]
+                    - img [ref=e736]
+                    - img [ref=e739]
+                    - img [ref=e742]
+                    - img [ref=e745]
+                    - img [ref=e748]
+                    - img [ref=e751]
+                    - img [ref=e754]
+                    - img [ref=e757]
+                    - img [ref=e760]
+                    - img [ref=e763]
+                    - img [ref=e766]
+                    - img [ref=e769]
+                    - img [ref=e772]
+                    - img [ref=e775]
+                    - img [ref=e778]
+                    - img [ref=e781]
+                    - img [ref=e784]:
+                      - generic [ref=e788]: 3/3
+                    - img [ref=e789]:
+                      - generic [ref=e793]: 3/3
+                    - img [ref=e794]:
+                      - generic [ref=e798]: 3/3
+                    - img [ref=e799]
+                    - img [ref=e802]
+                    - img [ref=e805]
+                    - img [ref=e808]
+                    - img [ref=e811]
+                    - img [ref=e814]
+                    - img [ref=e817]
+                    - img [ref=e820]
+                    - img [ref=e823]
+                    - img [ref=e826]
+                    - img [ref=e829]
+                    - img [ref=e832]
+                    - img [ref=e835]
+                    - img [ref=e838]
+                    - img [ref=e841]
+                    - img [ref=e844]
+                    - img [ref=e847]
+                    - img [ref=e850]
+                    - img [ref=e853]
+                    - img [ref=e856]
+                    - img [ref=e859]
+                    - img [ref=e862]
+                    - img [ref=e865]
+                    - img [ref=e868]
+                    - img [ref=e871]
+                    - img [ref=e874]:
+                      - generic [ref=e878]: 3/3
+                    - img [ref=e879]:
+                      - generic [ref=e883]: 3/3
+                    - img [ref=e884]
+                    - img [ref=e887]:
+                      - generic [ref=e891]: 3/3
+                - paragraph [ref=e892]:
+                  - text: Follow the points allocated in the Skill Tree above for the complete 71-point build. 12 skill points are locked behind the
+                  - strong [ref=e893]:
+                    - link "Season Rank System" [ref=e894] [cursor=pointer]:
+                      - /url: https://www.icy-veins.com/d4/guides/season-rank/
+                  - text: .
+                - paragraph [ref=e895]:
+                  - text: Lowest priority skills to
+                  - strong [ref=e896]: skip
+                  - text: ", until extra skill points acquired:"
+                - list [ref=e897]:
+                  - listitem [ref=e898]:
+                    - link "Titan's FallTitan’s Fall" [ref=e899]:
+                      - /url: "#"
+                      - generic [ref=e900]:
+                        - img "Titan's Fall" [ref=e901]
+                        - text: Titan’s Fall
+                  - listitem [ref=e902]:
+                    - link "Amplify DamageAmplify Damage" [ref=e903]:
+                      - /url: "#"
+                      - generic [ref=e904]:
+                        - img "Amplify Damage" [ref=e905]
+                        - text: Amplify Damage
+                  - listitem [ref=e906]:
+                    - link "Death's EmbraceDeath’s Embrace" [ref=e907]:
+                      - /url: "#"
+                      - generic [ref=e908]:
+                        - img "Death's Embrace" [ref=e909]
+                        - text: Death’s Embrace
+                  - listitem [ref=e910]:
+                    - link "Fueled by DeathFueled by Death" [ref=e911]:
+                      - /url: "#"
+                      - generic [ref=e912]:
+                        - img "Fueled by Death" [ref=e913]
+                        - text: Fueled by Death
+                - paragraph [ref=e914]:
+                  - link "↑ Back to Navigation Table" [ref=e915] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e916]
+                - heading "Class Mechanic – Book of the Dead" [level=2] [ref=e917]
+                - paragraph [ref=e918]:
+                  - text: This build is sacrificing all minions for
+                  - link "Stand AloneStand Alone" [ref=e919]:
+                    - /url: "#"
+                    - generic [ref=e920]:
+                      - img "Stand Alone" [ref=e921]
+                      - text: Stand Alone
+                  - text: and Book of the Dead buffs.
+                - list [ref=e922]:
+                  - listitem [ref=e923]:
+                    - text: if total
+                    - emphasis [ref=e924]: Critical Strike Chance
+                    - text: < ~60% with
+                    - link "Aspect of Grasping VeinsAspect of Grasping Veins" [ref=e925]:
+                      - /url: "#"
+                      - generic [ref=e926]:
+                        - img "Aspect of Grasping Veins" [ref=e927]
+                        - text: Aspect of Grasping Veins
+                    - list [ref=e928]:
+                      - listitem [ref=e929]:
+                        - text: then
+                        - link "Raise SkeletonSkeletal Warriors" [ref=e930]:
+                          - /url: "#"
+                          - generic [ref=e931]:
+                            - img "Raise Skeleton" [ref=e932]
+                            - strong [ref=e934]: Skeletal Warriors
+                        - strong [ref=e935]: ":"
+                        - strong [ref=e936]: Skirmishers [Sacrifice]
+                        - text: – Increased Critical Strike Chance.
+                    - list [ref=e937]:
+                      - listitem [ref=e938]:
+                        - text: else
+                        - link "Raise SkeletonSkeletal Warriors" [ref=e939]:
+                          - /url: "#"
+                          - generic [ref=e940]:
+                            - img "Raise Skeleton" [ref=e941]
+                            - strong [ref=e943]: Skeletal Warriors
+                        - strong [ref=e944]: ":"
+                        - strong [ref=e945]: Reapers [Sacrifice]
+                        - text: – Increased Shadow Damage.
+                  - listitem [ref=e946]:
+                    - link "Raise SkeletonSkeletal Mages" [ref=e947]:
+                      - /url: "#"
+                      - generic [ref=e948]:
+                        - img "Raise Skeleton" [ref=e949]
+                        - strong [ref=e951]: Skeletal Mages
+                    - text: ":"
+                    - strong [ref=e952]: Bone [Sacrifice]
+                    - text: – Increased
+                    - link "Overpower" [ref=e953] [cursor=pointer]:
+                      - /url: https://www.icy-veins.com/d4/guides/overpower-status-effect/
+                    - text: Damage.
+                  - listitem [ref=e954]:
+                    - link "Golem (Iron)" [ref=e955]:
+                      - /url: "#"
+                      - img "Golem (Iron)" [ref=e957]
+                    - strong [ref=e958]:
+                      - 'link "Golem: Iron" [ref=e959]':
+                        - /url: "#"
+                        - generic [ref=e960]: "Golem: Iron"
+                      - text: "[Sacrifice]"
+                    - text: – Increased Critical Strike Damage.
+                - paragraph [ref=e961]:
+                  - link "↑ Back to Navigation Table" [ref=e962] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e963]
+                - heading "Gear, Gems, Elixirs and Stats" [level=2] [ref=e964]
+                - paragraph [ref=e965]: The following sections cover the important systems that are essential to improving the power of your character in the endgame of Diablo 4.
+                - heading "Legendary Aspects" [level=3] [ref=e966]
+                - paragraph [ref=e967]:
+                  - text: Each aspect is listed with its matching gear slot. Do your best to keep each aspect in the assigned slot. Aspects placement is planned with potential Unique and Mythic Unique gear upgrades in mind for easiest and cheapest transition.
+                  - link "Obol gambling" [ref=e968] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#obol_gambling
+                  - text: is a great way to try to obtain specific slot Legendary Aspects and even Uniques early. For exact
+                  - link "Runewords" [ref=e969] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#gems_and_runewords
+                  - text: suggestions, see
+                  - link "here" [ref=e970] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#gems_and_runewords
+                  - text: .
+                - figure [ref=e971]:
+                  - table [ref=e972]:
+                    - rowgroup [ref=e973]:
+                      - row "Gear Slot Gems Aspect / Unique Legendary Aspect / Unique Power" [ref=e974]:
+                        - columnheader "Gear Slot" [ref=e975]
+                        - columnheader "Gems" [ref=e976]:
+                          - strong [ref=e977]: Gems
+                        - columnheader "Aspect / Unique" [ref=e978]
+                        - columnheader "Legendary Aspect / Unique Power" [ref=e979]
+                    - rowgroup [ref=e980]:
+                      - row "Helm Royal Diamond Igni Aspect of the Cursed AuraAspect of the Cursed Aura A dark aura surrounds you, inflicting DecrepifyDecrepify and Iron MaidenIron Maiden on enemies who touch it. Curses inflicted this way spread to surrounding targets every X seconds and last 4 seconds outside the aura." [ref=e981]:
+                        - cell "Helm" [ref=e982]:
+                          - strong [ref=e983]: Helm
+                        - cell "Royal Diamond Igni" [ref=e984]:
+                          - link "Royal Diamond" [ref=e985]:
+                            - /url: "#"
+                            - img "Royal Diamond" [ref=e987]
+                          - link "Igni" [ref=e988]:
+                            - /url: "#"
+                            - img "Igni" [ref=e990]
+                          - link:
+                            - /url: "#"
+                        - cell "Aspect of the Cursed AuraAspect of the Cursed Aura" [ref=e991]:
+                          - link "Aspect of the Cursed AuraAspect of the Cursed Aura" [ref=e992]:
+                            - /url: "#"
+                            - generic [ref=e993]:
+                              - img "Aspect of the Cursed Aura" [ref=e994]
+                              - text: Aspect of the Cursed Aura
+                        - cell "A dark aura surrounds you, inflicting DecrepifyDecrepify and Iron MaidenIron Maiden on enemies who touch it. Curses inflicted this way spread to surrounding targets every X seconds and last 4 seconds outside the aura." [ref=e995]:
+                          - text: A dark aura surrounds you, inflicting
+                          - link "DecrepifyDecrepify" [ref=e996]:
+                            - /url: "#"
+                            - generic [ref=e997]:
+                              - img "Decrepify" [ref=e998]
+                              - text: Decrepify
+                          - text: and
+                          - link "Iron MaidenIron Maiden" [ref=e999]:
+                            - /url: "#"
+                            - generic [ref=e1000]:
+                              - img "Iron Maiden" [ref=e1001]
+                              - text: Iron Maiden
+                          - text: on enemies who touch it. Curses inflicted this way spread to surrounding targets every X seconds and last 4 seconds outside the aura.
+                      - row "Chest Royal Diamond Igni Aspect of Hardened BonesAspect of Hardened Bones You gain 30% [10 – 30]% increased Damage Reduction. (Necromancer Only)" [ref=e1002]:
+                        - cell "Chest" [ref=e1003]:
+                          - strong [ref=e1004]: Chest
+                        - cell "Royal Diamond Igni" [ref=e1005]:
+                          - link "Royal Diamond" [ref=e1006]:
+                            - /url: "#"
+                            - img "Royal Diamond" [ref=e1008]
+                          - link "Igni" [ref=e1009]:
+                            - /url: "#"
+                            - img "Igni" [ref=e1011]
+                          - link:
+                            - /url: "#"
+                        - cell "Aspect of Hardened BonesAspect of Hardened Bones" [ref=e1012]:
+                          - link "Aspect of Hardened BonesAspect of Hardened Bones" [ref=e1013]:
+                            - /url: "#"
+                            - generic [ref=e1014]:
+                              - img "Aspect of Hardened Bones" [ref=e1015]
+                              - text: Aspect of Hardened Bones
+                        - cell "You gain 30% [10 – 30]% increased Damage Reduction. (Necromancer Only)" [ref=e1016]
+                      - row "Gloves n/a Sacrificial AspectSacrificial Aspect Your Sacrifice bonuses are increased by 55% [35 – 55]%. (Necromancer Only)" [ref=e1017]:
+                        - cell "Gloves" [ref=e1018]:
+                          - strong [ref=e1019]: Gloves
+                        - cell "n/a" [ref=e1020]
+                        - cell "Sacrificial AspectSacrificial Aspect" [ref=e1021]:
+                          - link "Sacrificial AspectSacrificial Aspect" [ref=e1022]:
+                            - /url: "#"
+                            - generic [ref=e1023]:
+                              - img "Sacrificial Aspect" [ref=e1024]
+                              - text: Sacrificial Aspect
+                        - cell "Your Sacrifice bonuses are increased by 55% [35 – 55]%. (Necromancer Only)" [ref=e1025]
+                      - row "Pants Royal Diamond Kessime's LegacyKessime’s Legacy Blood WaveBlood Wave now forms a wave on each side of you. Both waves converge at your feet, Pulling In all surrounding enemies and exploding for 975 damage." [ref=e1026]:
+                        - cell "Pants" [ref=e1027]:
+                          - strong [ref=e1028]: Pants
+                        - cell "Royal Diamond" [ref=e1029]:
+                          - link "Royal Diamond" [ref=e1030]:
+                            - /url: "#"
+                            - img "Royal Diamond" [ref=e1032]
+                        - cell "Kessime's LegacyKessime’s Legacy" [ref=e1033]:
+                          - link "Kessime's LegacyKessime’s Legacy" [ref=e1034]:
+                            - /url: "#"
+                            - generic [ref=e1035]:
+                              - img "Kessime's Legacy" [ref=e1036]
+                              - text: Kessime’s Legacy
+                        - cell "Blood WaveBlood Wave now forms a wave on each side of you. Both waves converge at your feet, Pulling In all surrounding enemies and exploding for 975 damage." [ref=e1037]:
+                          - link "Blood WaveBlood Wave" [ref=e1038]:
+                            - /url: "#"
+                            - generic [ref=e1039]:
+                              - img "Blood Wave" [ref=e1040]
+                              - text: Blood Wave
+                          - text: now forms a wave on each side of you. Both waves converge at your feet, Pulling In all surrounding enemies and exploding for 975 damage.
+                      - row "Boots n/a Aspect of MetamorphosisAspect of Metamorphosis When you Evade you turn in to a cloud of bats, becoming Unstoppable for 2.5 seconds. Enemies along your path take X Physical damage and are inflicted with Vampiric Curse. Evade’s Cooldown is increased by x seconds." [ref=e1041]:
+                        - cell "Boots" [ref=e1042]:
+                          - strong [ref=e1043]: Boots
+                        - cell "n/a" [ref=e1044]
+                        - cell "Aspect of MetamorphosisAspect of Metamorphosis" [ref=e1045]:
+                          - link "Aspect of MetamorphosisAspect of Metamorphosis" [ref=e1046]:
+                            - /url: "#"
+                            - generic [ref=e1047]:
+                              - img "Aspect of Metamorphosis" [ref=e1048]
+                              - text: Aspect of Metamorphosis
+                        - cell "When you Evade you turn in to a cloud of bats, becoming Unstoppable for 2.5 seconds. Enemies along your path take X Physical damage and are inflicted with Vampiric Curse. Evade’s Cooldown is increased by x seconds." [ref=e1049]:
+                          - text: When you Evade you turn in to a cloud of bats, becoming
+                          - link "Unstoppable" [ref=e1050] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/unstoppable-status-effect/
+                          - text: for 2.5 seconds. Enemies along your path take X Physical damage and are inflicted with Vampiric Curse. Evade’s Cooldown is increased by x seconds.
+                      - row "Weapon 2H (Sword) Igni Tidal AspectTidal Aspect Blood WaveBlood Wave fires two additional waves, each dealing 200% of normal damage, but you can no longer recast it until the last wave ends." [ref=e1051]:
+                        - cell "Weapon 2H (Sword)" [ref=e1052]:
+                          - strong [ref=e1053]: Weapon 2H
+                          - strong [ref=e1054]: (Sword
+                          - text: )
+                        - cell "Igni" [ref=e1055]:
+                          - link "Igni" [ref=e1056]:
+                            - /url: "#"
+                            - img "Igni" [ref=e1058]
+                          - link:
+                            - /url: "#"
+                        - cell "Tidal AspectTidal Aspect" [ref=e1059]:
+                          - link "Tidal AspectTidal Aspect" [ref=e1060]:
+                            - /url: "#"
+                            - generic [ref=e1061]:
+                              - img "Tidal Aspect" [ref=e1062]
+                              - text: Tidal Aspect
+                        - cell "Blood WaveBlood Wave fires two additional waves, each dealing 200% of normal damage, but you can no longer recast it until the last wave ends." [ref=e1063]:
+                          - link "Blood WaveBlood Wave" [ref=e1064]:
+                            - /url: "#"
+                            - generic [ref=e1065]:
+                              - img "Blood Wave" [ref=e1066]
+                              - text: Blood Wave
+                          - text: fires two additional waves, each dealing 200% of normal damage, but you can no longer recast it until the last wave ends.
+                          - link:
+                            - /url: "#"
+                      - row "Amulet (50% Scaling) Royal Diamond Aspect of Grasping VeinsAspect of Grasping Veins Gain 38%[+] increased Critical Strike Chance for 6 seconds when you cast Corpse TendrilsCorpse Tendrils . You deal 75%[x] bonus Critical Strike Damage to enemies for 6 seconds after they are damaged by Corpse TendrilsCorpse Tendrils ." [ref=e1067]:
+                        - cell "Amulet (50% Scaling)" [ref=e1068]:
+                          - strong [ref=e1069]: Amulet (50% Scaling
+                          - text: )
+                        - cell "Royal Diamond" [ref=e1070]:
+                          - link "Royal Diamond" [ref=e1071]:
+                            - /url: "#"
+                            - img "Royal Diamond" [ref=e1073]
+                        - cell "Aspect of Grasping VeinsAspect of Grasping Veins" [ref=e1074]:
+                          - link "Aspect of Grasping VeinsAspect of Grasping Veins" [ref=e1075]:
+                            - /url: "#"
+                            - generic [ref=e1076]:
+                              - img "Aspect of Grasping Veins" [ref=e1077]
+                              - text: Aspect of Grasping Veins
+                          - link:
+                            - /url: "#"
+                        - cell "Gain 38%[+] increased Critical Strike Chance for 6 seconds when you cast Corpse TendrilsCorpse Tendrils . You deal 75%[x] bonus Critical Strike Damage to enemies for 6 seconds after they are damaged by Corpse TendrilsCorpse Tendrils ." [ref=e1078]:
+                          - text: Gain 38%[+] increased Critical Strike Chance for 6 seconds when you cast
+                          - link "Corpse TendrilsCorpse Tendrils" [ref=e1079]:
+                            - /url: "#"
+                            - generic [ref=e1080]:
+                              - img "Corpse Tendrils" [ref=e1081]
+                              - text: Corpse Tendrils
+                          - text: . You deal 75%[x] bonus Critical Strike Damage to enemies for 6 seconds after they are damaged by
+                          - link "Corpse TendrilsCorpse Tendrils" [ref=e1082]:
+                            - /url: "#"
+                            - generic [ref=e1083]:
+                              - img "Corpse Tendrils" [ref=e1084]
+                              - text: Corpse Tendrils
+                          - text: .
+                      - row "Ring Royal Diamond Royal Topaz Fastblood AspectFastblood Aspect Blood Orbs reduce your Ultimate Cooldown by 3.00 [1.00 – 3.00] seconds. (Necromancer Only)" [ref=e1085]:
+                        - cell "Ring" [ref=e1086]:
+                          - strong [ref=e1087]: Ring
+                          - link:
+                            - /url: "#"
+                        - cell "Royal Diamond Royal Topaz" [ref=e1088]:
+                          - link "Royal Diamond" [ref=e1089]:
+                            - /url: "#"
+                            - img "Royal Diamond" [ref=e1091]
+                          - link "Royal Topaz" [ref=e1092]:
+                            - /url: "#"
+                            - img "Royal Topaz" [ref=e1094]
+                        - cell "Fastblood AspectFastblood Aspect" [ref=e1095]:
+                          - link "Fastblood AspectFastblood Aspect" [ref=e1096]:
+                            - /url: "#"
+                            - generic [ref=e1097]:
+                              - img "Fastblood Aspect" [ref=e1098]
+                              - text: Fastblood Aspect
+                        - cell "Blood Orbs reduce your Ultimate Cooldown by 3.00 [1.00 – 3.00] seconds. (Necromancer Only)" [ref=e1099]
+                      - 'row "Ring Royal Diamond Royal Ruby Aspect of Ultimate ShadowAspect of Ultimate Shadow Bone StormBone Storm and Blood WaveBlood Wave are also Darkness Skills, deal Shadow damage, and gain additional effects: Enemies damaged by Bone StormBone Storm take 2,223 [635 – 2,223] Corrupting damage over 2 seconds. Blood WaveBlood Wave creates Desecrated Ground as it travels, dealing 35,571 [10,163 – 35,571] Corrupting damage over 4 seconds (Necromancer Only)" [ref=e1100]':
+                        - cell "Ring" [ref=e1101]:
+                          - strong [ref=e1102]: Ring
+                        - cell "Royal Diamond Royal Ruby" [ref=e1103]:
+                          - link "Royal Diamond" [ref=e1104]:
+                            - /url: "#"
+                            - img "Royal Diamond" [ref=e1106]
+                          - link "Royal Ruby" [ref=e1107]:
+                            - /url: "#"
+                            - img "Royal Ruby" [ref=e1109]
+                          - link:
+                            - /url: "#"
+                        - cell "Aspect of Ultimate ShadowAspect of Ultimate Shadow" [ref=e1110]:
+                          - link "Aspect of Ultimate ShadowAspect of Ultimate Shadow" [ref=e1111]:
+                            - /url: "#"
+                            - generic [ref=e1112]:
+                              - img "Aspect of Ultimate Shadow" [ref=e1113]
+                              - text: Aspect of Ultimate Shadow
+                          - link:
+                            - /url: "#"
+                        - 'cell "Bone StormBone Storm and Blood WaveBlood Wave are also Darkness Skills, deal Shadow damage, and gain additional effects: Enemies damaged by Bone StormBone Storm take 2,223 [635 – 2,223] Corrupting damage over 2 seconds. Blood WaveBlood Wave creates Desecrated Ground as it travels, dealing 35,571 [10,163 – 35,571] Corrupting damage over 4 seconds (Necromancer Only)" [ref=e1114]':
+                          - link "Bone StormBone Storm" [ref=e1115]:
+                            - /url: "#"
+                            - generic [ref=e1116]:
+                              - img "Bone Storm" [ref=e1117]
+                              - text: Bone Storm
+                          - text: and
+                          - link "Blood WaveBlood Wave" [ref=e1118]:
+                            - /url: "#"
+                            - generic [ref=e1119]:
+                              - img "Blood Wave" [ref=e1120]
+                              - text: Blood Wave
+                          - text: "are also Darkness Skills, deal Shadow damage, and gain additional effects:"
+                          - text: Enemies damaged by
+                          - link "Bone StormBone Storm" [ref=e1121]:
+                            - /url: "#"
+                            - generic [ref=e1122]:
+                              - img "Bone Storm" [ref=e1123]
+                              - text: Bone Storm
+                          - text: take 2,223 [635 – 2,223] Corrupting damage over 2 seconds.
+                          - link "Blood WaveBlood Wave" [ref=e1124]:
+                            - /url: "#"
+                            - generic [ref=e1125]:
+                              - img "Blood Wave" [ref=e1126]
+                              - text: Blood Wave
+                          - text: creates Desecrated Ground as it travels, dealing 35,571 [10,163 – 35,571] Corrupting damage over 4 seconds (Necromancer Only)
+                - paragraph [ref=e1127]:
+                  - link "↑ Back to Navigation Table" [ref=e1128] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e1129]
+                - heading "Affixes and Tempering Priority" [level=3] [ref=e1130]
+                - list [ref=e1131]:
+                  - listitem [ref=e1132]:
+                    - text: Affixes on gear are sorted in
+                    - strong [ref=e1133]: priority descending order
+                    - text: .
+                  - listitem [ref=e1134]:
+                    - strong [ref=e1135]: Bolded
+                    - text: affixes are the most important targets for
+                    - strong [ref=e1136]:
+                      - link "Masterworking" [ref=e1137] [cursor=pointer]:
+                        - /url: https://www.icy-veins.com/d4/guides/masterworking-guide/
+                      - text: upgrade
+                    - text: . If multiple affixes marked – any selected is acceptable for case by case gear.
+                  - listitem [ref=e1138]:
+                    - text: Affixes
+                    - strong [ref=e1139]: marked by multiple
+                    - text: “
+                    - strong [ref=e1140]: "*"
+                    - text: ” – indicate desirability of obtaining them as
+                    - strong [ref=e1141]: Greater Affix originally
+                    - text: or
+                    - strong [ref=e1142]:
+                      - text: with lucky
+                      - link "Tempering" [ref=e1143] [cursor=pointer]:
+                        - /url: https://www.icy-veins.com/d4/guides/tempering-guide/
+                    - text: .
+                - paragraph [ref=e1144]:
+                  - text: Be sure to check our
+                  - link "Tempering" [ref=e1145] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/tempering-guide/
+                  - text: and
+                  - link "Masterworking" [ref=e1146] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/masterworking-guide/
+                  - text: guides for more details about these topics.
+                - figure "For the dedicated page on Gear Systems and Itemization Overview, check the guide here." [ref=e1147]:
+                  - table [ref=e1148]:
+                    - rowgroup [ref=e1149]:
+                      - row "Slot Affixes Tempering Affixes" [ref=e1150]:
+                        - columnheader "Slot" [ref=e1151]
+                        - columnheader "Affixes" [ref=e1152]
+                        - columnheader "Tempering Affixes" [ref=e1153]
+                    - rowgroup [ref=e1154]:
+                      - row "Helmet Heir of PerditionHeir of Perdition * 1. Critical Strike Chance * 2. Lucky Hit Chance n/a" [ref=e1155]:
+                        - cell "Helmet Heir of PerditionHeir of Perdition" [ref=e1156]:
+                          - strong [ref=e1157]: Helmet
+                          - link "Heir of PerditionHeir of Perdition" [ref=e1158]:
+                            - /url: "#"
+                            - generic [ref=e1159]:
+                              - img "Heir of Perdition" [ref=e1160]
+                              - text: Heir of Perdition
+                        - cell "* 1. Critical Strike Chance * 2. Lucky Hit Chance" [ref=e1161]:
+                          - strong [ref=e1162]:
+                            - text: "* 1. Critical Strike Chance"
+                            - text: "* 2. Lucky Hit Chance"
+                        - cell "n/a" [ref=e1163]
+                      - 'row "Helmet * 1. Maximum Life * 2. Intelligence 3. Cooldown Reduction 4. Armor / Resistance to All Elements 5. Essence per Second (once) Worldly EnduranceWorldly Endurance # Maximum Life" [ref=e1164]':
+                        - cell "Helmet" [ref=e1165]:
+                          - strong [ref=e1166]: Helmet
+                        - cell "* 1. Maximum Life * 2. Intelligence 3. Cooldown Reduction 4. Armor / Resistance to All Elements 5. Essence per Second (once)" [ref=e1167]:
+                          - text: "*"
+                          - strong [ref=e1168]: 1. Maximum Life
+                          - strong [ref=e1169]: "* 2. Intelligence"
+                          - text: 3. Cooldown Reduction
+                          - text: 4. Armor / Resistance to All Elements
+                          - text: 5. Essence per Second (once)
+                        - 'cell "Worldly EnduranceWorldly Endurance # Maximum Life" [ref=e1170]':
+                          - link "Worldly EnduranceWorldly Endurance" [ref=e1171]:
+                            - /url: "#"
+                            - generic [ref=e1172]:
+                              - img "Worldly Endurance" [ref=e1173]
+                              - text: Worldly Endurance
+                          - text: "# Maximum Life"
+                      - row "Chest Shroud of False DeathShroud of False Death * 1. All Stats * 2. Maximum Life n/a" [ref=e1174]:
+                        - cell "Chest Shroud of False DeathShroud of False Death" [ref=e1175]:
+                          - strong [ref=e1176]: Chest
+                          - link "Shroud of False DeathShroud of False Death" [ref=e1177]:
+                            - /url: "#"
+                            - generic [ref=e1178]:
+                              - img "Shroud of False Death" [ref=e1179]
+                              - text: Shroud of False Death
+                        - cell "* 1. All Stats * 2. Maximum Life" [ref=e1180]:
+                          - strong [ref=e1181]:
+                            - text: "* 1. All Stats"
+                            - text: "* 2. Maximum Life"
+                        - cell "n/a" [ref=e1182]
+                      - 'row "Chest ** 1. Maximum Life * 2. Intelligence 3. Armor / Resistance to All Elements 4. Essence per Second (once) Profane InnovationProfane Innovation #% Corpse TendrilsCorpse Tendrils Size" [ref=e1183]':
+                        - cell "Chest" [ref=e1184]:
+                          - strong [ref=e1185]: Chest
+                        - cell "** 1. Maximum Life * 2. Intelligence 3. Armor / Resistance to All Elements 4. Essence per Second (once)" [ref=e1186]:
+                          - strong [ref=e1187]:
+                            - text: "** 1. Maximum Life"
+                            - text: "* 2. Intelligence"
+                          - text: 3. Armor / Resistance to All Elements
+                          - text: 4. Essence per Second (once)
+                        - 'cell "Profane InnovationProfane Innovation #% Corpse TendrilsCorpse Tendrils Size" [ref=e1188]':
+                          - link "Profane InnovationProfane Innovation" [ref=e1189]:
+                            - /url: "#"
+                            - generic [ref=e1190]:
+                              - img "Profane Innovation" [ref=e1191]
+                              - text: Profane Innovation
+                          - text: "#%"
+                          - link "Corpse TendrilsCorpse Tendrils" [ref=e1192]:
+                            - /url: "#"
+                            - generic [ref=e1193]:
+                              - img "Corpse Tendrils" [ref=e1194]
+                              - text: Corpse Tendrils
+                          - text: Size
+                      - 'row "Gloves 1. Cooldown Reduction 2. Critical Strike Chance * 3. Intelligence * 4. Maximum Life 5. Overpower Damage Blood FinesseBlood Finesse #% Blood Overpower Damage" [ref=e1195]':
+                        - cell "Gloves" [ref=e1196]:
+                          - strong [ref=e1197]: Gloves
+                          - link:
+                            - /url: "#"
+                        - cell "1. Cooldown Reduction 2. Critical Strike Chance * 3. Intelligence * 4. Maximum Life 5. Overpower Damage" [ref=e1198]:
+                          - text: 1. Cooldown Reduction
+                          - text: 2. Critical Strike Chance
+                          - strong [ref=e1199]:
+                            - text: "* 3. Intelligence"
+                            - text: "* 4. Maximum Life"
+                          - text: 5. Overpower Damage
+                        - 'cell "Blood FinesseBlood Finesse #% Blood Overpower Damage" [ref=e1200]':
+                          - link "Blood FinesseBlood Finesse" [ref=e1201]:
+                            - /url: "#"
+                            - generic [ref=e1202]:
+                              - img "Blood Finesse" [ref=e1203]
+                              - text: Blood Finesse
+                          - text: "#% Blood"
+                          - link "Overpower" [ref=e1204] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/overpower-status-effect/
+                          - text: Damage
+                      - row "Pants Kessime's LegacyKessime’s Legacy *** 1. Chance for Blood Wave to Deal Double Damage * 2. Blood Wave Cooldown Reduction n/a" [ref=e1205]:
+                        - cell "Pants Kessime's LegacyKessime’s Legacy" [ref=e1206]:
+                          - strong [ref=e1207]: Pants
+                          - link "Kessime's LegacyKessime’s Legacy" [ref=e1208]:
+                            - /url: "#"
+                            - generic [ref=e1209]:
+                              - img "Kessime's Legacy" [ref=e1210]
+                              - text: Kessime’s Legacy
+                        - cell "*** 1. Chance for Blood Wave to Deal Double Damage * 2. Blood Wave Cooldown Reduction" [ref=e1211]:
+                          - text: "**"
+                          - strong [ref=e1212]: "* 1. Chance for Blood Wave to Deal Double Damage"
+                          - text: "* 2. Blood Wave Cooldown Reduction"
+                        - cell "n/a" [ref=e1213]
+                      - 'row "Pants * 1. Maximum Life * 2. Intelligence 3. Armor / Resistance to All Elements 4. Essence per Second (once) Worldly EnduranceWorldly Endurance # Maximum Life" [ref=e1214]':
+                        - cell "Pants" [ref=e1215]:
+                          - strong [ref=e1216]: Pants
+                        - cell "* 1. Maximum Life * 2. Intelligence 3. Armor / Resistance to All Elements 4. Essence per Second (once)" [ref=e1217]:
+                          - strong [ref=e1218]: "* 1. Maximum Life"
+                          - strong [ref=e1219]: "* 2. Intelligence"
+                          - text: 3. Armor / Resistance to All Elements
+                          - text: 4. Essence per Second (once)
+                        - 'cell "Worldly EnduranceWorldly Endurance # Maximum Life" [ref=e1220]':
+                          - link "Worldly EnduranceWorldly Endurance" [ref=e1221]:
+                            - /url: "#"
+                            - generic [ref=e1222]:
+                              - img "Worldly Endurance" [ref=e1223]
+                              - text: Worldly Endurance
+                          - text: "# Maximum Life"
+                      - 'row "Boots * 1. Movement Speed * 2. Maximum Life * 3. Intelligence 4. Armor / Resistance to All Elements 5. Essence per Second (once) Profane InnovationProfane Innovation #% Corpse TendrilsCorpse Tendrils Size Natural MotionNatural Motion #% Evade Cooldown Reduction" [ref=e1224]':
+                        - cell "Boots" [ref=e1225]:
+                          - strong [ref=e1226]: Boots
+                        - cell "* 1. Movement Speed * 2. Maximum Life * 3. Intelligence 4. Armor / Resistance to All Elements 5. Essence per Second (once)" [ref=e1227]:
+                          - text: "* 1. Movement Speed"
+                          - strong [ref=e1228]: "* 2. Maximum Life"
+                          - strong [ref=e1229]: "* 3. Intelligence"
+                          - text: 4. Armor / Resistance to All Elements
+                          - text: 5. Essence per Second (once)
+                        - 'cell "Profane InnovationProfane Innovation #% Corpse TendrilsCorpse Tendrils Size Natural MotionNatural Motion #% Evade Cooldown Reduction" [ref=e1230]':
+                          - link "Profane InnovationProfane Innovation" [ref=e1231]:
+                            - /url: "#"
+                            - generic [ref=e1232]:
+                              - img "Profane Innovation" [ref=e1233]
+                              - text: Profane Innovation
+                          - text: "#%"
+                          - link "Corpse TendrilsCorpse Tendrils" [ref=e1234]:
+                            - /url: "#"
+                            - generic [ref=e1235]:
+                              - img "Corpse Tendrils" [ref=e1236]
+                              - text: Corpse Tendrils
+                          - text: Size
+                          - link "Natural MotionNatural Motion" [ref=e1237]:
+                            - /url: "#"
+                            - generic [ref=e1238]:
+                              - img "Natural Motion" [ref=e1239]
+                              - text: Natural Motion
+                          - text: "#% Evade Cooldown Reduction"
+                      - 'row "Amulet *** 1. +Ranks to Tides of Blood *** 2. +Ranks to Gloom * 3. Critical Strike Chance * 4. Cooldown Reduction ** 5. +Ranks to Coalesced Blood ** 6. +Ranks to Terror 7. Intelligence Necromancer EfficiencyNecromancer Efficiency #% Ultimate Cooldown Reduction" [ref=e1240]':
+                        - cell "Amulet" [ref=e1241]:
+                          - strong [ref=e1242]: Amulet
+                        - cell "*** 1. +Ranks to Tides of Blood *** 2. +Ranks to Gloom * 3. Critical Strike Chance * 4. Cooldown Reduction ** 5. +Ranks to Coalesced Blood ** 6. +Ranks to Terror 7. Intelligence" [ref=e1243]:
+                          - text: "***"
+                          - strong [ref=e1244]: 1. +Ranks to Tides of Blood
+                          - text: "**"
+                          - strong [ref=e1245]: "* 2. +Ranks to Gloom"
+                          - text: "* 3. Critical Strike Chance"
+                          - strong [ref=e1246]: "*"
+                          - text: 4. Cooldown Reduction
+                          - text: "** 5. +Ranks to Coalesced Blood"
+                          - text: "** 6. +Ranks to Terror"
+                          - text: 7. Intelligence
+                        - 'cell "Necromancer EfficiencyNecromancer Efficiency #% Ultimate Cooldown Reduction" [ref=e1247]':
+                          - link "Necromancer EfficiencyNecromancer Efficiency" [ref=e1248]:
+                            - /url: "#"
+                            - generic [ref=e1249]:
+                              - img "Necromancer Efficiency" [ref=e1250]
+                              - text: Necromancer Efficiency
+                          - text: "#% Ultimate Cooldown Reduction"
+                      - 'row "Ring 1. Cooldown Reduction 2. Critical Strike Chance * 3. Intelligence * 4. Maximum Life 5. Overpower Damage Necromancer EfficiencyNecromancer Efficiency #% Ultimate Cooldown Reduction" [ref=e1251]':
+                        - cell "Ring" [ref=e1252]:
+                          - strong [ref=e1253]: Ring
+                        - cell "1. Cooldown Reduction 2. Critical Strike Chance * 3. Intelligence * 4. Maximum Life 5. Overpower Damage" [ref=e1254]:
+                          - text: 1. Cooldown Reduction
+                          - text: 2. Critical Strike Chance
+                          - strong [ref=e1255]:
+                            - text: "* 3. Intelligence"
+                            - text: "* 4. Maximum Life"
+                          - text: 5. Overpower Damage
+                        - 'cell "Necromancer EfficiencyNecromancer Efficiency #% Ultimate Cooldown Reduction" [ref=e1256]':
+                          - link "Necromancer EfficiencyNecromancer Efficiency" [ref=e1257]:
+                            - /url: "#"
+                            - generic [ref=e1258]:
+                              - img "Necromancer Efficiency" [ref=e1259]
+                              - text: Necromancer Efficiency
+                          - text: "#% Ultimate Cooldown Reduction"
+                      - 'row "Weapon 2H (Mace) * 1. Maximum Life * 2. Intelligence 3. Overpower Damage 4. Lucky Hit: Up to a #% Chance to Make Enemies Vulnerable for 2 Seconds Blood AugmentsBlood Augments #% Chance for Blood WaveBlood Wave to Deal Double Damage ** Dreadful AugmentsDreadful Augments # to Titan''s FallTitan’s Fall" [ref=e1260]':
+                        - cell "Weapon 2H (Mace)" [ref=e1261]:
+                          - strong [ref=e1262]: Weapon 2H
+                          - text: (Mace)
+                        - 'cell "* 1. Maximum Life * 2. Intelligence 3. Overpower Damage 4. Lucky Hit: Up to a #% Chance to Make Enemies Vulnerable for 2 Seconds" [ref=e1263]':
+                          - text: "* 1. Maximum Life"
+                          - text: "* 2. Intelligence"
+                          - text: "3."
+                          - link "Overpower" [ref=e1264] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/overpower-status-effect/
+                          - text: Damage
+                          - text: "4. Lucky Hit: Up to a #% Chance"
+                          - text: to Make Enemies Vulnerable for 2 Seconds
+                        - 'cell "Blood AugmentsBlood Augments #% Chance for Blood WaveBlood Wave to Deal Double Damage ** Dreadful AugmentsDreadful Augments # to Titan''s FallTitan’s Fall" [ref=e1265]':
+                          - link "Blood AugmentsBlood Augments" [ref=e1266]:
+                            - /url: "#"
+                            - generic [ref=e1267]:
+                              - img "Blood Augments" [ref=e1268]
+                              - text: Blood Augments
+                          - text: "#% Chance for"
+                          - link "Blood WaveBlood Wave" [ref=e1269]:
+                            - /url: "#"
+                            - generic [ref=e1270]:
+                              - img "Blood Wave" [ref=e1271]
+                              - text: Blood Wave
+                          - text: to Deal Double Damage
+                          - strong [ref=e1272]:
+                            - strong [ref=e1273]:
+                              - text: "**"
+                              - link "Dreadful AugmentsDreadful Augments" [ref=e1274]:
+                                - /url: "#"
+                                - generic [ref=e1275]:
+                                  - img "Dreadful Augments" [ref=e1276]
+                                  - text: Dreadful Augments
+                              - text: "# to"
+                            - link "Titan's FallTitan’s Fall" [ref=e1277]:
+                              - /url: "#"
+                              - generic [ref=e1278]:
+                                - img "Titan's Fall" [ref=e1279]
+                                - text: Titan’s Fall
+                      - row "Weapon 2H Bloodless ScreamBloodless Scream *** 1. Ranks to Darkness Skills * 2. Intelligence n/a" [ref=e1280]:
+                        - cell "Weapon 2H Bloodless ScreamBloodless Scream" [ref=e1281]:
+                          - strong [ref=e1282]: Weapon 2H
+                          - link "Bloodless ScreamBloodless Scream" [ref=e1283]:
+                            - /url: "#"
+                            - generic [ref=e1284]:
+                              - img "Bloodless Scream" [ref=e1285]
+                              - text: Bloodless Scream
+                        - cell "*** 1. Ranks to Darkness Skills * 2. Intelligence" [ref=e1286]:
+                          - strong [ref=e1287]: "*** 1. Ranks to Darkness Skills"
+                          - text: "* 2. Intelligence"
+                        - cell "n/a" [ref=e1288]
+                  - generic [ref=e1289]:
+                    - text: For the dedicated page on Gear Systems and Itemization Overview, check the guide
+                    - link "here" [ref=e1290] [cursor=pointer]:
+                      - /url: https://www.icy-veins.com/d4/guides/gear-systems-and-itemization-overview/
+                    - text: .
+                    - link:
+                      - /url: "#"
+                - paragraph [ref=e1291]:
+                  - link "↑ Back to Navigation Table" [ref=e1292] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e1293]
+                - heading "Ancestral and Mythic Uniques" [level=3] [ref=e1294]
+                - paragraph [ref=e1295]: "See below for information on useful Uniques and how to integrate them into this build:"
+                - figure [ref=e1296]:
+                  - table [ref=e1297]:
+                    - rowgroup [ref=e1298]:
+                      - row "Unique Category Synergy Source" [ref=e1299]:
+                        - cell "Unique" [ref=e1300]:
+                          - strong [ref=e1301]: Unique
+                        - cell "Category" [ref=e1302]:
+                          - strong [ref=e1303]: Category
+                        - cell "Synergy" [ref=e1304]:
+                          - strong [ref=e1305]: Synergy
+                        - cell "Source" [ref=e1306]:
+                          - strong [ref=e1307]: Source
+                      - row "Kessime's LegacyKessime’s Legacy Required – Chance of Blood WaveBlood Wave double damage – Blood WaveBlood Wave Cooldown Reduction – Massive amount of additive damage – Improved Blood WaveBlood Wave shape Lord Zir Lair Boss" [ref=e1308]:
+                        - cell "Kessime's LegacyKessime’s Legacy" [ref=e1309]:
+                          - link "Kessime's LegacyKessime’s Legacy" [ref=e1310]:
+                            - /url: "#"
+                            - generic [ref=e1311]:
+                              - img "Kessime's Legacy" [ref=e1312]
+                              - text: Kessime’s Legacy
+                        - cell "Required" [ref=e1313]:
+                          - strong [ref=e1314]: Required
+                        - cell "– Chance of Blood WaveBlood Wave double damage – Blood WaveBlood Wave Cooldown Reduction – Massive amount of additive damage – Improved Blood WaveBlood Wave shape" [ref=e1315]:
+                          - text: – Chance of
+                          - link "Blood WaveBlood Wave" [ref=e1316]:
+                            - /url: "#"
+                            - generic [ref=e1317]:
+                              - img "Blood Wave" [ref=e1318]
+                              - text: Blood Wave
+                          - text: double damage
+                          - text: –
+                          - link "Blood WaveBlood Wave" [ref=e1319]:
+                            - /url: "#"
+                            - generic [ref=e1320]:
+                              - img "Blood Wave" [ref=e1321]
+                              - text: Blood Wave
+                          - text: Cooldown Reduction
+                          - text: – Massive amount of additive damage
+                          - text: – Improved
+                          - link "Blood WaveBlood Wave" [ref=e1322]:
+                            - /url: "#"
+                            - generic [ref=e1323]:
+                              - img "Blood Wave" [ref=e1324]
+                              - text: Blood Wave
+                          - text: shape
+                        - cell "Lord Zir Lair Boss" [ref=e1325]:
+                          - link "Lord Zir" [ref=e1326] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/lord-zir-boss-guide/
+                          - link "Lair Boss" [ref=e1327] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/lair-boss-system-guide/
+                      - row "Heir of PerditionHeir of Perdition Mythic Best in Slot – Extra large Critical Strike Chance affix – Extra large Lucky Hit affix – Sizeable damage multiplier from Unique Aspect see below for equipping instructions How to Farm Mythic Uniques guide" [ref=e1328]:
+                        - cell "Heir of PerditionHeir of Perdition" [ref=e1329]:
+                          - link "Heir of PerditionHeir of Perdition" [ref=e1330]:
+                            - /url: "#"
+                            - generic [ref=e1331]:
+                              - img "Heir of Perdition" [ref=e1332]
+                              - text: Heir of Perdition
+                        - cell "Mythic Best in Slot" [ref=e1333]:
+                          - strong [ref=e1334]: Mythic
+                          - text: Best in Slot
+                        - cell "– Extra large Critical Strike Chance affix – Extra large Lucky Hit affix – Sizeable damage multiplier from Unique Aspect see below for equipping instructions" [ref=e1335]:
+                          - text: – Extra large Critical Strike Chance affix
+                          - text: – Extra large Lucky Hit affix
+                          - text: – Sizeable damage multiplier from Unique Aspect
+                          - text: see below for equipping instructions
+                        - cell "How to Farm Mythic Uniques guide" [ref=e1336]:
+                          - link "How to Farm Mythic Uniques" [ref=e1337] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/how-to-farm-uber-uniques/
+                          - text: guide
+                      - row "Shroud of False DeathShroud of False Death Mythic Best in Slot – +1 All Passives equates to large damage multiplier – Extra large All Stats affix helps with Paragon Rare Node requirements on last boards – Extra large Maximum Health affix – Movement speed bonus How to Farm Mythic Uniques guide" [ref=e1338]:
+                        - cell "Shroud of False DeathShroud of False Death" [ref=e1339]:
+                          - link "Shroud of False DeathShroud of False Death" [ref=e1340]:
+                            - /url: "#"
+                            - generic [ref=e1341]:
+                              - img "Shroud of False Death" [ref=e1342]
+                              - text: Shroud of False Death
+                        - cell "Mythic Best in Slot" [ref=e1343]:
+                          - strong [ref=e1344]: Mythic
+                          - text: Best in Slot
+                        - cell "– +1 All Passives equates to large damage multiplier – Extra large All Stats affix helps with Paragon Rare Node requirements on last boards – Extra large Maximum Health affix – Movement speed bonus" [ref=e1345]:
+                          - text: – +1 All Passives equates to large damage multiplier
+                          - text: – Extra large All Stats affix helps with Paragon Rare Node requirements on last boards
+                          - text: – Extra large Maximum Health affix
+                          - text: – Movement speed bonus
+                        - cell "How to Farm Mythic Uniques guide" [ref=e1346]:
+                          - link "How to Farm Mythic Uniques" [ref=e1347] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/how-to-farm-uber-uniques/
+                          - text: guide
+                      - row "Bloodless ScreamBloodless Scream Recommended (endgame) – Massive amount of Ranks to Darkness Skills ( Blood WaveBlood Wave with Aspect of Ultimate ShadowAspect of Ultimate Shadow ) see below for equipping instructions Varshan Lair Boss" [ref=e1348]:
+                        - cell "Bloodless ScreamBloodless Scream" [ref=e1349]:
+                          - link "Bloodless ScreamBloodless Scream" [ref=e1350]:
+                            - /url: "#"
+                            - generic [ref=e1351]:
+                              - img "Bloodless Scream" [ref=e1352]
+                              - text: Bloodless Scream
+                        - cell "Recommended (endgame)" [ref=e1353]:
+                          - text: Recommended
+                          - text: (endgame)
+                        - cell "– Massive amount of Ranks to Darkness Skills ( Blood WaveBlood Wave with Aspect of Ultimate ShadowAspect of Ultimate Shadow ) see below for equipping instructions" [ref=e1354]:
+                          - text: – Massive amount of Ranks to Darkness Skills (
+                          - link "Blood WaveBlood Wave" [ref=e1355]:
+                            - /url: "#"
+                            - generic [ref=e1356]:
+                              - img "Blood Wave" [ref=e1357]
+                              - text: Blood Wave
+                          - text: with
+                          - link "Aspect of Ultimate ShadowAspect of Ultimate Shadow" [ref=e1358]:
+                            - /url: "#"
+                            - generic [ref=e1359]:
+                              - img "Aspect of Ultimate Shadow" [ref=e1360]
+                              - text: Aspect of Ultimate Shadow
+                          - text: )
+                          - text: see below for equipping instructions
+                        - cell "Varshan Lair Boss" [ref=e1361]:
+                          - link "Varshan" [ref=e1362] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/echo-of-varshan-boss-guide/
+                          - link "Lair Boss" [ref=e1363] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/lair-boss-system-guide/
+                - paragraph [ref=e1364]:
+                  - link "Heir of PerditionHeir of Perdition" [ref=e1365]:
+                    - /url: "#"
+                    - generic [ref=e1366]:
+                      - img "Heir of Perdition" [ref=e1367]
+                      - text: Heir of Perdition
+                  - text: leads to loss of
+                  - link "Aspect of the Cursed AuraAspect of the Cursed Aura" [ref=e1368]:
+                    - /url: "#"
+                    - generic [ref=e1369]:
+                      - img "Aspect of the Cursed Aura" [ref=e1370]
+                      - text: Aspect of the Cursed Aura
+                  - text: on Helmet slot. This can be compensated by
+                  - link "IgniIgni" [ref=e1371]:
+                    - /url: "#"
+                    - generic [ref=e1372]:
+                      - img "Igni" [ref=e1373]
+                      - text: Igni
+                  - link "WatWat" [ref=e1374]:
+                    - /url: "#"
+                    - generic [ref=e1375]:
+                      - img "Wat" [ref=e1376]
+                      - text: Wat
+                  - text: runeword to keep build’s access to Curses, see
+                  - link "here" [ref=e1377] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#gems_and_runewords
+                  - text: how. As an alternative, high priority
+                  - link "Aspect of the Cursed AuraAspect of the Cursed Aura" [ref=e1378]:
+                    - /url: "#"
+                    - generic [ref=e1379]:
+                      - img "Aspect of the Cursed Aura" [ref=e1380]
+                      - text: Aspect of the Cursed Aura
+                  - text: can just be applied to Boots slots over
+                  - link "Aspect of MetamorphosisAspect of Metamorphosis" [ref=e1381]:
+                    - /url: "#"
+                    - generic [ref=e1382]:
+                      - img "Aspect of Metamorphosis" [ref=e1383]
+                      - text: Aspect of Metamorphosis
+                  - text: . Missing aspect would be forfeited until Sanctified version of one of two aspects acquired, so second one would be applied back to Boots slot.
+                - paragraph [ref=e1384]:
+                  - link "Bloodless ScreamBloodless Scream" [ref=e1385]:
+                    - /url: "#"
+                    - generic [ref=e1386]:
+                      - img "Bloodless Scream" [ref=e1387]
+                      - text: Bloodless Scream
+                  - text: is worthwhile when it has masterworked and/or Greater Affix on Ranks to Darkness Skills, and high or top roll Unique Aspect. Also as prerequisite, it is preferably to have fully upgraded
+                  - link "Kessime's LegacyKessime’s Legacy" [ref=e1388]:
+                    - /url: "#"
+                    - generic [ref=e1389]:
+                      - img "Kessime's Legacy" [ref=e1390]
+                      - text: Kessime’s Legacy
+                  - text: first – with both Greater Affix and Masterworked
+                  - emphasis [ref=e1391]: Chance for Blood Wave to Deal Double Damage
+                  - text: .
+                  - emphasis [ref=e1392]: Chance to Make Enemies Vulnerable
+                  - text: Affix would be moved to Gloves or Ring slot, if possible.
+                - paragraph [ref=e1393]:
+                  - text: Other listed Uniques are straightforward slot replacement without any extra actions.
+                  - link:
+                    - /url: "#"
+                - paragraph [ref=e1394]:
+                  - link "↑ Back to Navigation Table" [ref=e1395] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e1396]
+                - heading "Gems and Runewords" [level=3] [ref=e1397]
+                - paragraph [ref=e1398]:
+                  - text: See below for a more detailed explanation of the best Gems and
+                  - link "Runewords" [ref=e1399] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/runewords-guide/
+                  - text: to
+                  - link "socket into your gear" [ref=e1400] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/jeweler-guide/#how_to_add_sockets
+                  - text: .
+                - figure [ref=e1401]:
+                  - table [ref=e1402]:
+                    - rowgroup [ref=e1403]:
+                      - row "Weapon Gems Armor Gems Jewelry Gems" [ref=e1404]:
+                        - columnheader "Weapon Gems" [ref=e1405]
+                        - columnheader "Armor Gems" [ref=e1406]
+                        - columnheader "Jewelry Gems" [ref=e1407]
+                    - rowgroup [ref=e1408]:
+                      - row "Royal EmeraldRoyal Emerald Igni Runeword Royal DiamondRoyal Diamond" [ref=e1409]:
+                        - cell "Royal EmeraldRoyal Emerald" [ref=e1410]:
+                          - link "Royal EmeraldRoyal Emerald" [ref=e1411]:
+                            - /url: "#"
+                            - generic [ref=e1412]:
+                              - img "Royal Emerald" [ref=e1413]
+                              - text: Royal Emerald
+                        - cell "Igni Runeword" [ref=e1414]:
+                          - link "Igni" [ref=e1415]:
+                            - /url: "#"
+                            - img "Igni" [ref=e1417]
+                          - text: Runeword
+                        - cell "Royal DiamondRoyal Diamond" [ref=e1418]:
+                          - link "Royal DiamondRoyal Diamond" [ref=e1419]:
+                            - /url: "#"
+                            - generic [ref=e1420]:
+                              - img "Royal Diamond" [ref=e1421]
+                              - text: Royal Diamond
+                      - row "– Royal DiamondRoyal Diamond Royal TopazRoyal Topaz" [ref=e1422]:
+                        - cell "–" [ref=e1423]
+                        - cell "Royal DiamondRoyal Diamond" [ref=e1424]:
+                          - link "Royal DiamondRoyal Diamond" [ref=e1425]:
+                            - /url: "#"
+                            - generic [ref=e1426]:
+                              - img "Royal Diamond" [ref=e1427]
+                              - text: Royal Diamond
+                        - cell "Royal TopazRoyal Topaz" [ref=e1428]:
+                          - link "Royal TopazRoyal Topaz" [ref=e1429]:
+                            - /url: "#"
+                            - generic [ref=e1430]:
+                              - img "Royal Topaz" [ref=e1431]
+                              - text: Royal Topaz
+                      - row "– Royal TopazRoyal Topaz Royal RubyRoyal Ruby" [ref=e1432]:
+                        - cell "–" [ref=e1433]
+                        - cell "Royal TopazRoyal Topaz" [ref=e1434]:
+                          - link "Royal TopazRoyal Topaz" [ref=e1435]:
+                            - /url: "#"
+                            - generic [ref=e1436]:
+                              - img "Royal Topaz" [ref=e1437]
+                              - text: Royal Topaz
+                        - cell "Royal RubyRoyal Ruby" [ref=e1438]:
+                          - link "Royal RubyRoyal Ruby" [ref=e1439]:
+                            - /url: "#"
+                            - generic [ref=e1440]:
+                              - img "Royal Ruby" [ref=e1441]
+                              - text: Royal Ruby
+                      - row "Increased damage. Increased All Stats or Intelligence. Resistances against buffed Lightning and Fire Elite Affixes." [ref=e1442]:
+                        - cell "Increased damage." [ref=e1443]:
+                          - text: Increased
+                          - strong [ref=e1444]: damage
+                          - text: .
+                        - cell "Increased All Stats or Intelligence." [ref=e1445]:
+                          - text: Increased
+                          - strong [ref=e1446]: All Stats
+                          - text: or
+                          - strong [ref=e1447]: Intelligence
+                          - text: .
+                        - cell "Resistances against buffed Lightning and Fire Elite Affixes." [ref=e1448]:
+                          - strong [ref=e1449]: Resistances
+                          - text: against buffed
+                          - strong [ref=e1450]: Lightning
+                          - text: and
+                          - strong [ref=e1451]: Fire
+                          - text: Elite Affixes.
+                - paragraph
+                - figure [ref=e1452]:
+                  - table [ref=e1453]:
+                    - rowgroup [ref=e1454]:
+                      - row "Runeword Combination Effect" [ref=e1455]:
+                        - cell "Runeword Combination" [ref=e1456]:
+                          - strong [ref=e1457]: Runeword Combination
+                        - cell "Effect" [ref=e1458]:
+                          - strong [ref=e1459]: Effect
+                      - 'row "AhuAhu QaxQax Gain: 15 Offering. Lucky Hit: Up to a 100% chance against non-Healthy enemies Requires: 400 Offering. Cooldown 1 second. Casting a Skill other than a Basic or Defensive spends all your Primary Resource to increase your damage up to 100% for 1 second. (Overflow: Further Increased Damage)." [ref=e1460]':
+                        - cell "AhuAhu QaxQax" [ref=e1461]:
+                          - link "AhuAhu" [ref=e1462]:
+                            - /url: "#"
+                            - generic [ref=e1463]:
+                              - img "Ahu" [ref=e1464]
+                              - text: Ahu
+                          - link "QaxQax" [ref=e1465]:
+                            - /url: "#"
+                            - generic [ref=e1466]:
+                              - img "Qax" [ref=e1467]
+                              - text: Qax
+                        - 'cell "Gain: 15 Offering. Lucky Hit: Up to a 100% chance against non-Healthy enemies Requires: 400 Offering. Cooldown 1 second. Casting a Skill other than a Basic or Defensive spends all your Primary Resource to increase your damage up to 100% for 1 second. (Overflow: Further Increased Damage)." [ref=e1468]':
+                          - text: "Gain: 15 Offering. Lucky Hit: Up to a 100% chance against non-"
+                          - link "Healthy" [ref=e1469] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/healthy-status-effect/
+                          - text: enemies
+                          - text: "Requires: 400"
+                          - strong [ref=e1470]
+                          - text: "Offering. Cooldown 1 second. Casting a Skill other than a Basic or Defensive spends all your Primary Resource to increase your damage up to 100% for 1 second. (Overflow: Further Increased Damage)."
+                      - row "Occasionaly consumes all essence to double the damage against non-Healthy enemies" [ref=e1471]:
+                        - cell [ref=e1472]
+                        - cell "Occasionaly consumes all essence to double the damage against non-Healthy enemies" [ref=e1473]:
+                          - text: Occasionaly consumes all essence to double the damage against non-
+                          - link "Healthy" [ref=e1474] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/healthy-status-effect/
+                          - text: enemies
+                      - 'row "IgniIgni ThulThul Gain: 25 Offering. Stores Offering every 0.3 seconds. Cast a Non-Basic Skill to gain the stored Offering. (Up to 500 Offering). Requires: 300 Offering. Invoke the Sorcerer’s Mystical Frost Nova Skill, inflicting Freeze and Vulnerable onto enemies. (Overflow: Up to 100% Increased Size)" [ref=e1475]':
+                        - cell "IgniIgni ThulThul" [ref=e1476]:
+                          - link "IgniIgni" [ref=e1477]:
+                            - /url: "#"
+                            - generic [ref=e1478]:
+                              - img "Igni" [ref=e1479]
+                              - text: Igni
+                          - link "ThulThul" [ref=e1480]:
+                            - /url: "#"
+                            - generic [ref=e1481]:
+                              - img "Thul" [ref=e1482]
+                              - text: Thul
+                        - 'cell "Gain: 25 Offering. Stores Offering every 0.3 seconds. Cast a Non-Basic Skill to gain the stored Offering. (Up to 500 Offering). Requires: 300 Offering. Invoke the Sorcerer’s Mystical Frost Nova Skill, inflicting Freeze and Vulnerable onto enemies. (Overflow: Up to 100% Increased Size)" [ref=e1483]':
+                          - text: "Gain: 25 Offering. Stores Offering every 0.3 seconds. Cast a Non-Basic Skill to gain the stored Offering. (Up to 500 Offering)."
+                          - text: "Requires: 300 Offering. Invoke the Sorcerer’s Mystical Frost Nova Skill, inflicting Freeze and"
+                          - link "Vulnerable" [ref=e1484] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/vulnerable-status-effect/
+                          - text: onto enemies.
+                          - text: "(Overflow: Up to 100% Increased Size)"
+                      - row "Provides occasional damage multiplier, Crowd Control and Vulnerable application." [ref=e1485]:
+                        - cell [ref=e1486]
+                        - cell "Provides occasional damage multiplier, Crowd Control and Vulnerable application." [ref=e1487]:
+                          - text: Provides occasional damage multiplier, Crowd Control and
+                          - link "Vulnerable" [ref=e1488] [cursor=pointer]:
+                            - /url: https://www.icy-veins.com/d4/guides/vulnerable-status-effect/
+                          - text: application.
+                      - 'row "IgniIgni WatWat Gain: 25 Offering. Stores Offering every 0.3 seconds. Cast a Non-Basic Skill to gain the stored Offering. (Up to 500 Offering). Requires: 100 Offering. Invoke the Necromancer’s Horrid DecrepifyHorrid Decrepify Skill, Slowing enemies, reducing their damage, and letting you Execute them. (Overflow: Increase duration)." [ref=e1489]':
+                        - cell "IgniIgni WatWat" [ref=e1490]:
+                          - link "IgniIgni" [ref=e1491]:
+                            - /url: "#"
+                            - generic [ref=e1492]:
+                              - img "Igni" [ref=e1493]
+                              - text: Igni
+                          - link "WatWat" [ref=e1494]:
+                            - /url: "#"
+                            - generic [ref=e1495]:
+                              - img "Wat" [ref=e1496]
+                              - text: Wat
+                        - 'cell "Gain: 25 Offering. Stores Offering every 0.3 seconds. Cast a Non-Basic Skill to gain the stored Offering. (Up to 500 Offering). Requires: 100 Offering. Invoke the Necromancer’s Horrid DecrepifyHorrid Decrepify Skill, Slowing enemies, reducing their damage, and letting you Execute them. (Overflow: Increase duration)." [ref=e1497]':
+                          - text: "Gain: 25 Offering. Stores Offering every 0.3 seconds. Cast a Non-Basic Skill to gain the stored Offering. (Up to 500 Offering)."
+                          - text: "Requires: 100 Offering. Invoke the Necromancer’s"
+                          - link "Horrid DecrepifyHorrid Decrepify" [ref=e1498]:
+                            - /url: "#"
+                            - generic [ref=e1499]:
+                              - img "Horrid Decrepify" [ref=e1500]
+                              - text: Horrid Decrepify
+                          - text: "Skill, Slowing enemies, reducing their damage, and letting you Execute them. (Overflow: Increase duration)."
+                      - row "[Optional] Replacing IgniIgni ThulThul and acts as substitute for Aspect of the Cursed AuraAspect of the Cursed Aura , allowing to apply curse more reliably." [ref=e1501]:
+                        - cell "[Optional]" [ref=e1502]
+                        - cell "Replacing IgniIgni ThulThul and acts as substitute for Aspect of the Cursed AuraAspect of the Cursed Aura , allowing to apply curse more reliably." [ref=e1503]:
+                          - text: Replacing
+                          - link "IgniIgni" [ref=e1504]:
+                            - /url: "#"
+                            - generic [ref=e1505]:
+                              - img "Igni" [ref=e1506]
+                              - text: Igni
+                          - link "ThulThul" [ref=e1507]:
+                            - /url: "#"
+                            - generic [ref=e1508]:
+                              - img "Thul" [ref=e1509]
+                              - text: Thul
+                          - text: and acts as substitute for
+                          - link "Aspect of the Cursed AuraAspect of the Cursed Aura" [ref=e1510]:
+                            - /url: "#"
+                            - generic [ref=e1511]:
+                              - img "Aspect of the Cursed Aura" [ref=e1512]
+                              - text: Aspect of the Cursed Aura
+                          - text: ", allowing to apply curse more reliably."
+                - paragraph [ref=e1513]:
+                  - link "↑ Back to Navigation Table" [ref=e1514] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e1515]
+                - heading "Paragon Board" [level=2] [ref=e1516]
+                - paragraph [ref=e1517]: Below you’ll find the entire end-game paragon board set-up for this build in detail!
+                - generic [ref=e1519]:
+                  - generic [ref=e1521]:
+                    - generic [ref=e1522]:
+                      - generic [ref=e1524]:
+                        - generic [ref=e1525]:
+                          - generic:
+                            - generic:
+                              - text: "Start - board #1"
+                              - generic:
+                                - text: "Str:"
+                                - generic: "25"
+                                - text: "- Dex:"
+                                - generic: "59"
+                                - text: "- Will:"
+                                - generic: "64"
+                                - text: "- Int:"
+                                - generic: "105"
+                            - generic: (Sacrificial)
+                        - generic:
+                          - generic:
+                            - text: "Rotation:"
+                            - generic: 1/4
+                      - generic [ref=e1556] [cursor=pointer]:
+                        - generic:
+                          - img "Sacrificial legendary"
+                    - generic [ref=e1609]:
+                      - generic [ref=e1611]:
+                        - generic [ref=e1612]:
+                          - generic:
+                            - generic:
+                              - text: "Bloodbath - board #2"
+                              - generic:
+                                - text: "Str:"
+                                - generic: "10"
+                                - text: "- Dex:"
+                                - generic: "74"
+                                - text: "- Will:"
+                                - generic: "54"
+                                - text: "- Int:"
+                                - generic: "110"
+                            - generic: (Gravekeeper)
+                        - generic:
+                          - generic:
+                            - text: "Rotation:"
+                            - generic: 1/4
+                      - generic [ref=e1731] [cursor=pointer]:
+                        - generic:
+                          - img "Gravekeeper legendary"
+                    - generic [ref=e1784]:
+                      - generic [ref=e1786]:
+                        - generic [ref=e1787]:
+                          - generic:
+                            - generic:
+                              - text: "Scent Of Death - board #3"
+                              - generic:
+                                - text: "Str:"
+                                - generic: "15"
+                                - text: "- Dex:"
+                                - generic: "54"
+                                - text: "- Will:"
+                                - generic: "69"
+                                - text: "- Int:"
+                                - generic: "110"
+                            - generic: (Dominate)
+                        - generic:
+                          - generic:
+                            - text: "Rotation:"
+                            - generic: 1/4
+                      - generic [ref=e1825] [cursor=pointer]:
+                        - generic:
+                          - img "Dominate legendary"
+                    - generic [ref=e1955]:
+                      - generic [ref=e1957]:
+                        - generic [ref=e1958]:
+                          - generic:
+                            - generic:
+                              - text: "Blood Begets Blood - board #4"
+                              - generic:
+                                - text: "Str:"
+                                - generic: "15"
+                                - text: "- Dex:"
+                                - generic: "32"
+                                - text: "- Will:"
+                                - generic: "47"
+                                - text: "- Int:"
+                                - generic: "60"
+                            - generic: (Desecration)
+                        - generic:
+                          - generic:
+                            - text: "Rotation:"
+                            - generic: 4/4
+                      - generic [ref=e2093] [cursor=pointer]:
+                        - generic:
+                          - img "Desecration"
+                    - generic [ref=e2137]:
+                      - generic [ref=e2139]:
+                        - generic [ref=e2140]:
+                          - generic:
+                            - generic:
+                              - text: "Wither - board #5"
+                              - generic:
+                                - text: "Str:"
+                                - generic: "20"
+                                - text: "- Dex:"
+                                - generic: "49"
+                                - text: "- Will:"
+                                - generic: "69"
+                                - text: "- Int:"
+                                - generic: "110"
+                            - generic: (Essence)
+                        - generic:
+                          - generic:
+                            - text: "Rotation:"
+                            - generic: 2/4
+                      - generic [ref=e2179] [cursor=pointer]:
+                        - generic:
+                          - img "Essence legendary"
+                  - generic [ref=e2325]:
+                    - generic [ref=e2327] [cursor=pointer]: BASE SETUP
+                    - generic [ref=e2329] [cursor=pointer]: PARAGON 300
+                  - generic [ref=e2330]:
+                    - generic [ref=e2331]:
+                      - text: "Points:"
+                      - generic [ref=e2332]: 241 / 328
+                    - generic [ref=e2333]:
+                      - text: "Boards:"
+                      - generic [ref=e2334]: 5 / 5
+                  - generic [ref=e2335]:
+                    - generic [ref=e2336]:
+                      - generic [ref=e2337]:
+                        - text: "Strength:"
+                        - generic [ref=e2338]: "110"
+                      - generic [ref=e2339]:
+                        - text: "Dexterity:"
+                        - generic [ref=e2340]: "240"
+                      - generic [ref=e2341]:
+                        - text: "Willpower:"
+                        - generic [ref=e2342]: "296"
+                      - generic [ref=e2343]:
+                        - text: "Intelligence:"
+                        - generic [ref=e2344]: "480"
+                    - img [ref=e2346]
+                  - generic [ref=e2349]:
+                    - img [ref=e2351] [cursor=pointer]
+                    - img [ref=e2354] [cursor=pointer]
+                - paragraph [ref=e2356]:
+                  - text: It is imperative to level up all
+                  - link "Glyphs" [ref=e2357] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/paragon-glyph-guide/
+                  - text: to
+                  - strong [ref=e2358]: level 15
+                  - text: first and then to
+                  - strong [ref=e2359]: level 46
+                  - text: to increase activation radius second time and unlock secondary damage multiplier. More about paragon glyphs and how to level them,
+                  - link "here" [ref=e2360] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/paragon-glyph-guide/
+                  - text: .
+                - paragraph [ref=e2361]:
+                  - text: Some paragon points are locked behind the
+                  - strong [ref=e2362]:
+                    - link "Season Rank System" [ref=e2363] [cursor=pointer]:
+                      - /url: https://www.icy-veins.com/d4/guides/season-rank/
+                  - text: .
+                - paragraph [ref=e2364]:
+                  - link "↑ Back to Navigation Table" [ref=e2365] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e2366]
+                - heading "Season of Divine Intervention (Season 11)" [level=2] [ref=e2367]
+                - paragraph [ref=e2368]:
+                  - link "Season 11 of Divine Intervention" [ref=e2369] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/diablo-4-latest-season/
+                  - text: introduces very few very limited borrowed powers, but allows you to adjust the difficulty-to-reward ratio of certain content types and introduces new crafting mechanic, Sanctification.
+                - heading "Sanctification" [level=3] [ref=e2370]
+                - paragraph [ref=e2371]: "Sanctification results are too unpredictable to be planned around, but this particular build benefits most from following:"
+                - list [ref=e2372]:
+                  - listitem [ref=e2373]: "#%[x] Shadow Damage"
+                  - listitem [ref=e2374]: 50/25 bonus Quality on Weapon
+                  - listitem [ref=e2375]: "#% Intelligence"
+                  - listitem [ref=e2376]: +# Intelligence, All Stats
+                  - listitem [ref=e2377]: Critical Strike Chance, Attack Speed
+                  - listitem [ref=e2378]: Offensive Aspect with damage multiplier
+                  - listitem [ref=e2379]:
+                    - link "Fastblood AspectFastblood Aspect" [ref=e2380]:
+                      - /url: "#"
+                      - generic [ref=e2381]:
+                        - img "Fastblood Aspect" [ref=e2382]
+                        - text: Fastblood Aspect
+                  - listitem [ref=e2383]:
+                    - link "Aspect of Hardened BonesAspect of Hardened Bones" [ref=e2384]:
+                      - /url: "#"
+                      - generic [ref=e2385]:
+                        - img "Aspect of Hardened Bones" [ref=e2386]
+                        - text: Aspect of Hardened Bones
+                  - listitem [ref=e2387]:
+                    - link "Aspect of DisobedienceAspect of Disobedience" [ref=e2388]:
+                      - /url: "#"
+                      - generic [ref=e2389]:
+                        - img "Aspect of Disobedience" [ref=e2390]
+                        - text: Aspect of Disobedience
+                  - listitem [ref=e2391]:
+                    - link "Aspect of the Cursed AuraAspect of the Cursed Aura" [ref=e2392]:
+                      - /url: "#"
+                      - generic [ref=e2393]:
+                        - img "Aspect of the Cursed Aura" [ref=e2394]
+                        - text: Aspect of the Cursed Aura
+                  - listitem [ref=e2395]:
+                    - link "Aspect of MetamorphosisAspect of Metamorphosis" [ref=e2396]:
+                      - /url: "#"
+                      - generic [ref=e2397]:
+                        - img "Aspect of Metamorphosis" [ref=e2398]
+                        - text: Aspect of Metamorphosis
+                - paragraph [ref=e2399]:
+                  - link "↑ Back to Navigation Table" [ref=e2400] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e2401]
+                - heading "Divine Gifts" [level=3] [ref=e2402]
+                - paragraph [ref=e2403]: Corrupted gift slots grant increased specific content rewards, but increases difficulty of associated content – therefore should be activated only for target farming, when character can handle it.
+                - paragraph [ref=e2404]: "Recommended Purified Divine Gifts for the build:"
+                - list [ref=e2405]:
+                  - listitem [ref=e2406]:
+                    - strong [ref=e2407]: Essence of Shadows
+                    - text: – Briefly become
+                    - link "Unstoppable" [ref=e2408] [cursor=pointer]:
+                      - /url: https://www.icy-veins.com/d4/guides/unstoppable-status-effect/
+                    - text: when Crowd Controlled every 12 seconds.
+                  - listitem [ref=e2409]:
+                    - strong [ref=e2410]: Essence of Screams
+                    - text: – Gain 20%[+] increased Resistance.
+                  - listitem [ref=e2411]:
+                    - strong [ref=e2412]: Essence of Sin
+                    - text: – Gain 20%[+] increased Armor.
+                  - listitem [ref=e2413]:
+                    - strong [ref=e2414]: Essence of Pain
+                    - text: – Briefly gain maximum
+                    - link "Barrier" [ref=e2415] [cursor=pointer]:
+                      - /url: https://www.icy-veins.com/d4/guides/barrier-status-effect/
+                    - text: after becoming Injured, every 20 seconds.
+                - paragraph [ref=e2416]:
+                  - link "↑ Back to Navigation Table" [ref=e2417] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e2418]
+                - heading "Mercenaries" [level=2] [ref=e2419]
+                - paragraph [ref=e2420]:
+                  - text: During the Vessel of Hatred campaign, you will unlock
+                  - link "Mercenaries" [ref=e2421] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/mercenaries-guide/
+                  - text: to assist you. While you can choose freely early on, we recommend
+                  - strong [ref=e2422]: Raheir
+                  - text: "as your main merc:"
+                - list [ref=e2423]:
+                  - listitem [ref=e2424]:
+                    - link "Ground SlamGround Slam" [ref=e2425]:
+                      - /url: "#"
+                      - generic [ref=e2426]:
+                        - img "Ground Slam" [ref=e2427]
+                        - text: Ground Slam
+                  - listitem [ref=e2428]:
+                    - link "Raheir's AegisRaheir’s Aegis" [ref=e2429]:
+                      - /url: "#"
+                      - generic [ref=e2430]:
+                        - img "Raheir's Aegis" [ref=e2431]
+                        - text: Raheir’s Aegis
+                  - listitem [ref=e2432]:
+                    - link "BastionBastion" [ref=e2433]:
+                      - /url: "#"
+                      - generic [ref=e2434]:
+                        - img "Bastion" [ref=e2435]
+                        - text: Bastion
+                  - listitem [ref=e2436]:
+                    - link "InspirationInspiration" [ref=e2437]:
+                      - /url: "#"
+                      - generic [ref=e2438]:
+                        - img "Inspiration" [ref=e2439]
+                        - text: Inspiration
+                - paragraph [ref=e2440]:
+                  - text: For the reinforcement, stick with
+                  - strong [ref=e2441]: Aldkin
+                  - text: ", utilizing his"
+                  - link "Flame SurgeFlame Surge" [ref=e2442]:
+                    - /url: "#"
+                    - generic [ref=e2443]:
+                      - img "Flame Surge" [ref=e2444]
+                      - text: Flame Surge
+                  - text: to trigger
+                  - link "Abhorrent DecrepifyAbhorrent Decrepify" [ref=e2445]:
+                    - /url: "#"
+                    - generic [ref=e2446]:
+                      - img "Abhorrent Decrepify" [ref=e2447]
+                      - text: Abhorrent Decrepify
+                  - text: when
+                  - strong [ref=e2448]: any
+                  - text: Skill is cast in combat.
+                - paragraph [ref=e2449]:
+                  - link "↑ Back to Navigation Table" [ref=e2450] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e2451]
+                - heading "Rotation and Build Mechanics" [level=2] [ref=e2452]
+                - paragraph [ref=e2453]:
+                  - text: This is build is designed to immediately reset cooldown of
+                  - link "Blood WaveBlood Wave" [ref=e2454]:
+                    - /url: "#"
+                    - generic [ref=e2455]:
+                      - img "Blood Wave" [ref=e2456]
+                      - text: Blood Wave
+                  - text: and trigger
+                  - link "Rathma's VigorRathma’s Vigor" [ref=e2457]:
+                    - /url: "#"
+                    - generic [ref=e2458]:
+                      - img "Rathma's Vigor" [ref=e2459]
+                      - text: Rathma’s Vigor
+                  - text: for guaranteed
+                  - link "Overpower" [ref=e2460] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/overpower-status-effect/
+                  - text: by picking spawned Blood Orbs.
+                - heading "Rotation and Playstyle" [level=3] [ref=e2461]
+                - list [ref=e2462]:
+                  - listitem [ref=e2463]:
+                    - text: If you are in danger, use
+                    - link "Blood MistBlood Mist" [ref=e2464]:
+                      - /url: "#"
+                      - generic [ref=e2465]:
+                        - img "Blood Mist" [ref=e2466]
+                        - text: Blood Mist
+                    - text: and move out of the danger. All negative effects from yourself will be removed and you will become
+                    - link "Unstoppable" [ref=e2467] [cursor=pointer]:
+                      - /url: https://www.icy-veins.com/d4/guides/unstoppable-status-effect/
+                    - text: for 3 seconds.
+                    - link "Blood MistBlood Mist" [ref=e2468]:
+                      - /url: "#"
+                      - generic [ref=e2469]:
+                        - img "Blood Mist" [ref=e2470]
+                        - text: Blood Mist
+                    - text: can be ended early by pressing same button again.
+                  - listitem [ref=e2471]:
+                    - text: Approach the pack to trigger
+                    - link "Aspect of the Cursed AuraAspect of the Cursed Aura" [ref=e2472]:
+                      - /url: "#"
+                      - generic [ref=e2473]:
+                        - img "Aspect of the Cursed Aura" [ref=e2474]
+                        - text: Aspect of the Cursed Aura
+                    - text: or
+                    - link "IgniIgni" [ref=e2475]:
+                      - /url: "#"
+                      - generic [ref=e2476]:
+                        - img "Igni" [ref=e2477]
+                        - text: Igni
+                    - link "WatWat" [ref=e2478]:
+                      - /url: "#"
+                      - generic [ref=e2479]:
+                        - img "Wat" [ref=e2480]
+                        - text: Wat
+                    - text: runeword
+                  - listitem [ref=e2481]:
+                    - text: If no Corpses available – create one with
+                    - link "ReapReap" [ref=e2482]:
+                      - /url: "#"
+                      - generic [ref=e2483]:
+                        - img "Reap" [ref=e2484]
+                        - text: Reap
+                    - text: and pull pack together with
+                    - link "Corpse TendrilsCorpse Tendrils" [ref=e2485]:
+                      - /url: "#"
+                      - generic [ref=e2486]:
+                        - img "Corpse Tendrils" [ref=e2487]
+                        - text: Corpse Tendrils
+                    - text: .
+                  - listitem [ref=e2488]:
+                    - text: Throw in few
+                    - link "BlightBlights" [ref=e2489]:
+                      - /url: "#"
+                      - generic [ref=e2490]:
+                        - img "Blight" [ref=e2491]
+                        - text: Blights
+                    - text: into the pack, followed by
+                    - link "Blood WaveBlood Wave" [ref=e2492]:
+                      - /url: "#"
+                      - generic [ref=e2493]:
+                        - img "Blood Wave" [ref=e2494]
+                        - text: Blood Wave
+                    - text: .
+                  - listitem [ref=e2495]:
+                    - text: Collect generated Blood Orbs by
+                    - link "Blighted Corpse TendrilsBlighted Corpse Tendrils" [ref=e2496]:
+                      - /url: "#"
+                      - generic [ref=e2497]:
+                        - img "Blighted Corpse Tendrils" [ref=e2498]
+                        - text: Blighted Corpse Tendrils
+                    - text: and
+                    - link "Blood WaveBlood Wave" [ref=e2499]:
+                      - /url: "#"
+                      - generic [ref=e2500]:
+                        - img "Blood Wave" [ref=e2501]
+                        - text: Blood Wave
+                    - text: until
+                    - link "Rathma's VigorRathma’s Vigor" [ref=e2502]:
+                      - /url: "#"
+                      - generic [ref=e2503]:
+                        - img "Rathma's Vigor" [ref=e2504]
+                        - text: Rathma’s Vigor
+                    - text: and
+                    - link "Blood WaveBlood Wave" [ref=e2505]:
+                      - /url: "#"
+                      - generic [ref=e2506]:
+                        - img "Blood Wave" [ref=e2507]
+                        - text: Blood Wave
+                    - text: are off cooldown.
+                  - listitem [ref=e2508]: Repeat.
+                - heading "Cooldown Reduction Engine" [level=3] [ref=e2509]
+                - paragraph [ref=e2510]:
+                  - text: Cooldown Reduction engine is a set of abilities, upgrades and buffs that reduce active cooldowns by fulfilling certain conditions. This build rely on
+                  - link "Fastblood AspectFastblood Aspect" [ref=e2511]:
+                    - /url: "#"
+                    - generic [ref=e2512]:
+                      - img "Fastblood Aspect" [ref=e2513]
+                      - text: Fastblood Aspect
+                  - text: and Blood Orb collection primarily. Secondary is Lucky Hit against cursed by
+                  - link "Abhorrent DecrepifyAbhorrent Decrepify" [ref=e2514]:
+                    - /url: "#"
+                    - generic [ref=e2515]:
+                      - img "Abhorrent Decrepify" [ref=e2516]
+                      - text: Abhorrent Decrepify
+                  - text: ", which is automatically applied by"
+                  - link "Aspect of the Cursed AuraAspect of the Cursed Aura" [ref=e2517]:
+                    - /url: "#"
+                    - generic [ref=e2518]:
+                      - img "Aspect of the Cursed Aura" [ref=e2519]
+                      - text: Aspect of the Cursed Aura
+                  - text: or
+                  - link "IgniIgni" [ref=e2520]:
+                    - /url: "#"
+                    - generic [ref=e2521]:
+                      - img "Igni" [ref=e2522]
+                      - text: Igni
+                  - link "WatWat" [ref=e2523]:
+                    - /url: "#"
+                    - generic [ref=e2524]:
+                      - img "Wat" [ref=e2525]
+                      - text: Wat
+                  - text: runeword.
+                - paragraph [ref=e2526]: "List and properties of Lucky Hit triggers used:"
+                - list [ref=e2527]:
+                  - listitem [ref=e2528]:
+                    - text: Aldkin mercenary
+                    - link "Flame SurgeFlame Surge" [ref=e2529]:
+                      - /url: "#"
+                      - generic [ref=e2530]:
+                        - img "Flame Surge" [ref=e2531]
+                        - text: Flame Surge
+                    - text: (damage over time, AoE)
+                  - listitem [ref=e2532]:
+                    - link "BlightBlight" [ref=e2533]:
+                      - /url: "#"
+                      - generic [ref=e2534]:
+                        - img "Blight" [ref=e2535]
+                        - text: Blight
+                    - text: ","
+                    - link "Blighted Corpse ExplosionBlighted Corpse Explosion" [ref=e2536]:
+                      - /url: "#"
+                      - generic [ref=e2537]:
+                        - img "Blighted Corpse Explosion" [ref=e2538]
+                        - text: Blighted Corpse Explosion
+                    - text: (damage over time, AoE)
+                  - listitem [ref=e2539]:
+                    - link "Blood WaveBlood Wave" [ref=e2540]:
+                      - /url: "#"
+                      - generic [ref=e2541]:
+                        - img "Blood Wave" [ref=e2542]
+                        - text: Blood Wave
+                    - text: (damage over time, AoE)
+                  - listitem [ref=e2543]:
+                    - link "Corpse TendrilsCorpse Tendrils" [ref=e2544]:
+                      - /url: "#"
+                      - generic [ref=e2545]:
+                        - img "Corpse Tendrils" [ref=e2546]
+                        - text: Corpse Tendrils
+                    - text: ","
+                    - link "ReapReap" [ref=e2547]:
+                      - /url: "#"
+                      - generic [ref=e2548]:
+                        - img "Reap" [ref=e2549]
+                        - text: Reap
+                    - text: (AoE / multi-target attacks)
+                - heading "Which Elixirs Should You Use?" [level=3] [ref=e2550]
+                - paragraph [ref=e2551]:
+                  - text: Visit
+                  - link "the Alchemist" [ref=e2552] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/alchemist-guide/#craft_elixirs
+                  - text: and craft an Elixir providing any Resistance you need most,
+                  - link "Elixir of Precision IIElixir of Precision II" [ref=e2553]:
+                    - /url: "#"
+                    - generic [ref=e2554]:
+                      - img "Elixir of Precision II" [ref=e2555]
+                      - text: Elixir of Precision II
+                  - text: ", if you lack Critical Strike Chance, or the"
+                  - link "Elixir of Fortitude IIElixir of Fortitude II" [ref=e2556]:
+                    - /url: "#"
+                    - generic [ref=e2557]:
+                      - img "Elixir of Fortitude II" [ref=e2558]
+                      - text: Elixir of Fortitude II
+                  - text: to increase overall Toughness. Recommended incenses are
+                  - link "Reddamine BuzzReddamine Buzz" [ref=e2559]:
+                    - /url: "#"
+                    - generic [ref=e2560]:
+                      - img "Reddamine Buzz" [ref=e2561]
+                      - text: Reddamine Buzz
+                  - text: ","
+                  - link "Soothing SpicesSoothing Spices" [ref=e2562]:
+                    - /url: "#"
+                    - generic [ref=e2563]:
+                      - img "Soothing Spices" [ref=e2564]
+                      - text: Soothing Spices
+                  - text: ","
+                  - link "Sage's WhisperSage’s Whisper" [ref=e2565]:
+                    - /url: "#"
+                    - generic [ref=e2566]:
+                      - img "Sage's Whisper" [ref=e2567]
+                      - text: Sage’s Whisper
+                  - text: .
+                  - strong [ref=e2568]: Make sure to keep your Health Potion upgraded!
+                - paragraph [ref=e2569]:
+                  - link "↑ Back to Navigation Table" [ref=e2570] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e2571]
+                - heading "Season 11 Updates" [level=2] [ref=e2572]
+                - paragraph [ref=e2573]:
+                  - text: For a complete overview of Season 11, mechanics and theme, new leveling activity, and other changes coming, please
+                  - link "take a look at our comprehensive season hub here." [ref=e2574] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/diablo-4-latest-season/
+                - list [ref=e2575]:
+                  - listitem [ref=e2576]: Minor improvement with better Cooldown Reduction availability.
+                  - listitem [ref=e2577]: Detached from Season 10 “Alter the Balance” Power
+                - paragraph [ref=e2578]:
+                  - link "↑ Back to Navigation Table" [ref=e2579] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e2580]
+                - heading "Obol Gambling" [level=2] [ref=e2581]
+                - paragraph [ref=e2582]:
+                  - link "Obol" [ref=e2583] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/how-to-farm-obols/
+                  - text: gambling is a great way to potentially find specific Legendary Aspects or specific slots Uniques missing from your build. Check out the new tool guide from Icy Veins for gambling Obols in the link below.
+                - link "Obol Gambling Optimization Tool Guide ▶" [ref=e2585] [cursor=pointer]:
+                  - /url: https://www.icy-veins.com/d4/news/extremely-useful-obol-gambling-optimization-tool/
+                - paragraph [ref=e2586]:
+                  - link "↑ Back to Navigation Table" [ref=e2587] [cursor=pointer]:
+                    - /url: https://www.icy-veins.com/d4/guides/blood-wave-necromancer-build/#quick_navigation
+                - separator [ref=e2588]
+                - heading "Changelog" [level=2] [ref=e2589]
+                - list [ref=e2590]:
+                  - listitem [ref=e2591]:
+                    - strong [ref=e2592]: "December 17th, 2025:"
+                    - text: Added Bloodless Scream recommendation for late game
+                  - listitem [ref=e2593]:
+                    - strong [ref=e2594]: "December 13th, 2025:"
+                    - text: Added Blood Mist to the build after difficulty testing. Visuals, navlinks fixes.
+                  - listitem [ref=e2595]:
+                    - strong [ref=e2596]: "December 8th, 2025:"
+                    - text: Guide updated for Season 11, Divine Intervention
+                  - listitem [ref=e2597]:
+                    - strong [ref=e2598]: "September 18th, 2025:"
+                    - text: Guide updated for Season 10. Build has received a massive rework from the ground up. Main change is playstyle is moving away from the set-up play-style in to a literal Blood Wave spam-machine!
+                  - listitem [ref=e2599]:
+                    - strong [ref=e2600]: "July 3rd, 2025:"
+                    - text: Minor skill-tree optimization.
+                  - listitem [ref=e2601]:
+                    - strong [ref=e2602]: "June 29th, 2025:"
+                    - text: Guide updated for Season 9.
+                  - listitem [ref=e2603]:
+                    - strong [ref=e2604]: "May 5th, 2025:"
+                    - text: Optimized and updated post launch for Season 8.
+                  - listitem [ref=e2605]:
+                    - strong [ref=e2606]: "April 26th, 2025:"
+                    - text: Guide updated for Season 8.
+                  - listitem [ref=e2607]:
+                    - strong [ref=e2608]: "January 19th, 2025:"
+                    - text: Guide posted for Season 7.
+              - link "ARPG Vault Logo Have feedback or questions about our guides? Join our ARPG Discord community and let us know!  Join ARPG Vault" [ref=e2609] [cursor=pointer]:
+                - /url: https://discord.gg/arpg-vault
+                - img "ARPG Vault Logo" [ref=e2610]
+                - paragraph [ref=e2611]: Have feedback or questions about our guides? Join our ARPG Discord community and let us know!
+                - button " Join ARPG Vault" [ref=e2612]:
+                  - generic [ref=e2613]: 
+                  - generic [ref=e2614]: Join ARPG Vault
+            - complementary [ref=e2615]:
+              - iframe [ref=e2620]:
+                - generic [ref=f126e3] [cursor=pointer]: ⟲
+          - separator [ref=e2622]
+          - generic [ref=e2623]:
+            - generic [ref=e2625]: 
+            - generic [ref=e2626]:
+              - heading "Latest Necromancer Guides" [level=2] [ref=e2627]
+              - link "View All Necromancer Guides " [ref=e2628] [cursor=pointer]:
+                - /url: /d4/necromancer/
+                - paragraph [ref=e2629]: View All Necromancer Guides
+                - generic [ref=e2630]: 
+          - generic [ref=e2631]:
+            - link "Blight Necromancer Leveling Build Blood Mist Decompose Bone Prison Corpse Tendrils Blight Soulrift Shadow season 9" [ref=e2632] [cursor=pointer]:
+              - /url: /d4/guides/blight-necromancer-leveling-build/
+              - generic [ref=e2634]:
+                - generic [ref=e2635]: Blight Necromancer Leveling Build
+                - generic [ref=e2636]:
+                  - img "Blood Mist" [ref=e2638]
+                  - img "Decompose" [ref=e2640]
+                  - img "Bone Prison" [ref=e2642]
+                  - img "Corpse Tendrils" [ref=e2644]
+                  - img "Blight" [ref=e2646]
+                  - img "Soulrift" [ref=e2648]
+                - generic [ref=e2649]:
+                  - generic [ref=e2650]: Shadow
+                  - generic [ref=e2651]: season 9
+            - link "Blight DoT Necromancer Build Blight Reap Corpse Tendrils Bone Prison Corpse Explosion Soulrift Shadow season 9" [ref=e2652] [cursor=pointer]:
+              - /url: /d4/guides/blight-dot-necromancer-build/
+              - generic [ref=e2654]:
+                - generic [ref=e2655]: Blight DoT Necromancer Build
+                - generic [ref=e2656]:
+                  - img "Blight" [ref=e2658]
+                  - img "Reap" [ref=e2660]
+                  - img "Corpse Tendrils" [ref=e2662]
+                  - img "Bone Prison" [ref=e2664]
+                  - img "Corpse Explosion" [ref=e2666]
+                  - img "Soulrift" [ref=e2668]
+                - generic [ref=e2669]:
+                  - generic [ref=e2670]: Shadow
+                  - generic [ref=e2671]: season 9
+          - separator [ref=e2672]
+          - generic [ref=e2673]:
+            - generic [ref=e2674]:
+              - generic [ref=e2675]:
+                - generic [ref=e2677]: 
+                - generic [ref=e2678]:
+                  - heading "Latest Diablo 4 News" [level=2] [ref=e2679]
+                  - link "View All Diablo 4 News " [ref=e2680] [cursor=pointer]:
+                    - /url: /d4/news/
+                    - paragraph [ref=e2681]: View All Diablo 4 News
+                    - generic [ref=e2682]: 
+              - generic [ref=e2683]:
+                - generic [ref=e2684]: 1/2
+                - button "Previous Carousel Page" [ref=e2685] [cursor=pointer]:
+                  - generic [ref=e2686]: 
+                - button "Next Carousel Page" [ref=e2687] [cursor=pointer]:
+                  - generic [ref=e2688]: 
+            - generic [ref=e2690]:
+              - link "Why So Many Diablo 4 Players Are Farming Azmodan on Normal Today at 3:24pm by Neviriah" [ref=e2691] [cursor=pointer]:
+                - /url: /d4/news/why-players-farm-normal-azmodan-diablo-4/
+                - generic [ref=e2692]:
+                  - img [ref=e2693]
+                  - generic [ref=e2694]: Why So Many Diablo 4 Players Are Farming Azmodan on Normal
+                  - generic [ref=e2695]: Today at 3:24pm by Neviriah
+              - link "Diablo 4 Season 11 Bug Lets Characters Start With Extra Potions Today at 11:46am by Jaym0" [ref=e2696] [cursor=pointer]:
+                - /url: /d4/news/diablo-4-season-11-bug-lets-characters-start-with-extra-potions/
+                - generic [ref=e2697]:
+                  - img [ref=e2698]
+                  - generic [ref=e2699]: Diablo 4 Season 11 Bug Lets Characters Start With Extra Potions
+                  - generic [ref=e2700]: Today at 11:46am by Jaym0
+              - link "Best Ways to Farm the Goblins Greetings Event in Diablo 4 Dec 19th, 2025 by Neviriah" [ref=e2701] [cursor=pointer]:
+                - /url: /d4/news/diablo-4-goblins-greetings-best-farming-methods/
+                - generic [ref=e2702]:
+                  - img [ref=e2703]
+                  - generic [ref=e2704]: Best Ways to Farm the Goblins Greetings Event in Diablo 4
+                  - generic [ref=e2705]: Dec 19th, 2025 by Neviriah
+          - separator [ref=e2706]
+          - generic:
+            - complementary
+      - generic [ref=e2708]:
+        - generic [ref=e2709]:
+          - img "logo" [ref=e2712]
+          - generic [ref=e2713]: © 2011-2025 VEDATIS S.A.S
+        - generic [ref=e2714]:
+          - link "ABOUT" [ref=e2715] [cursor=pointer]:
+            - /url: https://www.icy-veins.com/about
+          - link "CONTACT" [ref=e2716] [cursor=pointer]:
+            - /url: https://www.icy-veins.com/contact
+          - link "ADVERTISE" [ref=e2717] [cursor=pointer]:
+            - /url: https://www.icy-veins.com/advertise
+          - link "FAQ" [ref=e2718] [cursor=pointer]:
+            - /url: https://www.icy-veins.com/faq
+          - link "PRIVACY" [ref=e2719] [cursor=pointer]:
+            - /url: https://www.icy-veins.com/privacy
+          - link "TERMS OF USE" [ref=e2720] [cursor=pointer]:
+            - /url: https://www.icy-veins.com/terms
+          - link "ACKNOWLEDGEMENTS" [ref=e2721] [cursor=pointer]:
+            - /url: https://www.icy-veins.com/acknowledgements
+          - link "JOBS" [ref=e2722] [cursor=pointer]:
+            - /url: https://www.icy-veins.com/jobs
+  - alert [ref=e2723]
+  - iframe [ref=e2725]:
+    - generic [ref=f83e2]:
+      - iframe [ref=f83e5]:
+        - link [ref=f125e2] [cursor=pointer]:
+          - /url: javascript:void(window.open(window.clickTag))
+      - generic [ref=f83e6]:
+        - generic:
+          - img [ref=f83e10] [cursor=pointer]
+          - button [ref=f83e13] [cursor=pointer]:
+            - img [ref=f83e14]
+  - generic [ref=e2728]:
+    - generic [ref=e2729]:
+      - generic [ref=e2730]:
+        - img [ref=e2732]
+        - img
+        - generic [ref=e2733]: 0:25
+      - generic "Advertisement" [ref=e2734]
+      - iframe [ref=e2736]:
+        - generic [active] [ref=f142e1]:
+          - button [ref=f142e3]:
+            - img [ref=f142e4] [cursor=pointer]
+          - iframe [ref=f142e6]:
+            - generic [active] [ref=f148e1]:
+              - iframe
+    - iframe [ref=e2737]:
+      
+    - img [ref=e2739]
+```
