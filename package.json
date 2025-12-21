@@ -1,0 +1,34 @@
+{
+  "name": "d4guide",
+  "version": "1.0.0",
+  "description": "Diablo 4 Blood Wave Necromancer Build Guide",
+  "type": "module",
+  "scripts": {
+    "dev": "npx browser-sync start --server --files \"*.html, *.css, *.js, blood_wave_images/*\" --no-notify --open blood_wave_necro_guide_advanced.html",
+    "build": "node scripts/build.js",
+    "lint": "npx eslint scripts.js --fix",
+    "lint:css": "npx stylelint styles.css --fix",
+    "format": "npx prettier --write \"*.{html,css,js}\"",
+    "validate": "npx html-validate blood_wave_necro_guide_advanced.html",
+    "serve": "npx http-server -p 8890 -o blood_wave_necro_guide_advanced.html",
+    "serve:dist": "npx http-server dist -p 8891 -o",
+    "deploy:check": "node scripts/deploy-check.js",
+    "test": "npm run build && npm run deploy:check"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "eslint": "^9.39.2",
+    "html-validate": "^8.29.0",
+    "http-server": "^14.1.1",
+    "prettier": "^3.7.4",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^36.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scarmonit/D4Guide.git"
+  },
+  "author": "Scarmonit",
+  "license": "MIT",
+  "homepage": "https://d4guide.scarmonit.com"
+}

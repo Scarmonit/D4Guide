@@ -7,11 +7,15 @@ package-lock.json
 .env.local
 .env.*.local
 
-# IDE
-.idea/
+# IDE (share run configurations)
+.idea/*
+!.idea/runConfigurations/
 .vscode/
 *.swp
 *.swo
+
+# Playwright MCP snapshots
+.playwright-mcp/
 
 # OS files
 .DS_Store
