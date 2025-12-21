@@ -33,14 +33,7 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <!-- Preload critical fonts to reduce CLS -->
-    <link
-      rel="preload"
-      href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    >
+    <!-- Preload Font Awesome icons to reduce CLS -->
     <link
       rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2"
@@ -86,52 +79,37 @@
     <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- Navigation Toggle -->
-    <button type="button" class="nav-toggle" id="navToggle" aria-label="Open navigation menu">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Theme Switcher -->
-    <button type="button" class="theme-switcher" id="themeSwitcher" title="Toggle Theme" aria-label="Toggle theme">
-      <i class="fas fa-moon"></i>
-    </button>
-
-    <!-- Dyslexia Font Toggle -->
-    <button
-      type="button"
-      class="font-toggle"
-      id="fontToggle"
-      title="Toggle Dyslexia-friendly Font"
-      aria-label="Toggle dyslexia-friendly font"
-    >
-      <i class="fas fa-font"></i>
-    </button>
-
-    <!-- Sound Toggle -->
-    <button type="button" class="sound-toggle" id="soundToggle" title="Toggle Sound" aria-label="Toggle sound">
-      <i class="fas fa-volume-up"></i>
-    </button>
-
-    <button
-      type="button"
-      class="share-build"
-      id="shareBuild"
-      title="Share Build Summary"
-      aria-label="Share build summary"
-    >
-      <i class="fas fa-share-alt"></i>
-    </button>
-
-    <!-- Search Toggle -->
-    <button
-      type="button"
-      class="search-toggle"
-      id="searchToggle"
-      title="Search Guide (Ctrl+K)"
-      aria-label="Search guide"
-    >
-      <i class="fas fa-search"></i>
-    </button>
+    <!-- Top Toolbar - Consolidated buttons for better UX -->
+    <div class="top-toolbar" role="toolbar" aria-label="Page controls">
+      <div class="toolbar-left">
+        <!-- Navigation Toggle -->
+        <button type="button" class="nav-toggle toolbar-btn" id="navToggle" aria-label="Open navigation menu" title="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <!-- Search Toggle -->
+        <button type="button" class="search-toggle toolbar-btn" id="searchToggle" title="Search Guide (Ctrl+K)" aria-label="Search guide">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      <div class="toolbar-right">
+        <!-- Share Build -->
+        <button type="button" class="share-build toolbar-btn" id="shareBuild" title="Share Build Summary" aria-label="Share build summary">
+          <i class="fas fa-share-alt"></i>
+        </button>
+        <!-- Sound Toggle -->
+        <button type="button" class="sound-toggle toolbar-btn" id="soundToggle" title="Toggle Sound" aria-label="Toggle sound">
+          <i class="fas fa-volume-up"></i>
+        </button>
+        <!-- Dyslexia Font Toggle -->
+        <button type="button" class="font-toggle toolbar-btn" id="fontToggle" title="Toggle Dyslexia-friendly Font" aria-label="Toggle dyslexia-friendly font">
+          <i class="fas fa-font"></i>
+        </button>
+        <!-- Theme Switcher -->
+        <button type="button" class="theme-switcher toolbar-btn" id="themeSwitcher" title="Toggle Theme" aria-label="Toggle theme">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
 
     <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
@@ -1441,6 +1419,7 @@
           </span>
         </div>
       </div>
+    </div>
     </main>
 
     <!-- Gear Comparison Modal -->
