@@ -1,5 +1,6 @@
 {
   "extends": "stylelint-config-standard",
+  "ignoreFiles": ["dist/**", "node_modules/**"],
   "rules": {
     "no-duplicate-selectors": true,
     "color-hex-length": "short",
