@@ -82,4 +82,7 @@ jobs:
 
           Co-Authored-By: D4Guide Bot <bot@d4guide.scarmonit.com>"
 
+          # Pull any remote changes and rebase our commit on top
+          git pull --rebase origin main
+
           git push
