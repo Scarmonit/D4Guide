@@ -110,6 +110,9 @@ class BloodWaveGuide {
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         navMenu.classList.remove('active');
+        // Close gear modal if open
+        const modal = document.getElementById('gearModal');
+        if (modal) modal.style.display = 'none';
       }
       this.handleKeyboardShortcuts(e);
     });
@@ -339,7 +342,7 @@ class BloodWaveGuide {
             .catch(() => {
               prompt('Copy build data:', dataStr);
             });
-        } catch (e) {
+        } catch {
           this.showToast('Export failed', 'error');
         }
       });
@@ -375,7 +378,7 @@ class BloodWaveGuide {
           this.calculateDamage();
           this.highlightElement(importBtn);
           this.showToast('Build imported!', 'success');
-        } catch (e) {
+        } catch {
           this.showToast('Import failed', 'error');
         }
       });

@@ -3,7 +3,7 @@
   --blood-red: #c41e3a;
   --primary-red: #8b0000;
   --dark-red: #4a0000;
-  --shadow-red: rgba(139, 0, 0, 0.5);
+  --shadow-red: rgb(139 0 0 / 50%);
   --gold: #d4af37;
   --dark-gold: #b8860b;
   --orange: #ff8c00;
@@ -11,19 +11,19 @@
   --brown: #8b4513;
   --bg-primary: #0a0a0f;
   --bg-tertiary: #1a1a2e;
-  --glass-bg: rgba(20, 20, 35, 0.85);
-  --glass-border: rgba(212, 175, 55, 0.3);
+  --glass-bg: rgb(20 20 35 / 85%);
+  --glass-border: rgb(212 175 55 / 30%);
   --text-primary: #e0e0e0;
   --text-secondary: #b0b0b0;
   --text-muted: #808080;
-  --shadow-glow: 0 0 20px rgba(196, 30, 58, 0.3);
+  --shadow-glow: 0 0 20px rgb(196 30 58 / 30%);
 }
 
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family:
-    'Inter',
+    Inter,
     -apple-system,
     BlinkMacSystemFont,
     sans-serif;
@@ -67,10 +67,10 @@ body::before {
   background: var(--blood-red);
   border-radius: 50%;
   opacity: 0.6;
-  animation: particleFloat 15s infinite linear;
+  animation: particle-float 15s infinite linear;
 }
 
-@keyframes particleFloat {
+@keyframes particle-float {
   0% {
     transform: translateY(100vh) translateX(0);
     opacity: 0;
@@ -1541,10 +1541,10 @@ h1 {
 
 /* Interactive Highlights */
 .highlight-glow {
-  animation: highlightGlow 0.5s ease-out;
+  animation: highlight-glow 0.5s ease-out;
 }
 
-@keyframes highlightGlow {
+@keyframes highlight-glow {
   0% {
     box-shadow: 0 0 0 0 var(--primary-red);
   }
