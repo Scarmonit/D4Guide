@@ -1,31 +1,65 @@
 #!/usr/bin/env node
 /**
  * D4Guide Content Extraction Script
- * Uses Claude API to intelligently extract and summarize guide updates
+ * Uses Ollama to intelligently extract and summarize guide updates
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import Anthropic from '@anthropic-ai/sdk';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const DATA_DIR = join(ROOT, 'data');
 const SOURCES_DIR = join(DATA_DIR, 'sources');
 
+const OLLAMA_URL = process.env.OLLAMA_URL || 'http://localhost:11434';
+const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'mistral';
+
+async function checkOllama() {
+  try {
+    const response = await fetch(`${OLLAMA_URL}/api/tags`, { method: 'GET' });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function ollamaGenerate(prompt) {
+  const response = await fetch(`${OLLAMA_URL}/api/generate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: OLLAMA_MODEL,
+      prompt: prompt,
+      stream: false,
+      options: {
+        temperature: 0.3,
+        num_predict: 2000
+      }
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Ollama error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.response;
+}
+
 async function extractUpdates() {
   console.log('\n  D4Guide Content Extraction');
   console.log('  ---------------------------------\n');
 
-  // Check for API key
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    console.log('  [SKIP] ANTHROPIC_API_KEY not set - using basic extraction');
+  // Check if Ollama is available
+  const ollamaAvailable = await checkOllama();
+  if (!ollamaAvailable) {
+    console.log('  [SKIP] Ollama not available - using basic extraction');
     return basicExtraction();
   }
 
-  const anthropic = new Anthropic({ apiKey });
+  console.log(`  Using Ollama (${OLLAMA_MODEL}) at ${OLLAMA_URL}`);
 
   // Load changes
   const changesPath = join(DATA_DIR, 'changes.json');
@@ -54,7 +88,7 @@ async function extractUpdates() {
 
     sourceContents.push({
       source: change.name,
-      content: snapshot.textContent?.substring(0, 30000) || JSON.stringify(snapshot.items, null, 2)
+      content: snapshot.textContent?.substring(0, 15000) || JSON.stringify(snapshot.items, null, 2)
     });
   }
 
@@ -63,47 +97,29 @@ async function extractUpdates() {
     return null;
   }
 
-  console.log(`  Analyzing ${sourceContents.length} source(s) with Claude...`);
+  console.log(`  Analyzing ${sourceContents.length} source(s)...`);
 
   try {
-    const prompt = `You are analyzing Diablo 4 Blood Wave Necromancer guide updates from authoritative sources.
+    const prompt = `You are analyzing Diablo 4 Blood Wave Necromancer guide updates.
 
-Here are the latest snapshots from the sources:
+Here are the latest snapshots from authoritative sources:
 
-${sourceContents.map(s => `=== ${s.source} ===\n${s.content}`).join('\n\n')}
+${sourceContents.map(s => `=== ${s.source} ===\n${s.content.substring(0, 8000)}`).join('\n\n')}
 
-Please extract and summarize:
+Extract and summarize the key information about the Blood Wave Necromancer build.
 
-1. **Key Changes**: What significant changes have been made to the Blood Wave Necromancer build?
-   - Skill changes
-   - Gear/Aspect changes
-   - Paragon board changes
-   - Season 11 specific changes
-
-2. **Meta Status**: Is this build still S-tier/A-tier? Any tier changes?
-
-3. **Action Items**: What specific updates should be made to our guide?
-
-Provide a structured summary in JSON format:
+Respond ONLY with valid JSON in this exact format (no other text):
 {
-  "summary": "One-line summary of changes",
-  "tierStatus": "S/A/B/C tier",
+  "summary": "One-line summary of the build status",
+  "tierStatus": "S-tier or A-tier or B-tier",
   "keyChanges": ["change1", "change2"],
-  "skillUpdates": ["skill change details"],
-  "gearUpdates": ["gear change details"],
-  "paragonUpdates": ["paragon change details"],
-  "seasonalUpdates": ["season 11 specific changes"],
-  "actionItems": ["specific updates needed for our guide"],
-  "urgency": "high/medium/low"
+  "skillUpdates": ["skill info"],
+  "gearUpdates": ["gear info"],
+  "actionItems": ["updates needed"],
+  "urgency": "high or medium or low"
 }`;
 
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 2000,
-      messages: [{ role: 'user', content: prompt }]
-    });
-
-    const responseText = response.content[0].text;
+    const responseText = await ollamaGenerate(prompt);
 
     // Extract JSON from response
     const jsonMatch = responseText.match(/\{[\s\S]*\}/);
@@ -113,13 +129,20 @@ Provide a structured summary in JSON format:
       try {
         extractedData = JSON.parse(jsonMatch[0]);
       } catch (e) {
-        console.log('  [WARN] Could not parse JSON response');
+        console.log('  [WARN] Could not parse JSON response, using fallback');
+        extractedData = {
+          summary: 'Guide update detected - manual review recommended',
+          tierStatus: 'Unknown',
+          keyChanges: ['Content updated from source guides'],
+          urgency: 'medium'
+        };
       }
     }
 
     // Save extraction results
     const extractionResult = {
       timestamp: new Date().toISOString(),
+      model: OLLAMA_MODEL,
       sources: sourceContents.map(s => s.source),
       rawResponse: responseText,
       extracted: extractedData
@@ -145,7 +168,7 @@ Provide a structured summary in JSON format:
 
     return extractedData;
   } catch (error) {
-    console.error('  [ERROR] Claude API error:', error.message);
+    console.error('  [ERROR] Ollama error:', error.message);
     return basicExtraction();
   }
 }

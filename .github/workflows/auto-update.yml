@@ -40,8 +40,6 @@ jobs:
 
       - name: Snapshot sources
         run: node scripts/snapshot.js
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Detect changes
         id: detect
@@ -62,8 +60,8 @@ jobs:
       - name: Extract updates
         if: steps.detect.outputs.changed == 'true' || github.event.inputs.force_update == 'true'
         run: node scripts/extract-updates.js
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        # Uses basic extraction in CI (Ollama not available)
+        # Run locally with Ollama for AI-powered extraction
 
       - name: Build site
         if: steps.detect.outputs.changed == 'true' || github.event.inputs.force_update == 'true'
