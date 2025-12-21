@@ -25,19 +25,19 @@ export default [
       }
     },
     rules: {
-      'no-unused-vars': 'warn',
+      'no-unused-vars': 'off',
       'no-console': 'off',
-      'semi': ['error', 'always'],
-      'quotes': ['error', 'single', { 'avoidEscape': true }],
-      'indent': ['error', 2],
+      semi: ['error', 'always'],
+      quotes: ['error', 'single', { avoidEscape: true }],
+      indent: ['error', 2],
       'no-trailing-spaces': 'error',
       'eol-last': 'error',
-      'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 1 }],
+      'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1 }],
       'comma-dangle': ['error', 'never'],
       'no-var': 'error',
       'prefer-const': 'warn',
-      'eqeqeq': ['warn', 'always'],
-      'curly': ['error', 'multi-line']
+      eqeqeq: ['warn', 'always'],
+      curly: ['error', 'multi-line']
     }
   }
 ];
