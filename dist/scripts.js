@@ -93,7 +93,7 @@ class BloodWaveGuide {
       t.addEventListener(
         'touchend',
         e => {
-          let a = e.changedTouches[0].screenX;
+          const a = e.changedTouches[0].screenX;
           n - a > 50 && t.classList.remove('active');
         },
         { passive: !0 }
