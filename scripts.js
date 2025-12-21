@@ -1,15 +1,16 @@
-﻿// Advanced JavaScript functionality
+// Advanced JavaScript functionality
 class BloodWaveGuide {
   constructor() {
     this.soundEnabled = localStorage.getItem('soundEnabled') !== 'false';
     this.theme = localStorage.getItem('theme') || 'dark';
     this.dyslexicFont = localStorage.getItem('dyslexicFont') === 'true';
     this.totalPoints = 71;
-    this.usedPoints = 48; // Default allocated points
+    this.usedPoints = 0; // Default allocated points
     this.init();
   }
 
   init() {
+    this.calculateInitialPoints();
     this.applyPersistedSettings();
     this.createParticles();
     this.setupEventListeners();
@@ -21,6 +22,14 @@ class BloodWaveGuide {
     this.setupShareFeature();
     this.setupImageFallback();
     this.updatePointsDisplay();
+  }
+
+  calculateInitialPoints() {
+    let points = 0;
+    document.querySelectorAll('.points').forEach(el => {
+      points += parseInt(el.dataset.current) || 0;
+    });
+    this.usedPoints = points;
   }
 
   applyPersistedSettings() {
@@ -185,20 +194,27 @@ class BloodWaveGuide {
 
   setupDamageCalculator() {
     const inputs = [
+      'weaponDamage',
       'intelligence',
+      'bloodWaveRanks',
+      'tidalWaves',
+      'additiveDamage',
+      'multiplicativeDamage',
+      'shadowDamage',
       'critChance',
       'critDamage',
-      'overpowerDamage',
-      'shadowDamage',
       'vulnerableDamage',
-      'bloodWaveRanks',
-      'additiveDamage',
+      'overpowerDamage',
+      'overpowerChance',
       'doubleDamageChance'
     ];
     inputs.forEach(inputId => {
-      document.getElementById(inputId).addEventListener('input', () => {
-        this.calculateDamage();
-      });
+      const el = document.getElementById(inputId);
+      if (el) {
+        el.addEventListener('input', () => {
+          this.calculateDamage();
+        });
+      }
     });
     this.calculateDamage();
   }
@@ -290,119 +306,156 @@ class BloodWaveGuide {
 
     if (exportBtn) {
       exportBtn.addEventListener('click', () => {
-        const buildData = {
-          stats: {
-            intelligence: document.getElementById('intelligence').value,
-            critChance: document.getElementById('critChance').value,
-            critDamage: document.getElementById('critDamage').value,
-            overpowerDamage: document.getElementById('overpowerDamage').value,
-            shadowDamage: document.getElementById('shadowDamage').value,
-            vulnerableDamage: document.getElementById('vulnerableDamage').value,
-            additiveDamage: document.getElementById('additiveDamage').value,
-            doubleDamageChance: document.getElementById('doubleDamageChance').value,
-            bloodWaveRanks: document.getElementById('bloodWaveRanks').value
-          },
-          skills: []
-        };
+        try {
+          const buildData = {
+            version: '1.1',
+            stats: {
+              weaponDamage: document.getElementById('weaponDamage').value,
+              intelligence: document.getElementById('intelligence').value,
+              bloodWaveRanks: document.getElementById('bloodWaveRanks').value,
+              tidalWaves: document.getElementById('tidalWaves').value,
+              additiveDamage: document.getElementById('additiveDamage').value,
+              multiplicativeDamage: document.getElementById('multiplicativeDamage').value,
+              shadowDamage: document.getElementById('shadowDamage').value,
+              critChance: document.getElementById('critChance').value,
+              critDamage: document.getElementById('critDamage').value,
+              vulnerableDamage: document.getElementById('vulnerableDamage').value,
+              overpowerDamage: document.getElementById('overpowerDamage').value,
+              overpowerChance: document.getElementById('overpowerChance').value,
+              doubleDamageChance: document.getElementById('doubleDamageChance').value
+            },
+            skills: Array.from(document.querySelectorAll('.points')).map(el => ({
+              current: el.dataset.current
+            }))
+          };
 
-        document.querySelectorAll('.points').forEach(el => {
-          buildData.skills.push({
-            current: el.dataset.current
-          });
-        });
-
-        const dataStr = btoa(JSON.stringify(buildData));
-        navigator.clipboard.writeText(dataStr).then(() => {
-          this.highlightElement(exportBtn);
-          alert('Build data (encoded) copied to clipboard!');
-        });
+          const dataStr = btoa(JSON.stringify(buildData));
+          navigator.clipboard
+            .writeText(dataStr)
+            .then(() => {
+              this.highlightElement(exportBtn);
+              this.showToast('Build copied to clipboard!', 'success');
+            })
+            .catch(() => {
+              prompt('Copy build data:', dataStr);
+            });
+        } catch (e) {
+          this.showToast('Export failed', 'error');
+        }
       });
     }
 
     if (importBtn) {
       importBtn.addEventListener('click', () => {
-        const dataStr = prompt('Paste your build data string here:');
+        const dataStr = prompt('Paste build data string:');
         if (!dataStr) return;
 
         try {
           const buildData = JSON.parse(atob(dataStr));
+          if (!buildData.stats || !buildData.skills) throw new Error('Invalid format');
 
-          // Restore stats
-          if (buildData.stats) {
-            for (const [key, value] of Object.entries(buildData.stats)) {
-              const el = document.getElementById(key);
-              if (el) el.value = value;
+          for (const [key, value] of Object.entries(buildData.stats)) {
+            const el = document.getElementById(key);
+            if (el) el.value = value;
+          }
+
+          const skillElements = document.querySelectorAll('.points');
+          buildData.skills.forEach((skill, index) => {
+            if (skillElements[index]) {
+              const max = skillElements[index].dataset.max;
+              skillElements[index].dataset.current = skill.current;
+              skillElements[index].textContent = skillElements[index].textContent.includes('KEY')
+                ? 'KEY'
+                : `${skill.current}/${max}`;
             }
-            this.calculateDamage();
-          }
+          });
 
-          // Restore skills
-          if (buildData.skills) {
-            const skillElements = document.querySelectorAll('.points');
-            buildData.skills.forEach((skill, index) => {
-              if (skillElements[index]) {
-                const max = skillElements[index].dataset.max;
-                skillElements[index].dataset.current = skill.current;
-                skillElements[index].textContent = `${skill.current}/${max}`;
-              }
-            });
-            this.calculateInitialPoints();
-            this.updatePointsDisplay();
-          }
-
+          this.calculateInitialPoints();
+          this.updatePointsDisplay();
+          this.calculateDamage();
           this.highlightElement(importBtn);
-          alert('Build imported successfully!');
+          this.showToast('Build imported!', 'success');
         } catch (e) {
-          alert('Failed to import build. Invalid data.');
-          console.error(e);
+          this.showToast('Import failed', 'error');
         }
       });
     }
   }
 
+  showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    Object.assign(toast.style, {
+      position: 'fixed',
+      bottom: '20px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      padding: '12px 24px',
+      borderRadius: '8px',
+      color: 'white',
+      zIndex: '3000',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
+      backgroundColor: type === 'success' ? '#2ecc71' : type === 'error' ? '#e74c3c' : '#3498db'
+    });
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+  }
+
   calculateDamage() {
+    const weaponDps = parseInt(document.getElementById('weaponDamage').value) || 0;
     const int = parseInt(document.getElementById('intelligence').value) || 0;
     const critChance = parseInt(document.getElementById('critChance').value) || 0;
     const critDamage = parseInt(document.getElementById('critDamage').value) || 0;
-    const overpower = parseInt(document.getElementById('overpowerDamage').value) || 0;
-    const shadow = parseInt(document.getElementById('shadowDamage').value) || 0;
-    const vulnerable = parseInt(document.getElementById('vulnerableDamage').value) || 0;
-    const additive = parseInt(document.getElementById('additiveDamage').value) || 0;
+    const overpowerDamage = parseInt(document.getElementById('overpowerDamage').value) || 0;
+    const overpowerChance = parseInt(document.getElementById('overpowerChance').value) || 0;
+    const shadowDamage = parseInt(document.getElementById('shadowDamage').value) || 0;
+    const vulnerableDamage = parseInt(document.getElementById('vulnerableDamage').value) || 0;
+    const additiveDamage = parseInt(document.getElementById('additiveDamage').value) || 0;
+    const multiDamage = parseInt(document.getElementById('multiplicativeDamage').value) || 0;
     const doubleChance = parseInt(document.getElementById('doubleDamageChance').value) || 0;
     const ranks = parseInt(document.getElementById('bloodWaveRanks').value) || 1;
+    const tidalWaves = parseInt(document.getElementById('tidalWaves').value) || 1;
 
-    // Simplified damage calculation
-    const baseDamage = int * 10;
-    const additiveMultiplier = 1 + additive / 100;
+    // D4-accurate formula logic
+    const baseDamage = weaponDps * (1 + int / 1000);
+    const additiveMultiplier = 1 + additiveDamage / 100;
+    const multiMultiplier = 1 + multiDamage / 100;
     const critMultiplier = 1 + (critChance / 100) * (critDamage / 100);
-    const overpowerMultiplier = 1 + overpower / 100;
-    const shadowMultiplier = 1 + shadow / 100;
-    const vulnerableMultiplier = 1 + vulnerable / 100;
-    const rankMultiplier = 1 + (ranks - 1) * 0.2;
+    const overpowerMultiplier = 1 + (overpowerChance / 100) * (overpowerDamage / 100);
+    const vulnerableMultiplier = 1.2 * (1 + vulnerableDamage / 100);
+    const shadowMultiplier = 1 + shadowDamage / 100;
+    const rankMultiplier = 1 + (ranks - 1) * 0.15;
     const doubleMultiplier = 1 + doubleChance / 100;
+    const waveMultiplier = tidalWaves;
 
     const totalDamage = Math.round(
       baseDamage *
         additiveMultiplier *
+        multiMultiplier *
         critMultiplier *
         overpowerMultiplier *
-        shadowMultiplier *
         vulnerableMultiplier *
+        shadowMultiplier *
         rankMultiplier *
-        doubleMultiplier
+        doubleMultiplier *
+        waveMultiplier
     );
 
-    document.getElementById('damageResult').textContent = totalDamage.toLocaleString();
+    const resultEl = document.getElementById('damageResult');
+    if (resultEl) resultEl.textContent = totalDamage.toLocaleString();
 
     const breakdown = `
-      Base: ${baseDamage.toLocaleString()}<br>
+      Base: ${Math.round(baseDamage).toLocaleString()}<br>
       Additive: x${additiveMultiplier.toFixed(2)}<br>
-      Crit: x${critMultiplier.toFixed(2)} (Avg)<br>
-      Overpower: x${overpowerMultiplier.toFixed(2)}<br>
-      Shadow: x${shadowMultiplier.toFixed(2)}<br>
+      Multiplicative: x${multiMultiplier.toFixed(2)}<br>
+      Crit (Avg): x${critMultiplier.toFixed(2)}<br>
+      Overpower (Avg): x${overpowerMultiplier.toFixed(2)}<br>
       Vulnerable: x${vulnerableMultiplier.toFixed(2)}<br>
+      Shadow: x${shadowMultiplier.toFixed(2)}<br>
       Skill Ranks: x${rankMultiplier.toFixed(2)}<br>
-      Double Cast: x${doubleMultiplier.toFixed(2)}
+      Double: x${doubleMultiplier.toFixed(2)}<br>
+      Waves: x${waveMultiplier}
     `;
     const breakdownEl = document.getElementById('damageBreakdown');
     if (breakdownEl) breakdownEl.innerHTML = breakdown;
