@@ -141,44 +141,90 @@ body::before {
   top: 0;
 }
 
-/* Advanced Navigation */
-.nav-toggle {
+/* Top Toolbar Container */
+.top-toolbar {
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Common toolbar button style */
+.toolbar-btn {
+  background: rgb(0 0 0 / 30%);
   border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 10px 12px;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+}
+
+.toolbar-btn:hover {
+  background: var(--shadow-red);
+  border-color: var(--primary-red);
+  transform: translateY(-2px);
+}
+
+.toolbar-btn:active {
+  transform: translateY(0);
+}
+
+.toolbar-btn i {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+/* Legacy support - keep old classes but redirect to toolbar */
+.nav-toggle {
+  background: rgb(0 0 0 / 30%);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
 }
 
 .nav-toggle:hover {
   background: var(--shadow-red);
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 /* Search Styles */
 .search-toggle {
-  position: fixed;
-  top: 20px;
-  right: 200px;
-  z-index: 1000;
-  background: var(--glass-bg);
+  background: rgb(0 0 0 / 30%);
   border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 10px 12px;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
 }
 
 .search-toggle:hover {
   background: var(--shadow-red);
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 .search-overlay {
@@ -339,42 +385,34 @@ body::before {
 
 /* Theme Switcher */
 .theme-switcher {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: var(--glass-bg);
+  background: rgb(0 0 0 / 30%);
   border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 10px 12px;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
 }
 
 .theme-switcher:hover {
   background: var(--shadow-red);
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 /* Dyslexia Font Toggle */
 .font-toggle {
-  position: fixed;
-  top: 80px;
-  right: 20px;
-  z-index: 1000;
-  background: var(--glass-bg);
+  background: rgb(0 0 0 / 30%);
   border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 10px 12px;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
 }
 
 .font-toggle:hover {
   background: var(--shadow-red);
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 .dyslexic-font {
@@ -390,7 +428,7 @@ body::before {
 /* Header with Advanced Effects */
 .header {
   text-align: center;
-  padding: 60px 20px 40px;
+  padding: 80px 20px 40px; /* Added top padding for toolbar */
   background: linear-gradient(135deg, rgb(196 30 58 / 10%) 0%, rgb(139 0 0 / 10%) 100%);
   border-radius: 0 0 30px 30px;
   margin-bottom: 40px;
@@ -577,7 +615,7 @@ h1 {
 }
 
 .pros-cons .pros li::before {
-  content: 'âœ“';
+  content: '\2714';
   position: absolute;
   left: 0;
   color: var(--green);
@@ -585,7 +623,7 @@ h1 {
 }
 
 .pros-cons .cons li::before {
-  content: 'âœ—';
+  content: '\2718';
   position: absolute;
   left: 0;
   color: var(--blood-red);
@@ -675,6 +713,12 @@ h1 {
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation for sections when JS is available */
+.section.animate-in {
   opacity: 0;
   transform: translateY(20px);
 }
@@ -1446,47 +1490,44 @@ h1 {
   transition: width 0.3s ease;
 }
 
-/* Sound Toggle */
+/* Sound Toggle - now part of toolbar */
 .sound-toggle {
-  position: fixed;
-  bottom: 30px;
-  left: 30px;
-  background: var(--glass-bg);
+  background: rgb(0 0 0 / 30%);
   border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 10px 12px;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  z-index: 1000;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
 }
 
 .sound-toggle:hover {
   background: var(--shadow-red);
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 .sound-toggle.muted {
   opacity: 0.5;
 }
 
+.sound-toggle.muted i {
+  color: var(--text-muted);
+}
+
+/* Share Build - now part of toolbar */
 .share-build {
-  position: fixed;
-  bottom: 90px;
-  left: 30px;
-  background: var(--glass-bg);
+  background: rgb(0 0 0 / 30%);
   border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 10px 12px;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  z-index: 1000;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
 }
 
 .share-build:hover {
   background: var(--shadow-red);
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 /* Improved Modal Styles */
@@ -1534,7 +1575,7 @@ h1 {
 }
 
 .comparison-card li::before {
-  content: 'â€¢';
+  content: '\2022';
   color: var(--primary-red);
 }
 
@@ -1609,8 +1650,38 @@ h1 {
     padding: 0 15px;
   }
 
+  /* Mobile toolbar */
+  .top-toolbar {
+    padding: 8px 12px;
+    gap: 4px;
+  }
+
+  .toolbar-left,
+  .toolbar-right {
+    gap: 4px;
+  }
+
+  .toolbar-btn {
+    padding: 8px;
+    min-width: 36px;
+    height: 36px;
+  }
+
+  .toolbar-btn i {
+    font-size: 0.9rem;
+  }
+
+  .nav-toggle,
+  .search-toggle,
+  .theme-switcher,
+  .font-toggle,
+  .sound-toggle,
+  .share-build {
+    padding: 8px;
+  }
+
   .header {
-    padding: 40px 15px 30px;
+    padding: 70px 15px 30px;
   }
 
   .section {
@@ -1652,10 +1723,8 @@ h1 {
     height: 45px;
   }
 
-  .sound-toggle {
-    bottom: 20px;
-    left: 20px;
-    padding: 10px;
+  .search-toggle {
+    right: auto;
   }
 }
 
@@ -1780,4 +1849,40 @@ h1 {
   background: var(--bg-tertiary);
   object-fit: contain;
   padding: 5px;
+}
+
+/* Data Sources Footer */
+.data-source-footer {
+  margin-top: 30px;
+  padding: 25px;
+}
+
+.data-source-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.data-source-item {
+  background: rgb(0 0 0 / 30%);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 3px solid var(--gold);
+  transition: transform 0.2s ease;
+}
+
+.data-source-item:hover {
+  transform: translateY(-3px);
+}
+
+.data-source-item a {
+  color: var(--blood-red);
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.2s ease;
+}
+
+.data-source-item a:hover {
+  color: var(--gold);
+  text-decoration: underline;
 }
