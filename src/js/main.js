@@ -2,6 +2,8 @@ import { RunewordCalculator } from './modules/RunewordCalculator.js';
 import { MercenaryManager } from './modules/MercenaryManager.js';
 import { PitCalculator } from './modules/PitCalculator.js';
 import { GamblingAdvisor } from './modules/GamblingAdvisor.js';
+import { GlyphCalculator } from './modules/GlyphCalculator.js';
+import { CooldownPlanner } from './modules/CooldownPlanner.js';
 
 // Advanced JavaScript functionality
 class BloodWaveGuide {
@@ -34,6 +36,8 @@ class BloodWaveGuide {
     new MercenaryManager();
     new PitCalculator();
     new GamblingAdvisor();
+    new GlyphCalculator();
+    new CooldownPlanner();
   }
   calculateInitialPoints() {
     let points = 0;
