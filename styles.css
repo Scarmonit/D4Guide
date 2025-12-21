@@ -1,3 +1,38 @@
+/* CSS Variables - Diablo 4 Blood Wave Theme */
+:root {
+  --blood-red: #c41e3a;
+  --primary-red: #8b0000;
+  --dark-red: #4a0000;
+  --shadow-red: rgba(139, 0, 0, 0.5);
+  --gold: #d4af37;
+  --dark-gold: #b8860b;
+  --orange: #ff8c00;
+  --green: #228b22;
+  --brown: #8b4513;
+  --bg-primary: #0a0a0f;
+  --bg-tertiary: #1a1a2e;
+  --glass-bg: rgba(20, 20, 35, 0.85);
+  --glass-border: rgba(212, 175, 55, 0.3);
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-muted: #808080;
+  --shadow-glow: 0 0 20px rgba(196, 30, 58, 0.3);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
 /* Animated Background with Particles */
 body::before {
   content: '';
