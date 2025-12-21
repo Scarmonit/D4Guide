@@ -19,10 +19,18 @@ node_modules/
 
 # Auto-update temporary files
 data/sources/
+data/hashes/
 data/.changes-detected
 data/changelog-summary.txt
 data/extraction.json
 data/changes.json
+data/scraped-data.json
+
+# Crawlee storage
+storage/
+
+# Package archives
+*.tgz
 
 # OS files
 .DS_Store

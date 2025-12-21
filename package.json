@@ -23,7 +23,9 @@
     "scrape": "node scraper/index.js",
     "scrape:icy": "node -e \"import('./scraper/icy-veins.js').then(m => m.default().then(console.log))\"",
     "scrape:maxroll": "node -e \"import('./scraper/maxroll.js').then(m => m.default().then(console.log))\"",
-    "update-data": "npm run scrape && npm run build"
+    "integrate": "node scripts/integrate-data.js",
+    "sync": "npm run scrape && npm run integrate",
+    "update-data": "npm run scrape && npm run integrate && npm run build"
   },
   "devDependencies": {
     "browser-sync": "^3.0.4",
