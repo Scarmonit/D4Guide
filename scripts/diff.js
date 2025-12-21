@@ -121,11 +121,12 @@ function detectChanges() {
           console.log(`  [OK] ${source.name}: No changes`);
         }
       } else {
-        // First run - save initial hash
+        // First run - save initial hash and trigger extraction
         console.log(`  [NEW] ${source.name}: Initial snapshot saved`);
         writeFileSync(hashPath, newHash);
         writeFileSync(prevContentPath, contentToHash);
 
+        hasSignificantChanges = true;
         changes.push({
           source: key,
           name: source.name,

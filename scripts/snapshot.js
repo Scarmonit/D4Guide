@@ -31,12 +31,12 @@ async function snapshotPage(browser, source, key) {
 
   try {
     await page.goto(source.url, {
-      waitUntil: 'networkidle',
+      waitUntil: 'domcontentloaded',
       timeout: UPDATE_CONFIG.snapshotTimeout
     });
 
-    // Wait for main content to load
-    await page.waitForTimeout(2000);
+    // Wait for content to render (ads-heavy sites need time)
+    await page.waitForTimeout(8000);
 
     // Get page content
     const content = await page.evaluate(() => {

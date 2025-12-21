@@ -33,7 +33,7 @@ export const SOURCES = {
   blizzard: {
     name: 'Blizzard Patch Notes',
     url: 'https://news.blizzard.com/en-us/diablo4',
-    rssUrl: 'https://news.blizzard.com/en-us/diablo4/feed',
+    // RSS not available - use page scraping instead
     priority: 1,
     type: 'news',
     keywords: ['patch', 'hotfix', 'necromancer', 'blood wave', 'balance']
@@ -83,6 +83,6 @@ export const UPDATE_CONFIG = {
   checkInterval: 6 * 60 * 60 * 1000, // 6 hours in ms
   maxRetries: 3,
   retryDelay: 5000,
-  snapshotTimeout: 30000,
+  snapshotTimeout: 60000, // 60 seconds for heavy sites
   diffThreshold: 0.05 // 5% content change triggers update
 };
