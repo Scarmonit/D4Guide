@@ -15,6 +15,17 @@
     "deploy:check": "node scripts/deploy-check.js",
     "optimize": "node scripts/optimize-images.js",
     "test": "npm run build && npm run deploy:check",
+    "test:e2e": "npx playwright test",
+    "test:e2e:ui": "npx playwright test --ui",
+    "test:e2e:debug": "npx playwright test --debug",
+    "test:e2e:headed": "npx playwright test --headed",
+    "test:e2e:chromium": "npx playwright test --project=chromium",
+    "test:e2e:report": "npx playwright show-report test-results/html-report",
+    "test:unit": "npx vitest run",
+    "test:unit:watch": "npx vitest",
+    "test:unit:ui": "npx vitest --ui",
+    "test:unit:coverage": "npx vitest run --coverage",
+    "test:all": "npm run test:unit && npm run test:e2e:chromium",
     "prepare": "husky",
     "snapshot": "node scripts/snapshot.js",
     "diff": "node scripts/diff.js",
@@ -28,6 +39,8 @@
     "update-data": "npm run scrape && npm run integrate && npm run build"
   },
   "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@vitest/coverage-v8": "^4.0.16",
     "browser-sync": "^3.0.4",
     "clean-css": "^5.3.3",
     "clean-css-cli": "^5.6.3",
@@ -38,12 +51,14 @@
     "html-validate": "^8.29.0",
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
+    "jsdom": "^27.3.0",
     "lint-staged": "^16.2.7",
     "playwright": "^1.57.0",
     "prettier": "^3.7.4",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^36.0.1",
-    "terser": "^5.44.1"
+    "terser": "^5.44.1",
+    "vitest": "^4.0.16"
   },
   "lint-staged": {
     "*.html": "npx prettier --write",
