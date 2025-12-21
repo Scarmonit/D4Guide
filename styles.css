@@ -1,3 +1,12 @@
+/* Reserve space for Font Awesome icons to prevent CLS */
+.fas,
+.fab,
+.far {
+  display: inline-block;
+  min-width: 1em;
+  text-align: center;
+}
+
 /* CSS Variables - Diablo 4 Blood Wave Theme */
 :root {
   --blood-red: #c41e3a;
