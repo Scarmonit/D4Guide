@@ -1228,6 +1228,11 @@
       <!-- RUNEWORDS -->
       <section class="section" id="gems">
         <h2><i class="fas fa-gem"></i> Gems &amp; Runewords</h2>
+        
+        <!-- Interactive Runeword Calculator -->
+        <div id="runeword-calculator"></div>
+
+        <h3 style="margin-top: 30px"><i class="fas fa-gem"></i> Gem Recommendations</h3>
         <table class="stats-table">
           <thead>
             <tr>
@@ -1240,17 +1245,12 @@
             <tr>
               <td><strong>Weapon</strong></td>
               <td class="priority-1">Royal Emerald</td>
-              <td>Increased damage</td>
+              <td>Increased damage to Vulnerable</td>
             </tr>
             <tr>
-              <td><strong>Armor (Socket 1)</strong></td>
-              <td class="priority-2">Igni + Thul</td>
-              <td>Frost Nova - Freeze + Vulnerable application</td>
-            </tr>
-            <tr>
-              <td><strong>Armor (Socket 2)</strong></td>
-              <td class="priority-2">Ahu + Qax</td>
-              <td>100% damage increase vs non-Healthy</td>
+              <td><strong>Armor</strong></td>
+              <td class="priority-2">Royal Ruby</td>
+              <td>Maximum Life</td>
             </tr>
             <tr>
               <td><strong>Jewelry</strong></td>
@@ -1259,61 +1259,14 @@
             </tr>
           </tbody>
         </table>
-        <div
-          style="
-            margin-top: 20px;
-            color: var(--text-secondary);
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid var(--gold);
-          "
-        >
-          <strong><i class="fas fa-lightbulb" style="color: var(--gold)"></i> Alternative:</strong> Igni + Wat - Invokes
-          Horrid Decrepify, substitute for Cursed Aura aspect
-        </div>
       </section>
 
       <!-- MERCENARY -->
       <section class="section" id="mercenary">
         <h2><i class="fas fa-user-ninja"></i> Mercenary Setup</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px">
-          <div
-            style="
-              background: rgba(0, 0, 0, 0.2);
-              padding: 20px;
-              border-radius: 15px;
-              border-left: 4px solid var(--gold);
-            "
-          >
-            <h3 style="color: var(--gold); margin-bottom: 15px; font-size: 1.3em">
-              <i class="fas fa-shield-alt"></i> Main: Raheir
-            </h3>
-            <ul style="margin-left: 20px">
-              <li><i class="fas fa-hammer"></i> Ground Slam</li>
-              <li><i class="fas fa-shield"></i> Raheir's Aegis</li>
-              <li><i class="fas fa-fort-awesome"></i> Bastion</li>
-              <li><i class="fas fa-lightbulb"></i> Inspiration</li>
-            </ul>
-          </div>
-          <div
-            style="
-              background: rgba(0, 0, 0, 0.2);
-              padding: 20px;
-              border-radius: 15px;
-              border-left: 4px solid var(--orange);
-            "
-          >
-            <h3 style="color: var(--orange); margin-bottom: 15px; font-size: 1.3em">
-              <i class="fas fa-fire"></i> Reinforcement: Aldkin
-            </h3>
-            <ul style="margin-left: 20px">
-              <li><i class="fas fa-fire"></i> Flame Surge</li>
-              <li style="color: var(--green)">
-                <i class="fas fa-magic"></i> Triggers Abhorrent Decrepify on skill cast
-              </li>
-            </ul>
-          </div>
+        <div id="mercenary-ui"></div>
+        <div style="text-align: center; margin-top: 15px; color: var(--text-secondary);">
+           <i class="fas fa-info-circle"></i> Set Raheir as your Primary for safety, or Aldkin as Reinforcement for huge AoE burst.
         </div>
       </section>
 

@@ -1,3 +1,6 @@
+import { RunewordCalculator } from './modules/RunewordCalculator.js';
+import { MercenaryManager } from './modules/MercenaryManager.js';
+
 // Advanced JavaScript functionality
 class BloodWaveGuide {
   constructor() {
@@ -23,6 +26,10 @@ class BloodWaveGuide {
     this.setupImageFallback();
     this.setupBuildPersistence();
     this.updatePointsDisplay();
+
+    // Initialize new modules
+    new RunewordCalculator();
+    new MercenaryManager();
   }
 
   calculateInitialPoints() {

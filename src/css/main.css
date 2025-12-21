@@ -1843,3 +1843,239 @@ h1 {
 .data-source-item a:hover {
   text-decoration: underline;
 }
+
+/* Runeword Calculator Styles */
+.runeword-builder {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  margin-bottom: 30px;
+}
+
+.rune-selection {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.rune-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.rune-column h4 {
+  margin-bottom: 15px;
+  color: var(--gold);
+}
+
+.rune-select {
+  width: 100%;
+  padding: 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  border-radius: 8px;
+  font-size: 1em;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.rune-select:focus {
+  outline: none;
+  border-color: var(--primary-red);
+}
+
+.rune-info {
+  min-height: 60px;
+  font-size: 0.9em;
+  color: var(--text-secondary);
+}
+
+.rune-detail .label {
+  color: var(--text-muted);
+}
+
+.rune-detail .value {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.runeword-result {
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  text-align: center;
+  border: 1px dashed var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.runeword-result.active {
+  border-style: solid;
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0.4));
+}
+
+.runeword-result h3 {
+  color: var(--gold);
+  margin-bottom: 10px;
+  font-family: Cinzel, serif;
+}
+
+.rune-name {
+  color: var(--orange);
+}
+
+.synergy-result {
+  font-size: 1.1em;
+}
+
+.synergy-good {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.synergy-ok {
+  color: var(--orange);
+  font-weight: bold;
+}
+
+.effect-summary {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 10px;
+}
+
+.placeholder-text {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Mercenary UI Styles */
+.mercenary-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.merc-tab {
+  flex: 1;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.merc-tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.merc-tab.active {
+  background: var(--primary-red);
+  border-color: var(--primary-red);
+  color: white;
+  box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
+}
+
+.mercenary-content {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 25px;
+  border: 1px solid var(--glass-border);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.mercenary-content.fade-in {
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.merc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--primary-red);
+  padding-bottom: 10px;
+}
+
+.merc-header h3 {
+  margin: 0;
+  color: var(--gold);
+}
+
+.merc-role {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  color: var(--text-secondary);
+}
+
+.merc-desc {
+  color: var(--text-primary);
+  margin-bottom: 25px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.merc-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.merc-skill-card {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 3px solid var(--orange);
+  transition: transform 0.2s ease;
+}
+
+.merc-skill-card:hover {
+  transform: translateY(-3px);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.merc-skill-card h4 {
+  color: var(--orange);
+  margin-bottom: 8px;
+  font-size: 1em;
+}
+
+.merc-skill-card p {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .rune-selection {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
