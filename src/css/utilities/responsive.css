@@ -123,9 +123,9 @@
 /* High contrast mode */
 @media (prefers-contrast: high) {
   :root {
-    --blood-red: #ff0000;
-    --gold: #ffff00;
-    --text-primary: #ffffff;
-    --bg-primary: #000000;
+    --blood-red: #f00;
+    --gold: #ff0;
+    --text-primary: #fff;
+    --bg-primary: #000;
   }
 }
