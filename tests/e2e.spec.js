@@ -162,6 +162,9 @@ test.describe('D4 Necro Guide E2E', () => {
   });
 
   test('should not exceed max skill points', async ({ page }) => {
+    // Increase timeout for webkit which is slower with rapid clicks
+    test.setTimeout(60000);
+
     await page.locator('#resetSkills').click();
 
     const skillPoints = page.locator('.points');
