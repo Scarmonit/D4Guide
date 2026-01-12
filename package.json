@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
-    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/coverage-v8": "^4.0.17",
     "browser-sync": "^3.0.4",
     "clean-css": "^5.3.3",
     "clean-css-cli": "^5.6.3",
@@ -48,17 +48,17 @@
     "esbuild": "^0.27.2",
     "eslint": "^9.39.2",
     "html-minifier-terser": "^7.2.0",
-    "html-validate": "^8.29.0",
+    "html-validate": "^10.5.0",
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
-    "jsdom": "^27.3.0",
+    "jsdom": "^27.4.0",
     "lint-staged": "^16.2.7",
     "playwright": "^1.57.0",
     "prettier": "^3.7.4",
     "stylelint": "^16.26.1",
-    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard": "^39.0.1",
     "terser": "^5.44.1",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.17"
   },
   "lint-staged": {
     "*.html": "npx prettier --write",
